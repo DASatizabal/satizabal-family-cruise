@@ -1,25 +1,23 @@
 Group Label,Member Name,Age,Status,Cabin Type,Room Number,Price Paid,Deposit Paid
-Rosie & Ralph,Rosie,45,unbooked,,,,
-Rosie & Ralph,Ralph,47,unbooked,,,,
-Clarita,Clarita,38,unbooked,,,,
-Uncle Tony & Aunt Lina,Tony,62,unbooked,,,,
-Uncle Tony & Aunt Lina,Lina,59,unbooked,,,,
-Marisol & Javi,Marisol,33,unbooked,,,,
-Marisol & Javi,Javi,35,unbooked,,,,
-Marisol & Javi,Sofia,6,unbooked,,,,
-Abuela Carmen,Carmen,72,unbooked,,,,
-Luis & Diana,Luis,40,unbooked,,,,
-Luis & Diana,Diana,38,unbooked,,,,
-Luis & Diana,Mateo,12,unbooked,,,,
-Luis & Diana,Isabella,9,unbooked,,,,
-Zin Kai & Noa,Zin,35,reserved,Balcony,11234,2276,yes
-Zin Kai & Noa,Kai,8,reserved,Balcony,11234,0,-
-Zin Kai & Noa,Noa,5,reserved,Balcony,11234,0,-
-Tia & Marco,Tia,55,reserved,Club Balcony Suite,10200,2596,yes
-Tia & Marco,Marco,57,reserved,Club Balcony Suite,10200,0,-
-David & Pao,David,34,reserved,Balcony,11450,2276,yes
-David & Pao,Pao,32,reserved,Balcony,11450,0,-
-Primo Andres,Andres,28,reserved,Inside,8052,1436,yes
-Gabi & Renzo,Gabi,41,reserved,Family Balcony,11300,2396,yes
-Gabi & Renzo,Renzo,43,reserved,Family Balcony,11300,0,-
-Gabi & Renzo,Valentina,14,reserved,Family Balcony,11300,0,-
+Ralph & Rosie,Rosie,65,unbooked,,,,
+Ralph & Rosie,Ralph,65,unbooked,,,,
+Jared,Jared,25,unbooked,,,,
+Stephy,Stephy,25,unbooked,,,,
+Zin & Kids,Zin,35,unbooked,,,,
+Zin & Kids,Kai,6,unbooked,,,,
+Zin & Kids,Noa,1,unbooked,,,,
+Efra & Lochis,Efra,65,unbooked,,,,
+Efra & Lochis,Lochis,65,unbooked,,,,
+Kathy & Humberto,Kathy,45,unbooked,,,,
+Kathy & Humberto,Humberto,45,unbooked,,,,
+"David, Lisa & Kids",David,41,reserved, Family Suite,14605,3726.94,yes
+"David, Lisa & Kids",Lisa,42,reserved, Family Suite,14605,0,yes
+"David, Lisa & Kids",Davicito,7,reserved, Family Suite,14605,0,yes
+"David, Lisa & Kids",Dante,15,reserved, Family Suite,14605,0,yes
+"David, Lisa & Kids",Alex,20,reserved, Family Suite,14605,0,yes
+"David, Lisa & Kids",Isa,20,reserved, Family Suite,14605,0,yes
+"Daniel, Yesenia, & Mary Luz",Daniel,36,reserved, Family Suite,14607,2624.5,yes
+"Daniel, Yesenia, & Mary Luz",Yesenia,34,reserved, Family Suite,14607,0,yes
+"Daniel, Yesenia, & Mary Luz",Mary Luz,72,reserved, Family Suite,14607,0,yes
+Heather & Ina,Heather,25,reserved,Inside,14633,1289,yes
+Heather & Ina,Ina,25,reserved,Inside,14633,0,yes
