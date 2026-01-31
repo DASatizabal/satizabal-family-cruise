@@ -1,15 +1,16 @@
 Group Label,Member Name,Age,Status,Cabin Type,Room Number,Price Paid,Deposit Paid
-Ralph & Rosie,Rosie,65,unbooked,,,,
-Ralph & Rosie,Ralph,65,unbooked,,,,
-Jared,Jared,25,unbooked,,,,
-Stephy,Stephy,25,unbooked,,,,
 Zin & Kids,Zin,35,unbooked,,,,
 Zin & Kids,Kai,6,unbooked,,,,
 Zin & Kids,Noa,1,unbooked,,,,
 Efra & Lochis,Efra,65,unbooked,,,,
 Efra & Lochis,Lochis,65,unbooked,,,,
+Clarita,Clarita,65,unbooked,,,,
 Kathy & Humberto,Kathy,45,unbooked,,,,
 Kathy & Humberto,Humberto,45,unbooked,,,,
+Ralph & Rosie,Rosie,65,unbooked,,,,
+Ralph & Rosie,Ralph,65,unbooked,,,,
+Jared,Jared,25,unbooked,,,,
+Stephy,Stephy,25,unbooked,,,,
 "David, Lisa & Kids",David,41,reserved, Family Suite,14605,3726.94,yes
 "David, Lisa & Kids",Lisa,42,reserved, Family Suite,14605,0,yes
 "David, Lisa & Kids",Davicito,7,reserved, Family Suite,14605,0,yes
