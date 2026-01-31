@@ -1,0 +1,25 @@
+Group Label,Member Name,Age,Status,Cabin Type,Room Number,Price Paid,Deposit Paid
+Rosie & Ralph,Rosie,45,unbooked,,,,
+Rosie & Ralph,Ralph,47,unbooked,,,,
+Clarita,Clarita,38,unbooked,,,,
+Uncle Tony & Aunt Lina,Tony,62,unbooked,,,,
+Uncle Tony & Aunt Lina,Lina,59,unbooked,,,,
+Marisol & Javi,Marisol,33,unbooked,,,,
+Marisol & Javi,Javi,35,unbooked,,,,
+Marisol & Javi,Sofia,6,unbooked,,,,
+Abuela Carmen,Carmen,72,unbooked,,,,
+Luis & Diana,Luis,40,unbooked,,,,
+Luis & Diana,Diana,38,unbooked,,,,
+Luis & Diana,Mateo,12,unbooked,,,,
+Luis & Diana,Isabella,9,unbooked,,,,
+Zin Kai & Noa,Zin,35,reserved,Balcony,11234,2276,yes
+Zin Kai & Noa,Kai,8,reserved,Balcony,11234,0,-
+Zin Kai & Noa,Noa,5,reserved,Balcony,11234,0,-
+Tia & Marco,Tia,55,reserved,Club Balcony Suite,10200,2596,yes
+Tia & Marco,Marco,57,reserved,Club Balcony Suite,10200,0,-
+David & Pao,David,34,reserved,Balcony,11450,2276,yes
+David & Pao,Pao,32,reserved,Balcony,11450,0,-
+Primo Andres,Andres,28,reserved,Inside,8052,1436,yes
+Gabi & Renzo,Gabi,41,reserved,Family Balcony,11300,2396,yes
+Gabi & Renzo,Renzo,43,reserved,Family Balcony,11300,0,-
+Gabi & Renzo,Valentina,14,reserved,Family Balcony,11300,0,-

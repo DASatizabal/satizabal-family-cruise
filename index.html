@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NCL Cabin Comparison - Norwegian Joy | Nov 20-23, 2026</title>
+    <title>Satizabal Family Cruise 2026 - Norwegian Joy | Nov 20-23, 2026</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -1382,17 +1382,666 @@
             margin-left: 0.25rem;
             vertical-align: middle;
         }
+        /* Dark mode variables */
+        body.dark-mode {
+            --white: #1a1a2e;
+            --gray-50: #16213e;
+            --gray-100: #1a1a2e;
+            --gray-200: #2a2a4a;
+            --gray-300: #3a3a5a;
+            --gray-400: #6a6a8a;
+            --gray-500: #9a9ab0;
+            --gray-600: #b0b0c8;
+            --gray-700: #d0d0e0;
+            --gray-800: #e8e8f0;
+            --gray-900: #f0f0f8;
+        }
+
+        body.dark-mode .hero {
+            background: linear-gradient(135deg, #050a18 0%, #0a1628 100%);
+        }
+
+        body.dark-mode .controls-panel,
+        body.dark-mode .cabin-card,
+        body.dark-mode .modal,
+        body.dark-mode .fas-modal {
+            background: #1a1a2e;
+        }
+
+        body.dark-mode .comparison-tray {
+            background: #050a18;
+        }
+
+        /* Dark mode toggle */
+        .dark-mode-toggle {
+            position: absolute;
+            top: 0.5rem;
+            right: 4rem;
+            background: rgba(255,255,255,0.15);
+            border: none;
+            color: var(--white);
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.2s;
+            z-index: 5;
+        }
+
+        .dark-mode-toggle:hover {
+            background: rgba(255,255,255,0.25);
+        }
+
+        /* Tab Navigation */
+        .tab-nav {
+            max-width: 1200px;
+            margin: -2.5rem auto 0;
+            padding: 0 1rem;
+            position: relative;
+            z-index: 11;
+            display: flex;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        .tab-btn {
+            padding: 0.75rem 2rem;
+            border: none;
+            border-radius: 12px 12px 0 0;
+            font-size: 0.95rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            background: rgba(255,255,255,0.7);
+            color: var(--gray-600);
+            position: relative;
+        }
+
+        .tab-btn:hover {
+            background: rgba(255,255,255,0.9);
+            color: var(--teal);
+        }
+
+        .tab-btn.active {
+            background: var(--white);
+            color: var(--teal);
+            box-shadow: 0 -2px 10px rgba(0,0,0,0.08);
+        }
+
+        .tab-btn.active::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: var(--teal);
+            border-radius: 3px 3px 0 0;
+        }
+
+        .tab-badge {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 22px;
+            height: 22px;
+            padding: 0 6px;
+            border-radius: 11px;
+            font-size: 0.7rem;
+            font-weight: 700;
+            margin-left: 0.5rem;
+            vertical-align: middle;
+        }
+
+        .tab-badge-unbooked {
+            background: var(--gold);
+            color: var(--gray-900);
+        }
+
+        .tab-badge-reserved {
+            background: var(--teal);
+            color: white;
+        }
+
+        .tab-page {
+            display: none;
+        }
+
+        .tab-page.active {
+            display: block;
+        }
+
+        /* Family Group Buttons */
+        .family-section {
+            padding-top: 1rem;
+            border-top: 1px solid var(--gray-200);
+            margin-top: 1rem;
+        }
+
+        .family-section-title {
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: var(--gray-700);
+            margin-bottom: 0.75rem;
+        }
+
+        .family-buttons {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+
+        .family-btn {
+            padding: 0.5rem 1rem;
+            border: 2px solid var(--gray-200);
+            border-radius: 9999px;
+            background: var(--white);
+            font-size: 0.85rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.25s;
+            white-space: nowrap;
+            min-height: 44px;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .family-btn:hover {
+            border-color: var(--teal);
+            color: var(--teal);
+        }
+
+        .family-btn.active {
+            background: var(--teal);
+            border-color: var(--teal);
+            color: white;
+            transform: scale(1.03);
+        }
+
+        .family-btn .member-count {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 20px;
+            height: 20px;
+            border-radius: 10px;
+            font-size: 0.7rem;
+            font-weight: 700;
+            background: var(--gray-200);
+            color: var(--gray-600);
+        }
+
+        .family-btn.active .member-count {
+            background: rgba(255,255,255,0.3);
+            color: white;
+        }
+
+        .guest-summary {
+            margin-top: 0.75rem;
+            padding: 0.75rem;
+            background: var(--gray-50);
+            border-radius: 8px;
+            font-size: 0.85rem;
+            color: var(--gray-600);
+        }
+
+        .guest-summary-names {
+            font-weight: 500;
+            color: var(--gray-700);
+            margin-top: 0.25rem;
+        }
+
+        .guest-summary strong {
+            color: var(--teal);
+        }
+
+        /* Fit badges on cabin cards */
+        .fit-badge {
+            position: absolute;
+            top: 0.75rem;
+            right: 0.75rem;
+            padding: 0.2rem 0.6rem;
+            border-radius: 6px;
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+            z-index: 2;
+        }
+
+        .fit-badge.perfect {
+            background: var(--teal);
+            color: white;
+        }
+
+        .fit-badge.good {
+            background: var(--gray-200);
+            color: var(--gray-600);
+        }
+
+        /* Suggestion banner */
+        .suggestion-banner {
+            max-width: 1200px;
+            margin: 0 auto 1rem;
+            padding: 0 1rem;
+        }
+
+        .suggestion-content {
+            background: linear-gradient(135deg, #fef3c7, #fde68a);
+            padding: 1rem 1.25rem;
+            border-radius: 12px;
+            font-size: 0.875rem;
+            color: var(--gray-800);
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .suggestion-icon {
+            font-size: 1.5rem;
+            flex-shrink: 0;
+        }
+
+        /* Tracker Page Styles */
+        .tracker-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem 3rem;
+        }
+
+        /* Countdown Section */
+        .countdown-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        @media (max-width: 640px) {
+            .countdown-section {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .countdown-card {
+            background: var(--white);
+            border-radius: 16px;
+            padding: 1.5rem;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+
+        .countdown-label {
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--gray-500);
+            margin-bottom: 0.75rem;
+        }
+
+        .countdown-date {
+            font-size: 0.8rem;
+            color: var(--gray-400);
+            margin-bottom: 1rem;
+        }
+
+        .countdown-digits {
+            display: flex;
+            justify-content: center;
+            gap: 0.75rem;
+        }
+
+        .countdown-unit {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .countdown-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            line-height: 1;
+            color: var(--deep-ocean);
+            background: var(--gray-50);
+            padding: 0.5rem 0.75rem;
+            border-radius: 10px;
+            min-width: 60px;
+            transition: color 0.5s;
+        }
+
+        body.dark-mode .countdown-number {
+            color: var(--gray-900);
+        }
+
+        .countdown-number.green { color: #16a34a; }
+        .countdown-number.yellow { color: #ca8a04; }
+        .countdown-number.red { color: #dc2626; }
+        .countdown-number.pulse { animation: pulse-red 1s ease-in-out infinite; }
+
+        @keyframes pulse-red {
+            0%, 100% { color: #dc2626; }
+            50% { color: #fca5a5; }
+        }
+
+        .countdown-unit-label {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            color: var(--gray-400);
+            margin-top: 0.35rem;
+            font-weight: 600;
+        }
+
+        .countdown-alert {
+            background: #dc2626;
+            color: white;
+            padding: 1rem;
+            border-radius: 10px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            animation: pulse-red-bg 1.5s ease-in-out infinite;
+        }
+
+        @keyframes pulse-red-bg {
+            0%, 100% { background: #dc2626; }
+            50% { background: #ef4444; }
+        }
+
+        /* Progress Bar */
+        .progress-section {
+            background: var(--white);
+            border-radius: 16px;
+            padding: 1.5rem;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            margin-bottom: 2rem;
+        }
+
+        .progress-title {
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--gray-800);
+            margin-bottom: 1rem;
+        }
+
+        .progress-bar-track {
+            width: 100%;
+            height: 24px;
+            background: var(--gray-200);
+            border-radius: 12px;
+            overflow: hidden;
+            margin-bottom: 0.75rem;
+        }
+
+        .progress-bar-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--teal), var(--teal-light));
+            border-radius: 12px;
+            transition: width 1s ease-out;
+            position: relative;
+        }
+
+        .progress-bar-fill::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            animation: shimmer 2s infinite;
+        }
+
+        @keyframes shimmer {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+
+        .progress-stats {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .progress-count {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--gray-700);
+        }
+
+        .progress-message {
+            font-size: 0.85rem;
+            color: var(--gray-500);
+            font-style: italic;
+        }
+
+        /* Reserved Family Cards */
+        .tracker-section-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--gray-800);
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--gray-200);
+        }
+
+        .reserved-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .reserved-card {
+            background: var(--white);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            border-top: 4px solid var(--gray-300);
+        }
+
+        .reserved-card[data-cabin-type="Inside"] { border-top-color: var(--inside-color); }
+        .reserved-card[data-cabin-type="Oceanview"] { border-top-color: var(--oceanview-color); }
+        .reserved-card[data-cabin-type="Balcony"] { border-top-color: var(--balcony-color); }
+        .reserved-card[data-cabin-type="Club Balcony Suite"] { border-top-color: var(--club-balcony-color); }
+        .reserved-card[data-cabin-type="Suite"] { border-top-color: var(--suite-color); }
+        .reserved-card[data-cabin-type="The Haven"] { border-top-color: var(--haven-color); }
+
+        .reserved-card-body {
+            padding: 1rem;
+        }
+
+        .reserved-card-label {
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--gray-800);
+            margin-bottom: 0.25rem;
+        }
+
+        .reserved-card-members {
+            font-size: 0.8rem;
+            color: var(--gray-500);
+            margin-bottom: 0.75rem;
+        }
+
+        .reserved-card-detail {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.8rem;
+            padding: 0.3rem 0;
+            border-bottom: 1px solid var(--gray-100);
+        }
+
+        .reserved-card-detail:last-child {
+            border-bottom: none;
+        }
+
+        .reserved-detail-label {
+            color: var(--gray-500);
+        }
+
+        .reserved-detail-value {
+            font-weight: 600;
+            color: var(--gray-700);
+        }
+
+        .deposit-yes {
+            color: #16a34a;
+        }
+
+        .deposit-no {
+            color: #dc2626;
+        }
+
+        /* Unbooked Section */
+        .unbooked-section {
+            background: var(--white);
+            border-radius: 16px;
+            padding: 1.5rem;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            margin-bottom: 2rem;
+        }
+
+        .unbooked-pills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .unbooked-pill {
+            padding: 0.4rem 0.8rem;
+            background: var(--gray-100);
+            border-radius: 9999px;
+            font-size: 0.8rem;
+            color: var(--gray-500);
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .nudge-btn {
+            background: none;
+            border: 1px solid var(--gray-300);
+            border-radius: 6px;
+            font-size: 0.65rem;
+            padding: 0.15rem 0.4rem;
+            cursor: pointer;
+            color: var(--gray-500);
+            transition: all 0.2s;
+        }
+
+        .nudge-btn:hover {
+            border-color: var(--teal);
+            color: var(--teal);
+        }
+
+        .share-actions {
+            display: flex;
+            gap: 0.75rem;
+            flex-wrap: wrap;
+        }
+
+        .share-btn {
+            padding: 0.6rem 1.25rem;
+            border-radius: 8px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            cursor: pointer;
+            border: none;
+            transition: all 0.2s;
+            min-height: 44px;
+        }
+
+        .share-btn-copy {
+            background: var(--gray-100);
+            color: var(--gray-700);
+        }
+
+        .share-btn-copy:hover {
+            background: var(--gray-200);
+        }
+
+        .share-btn-whatsapp {
+            background: #25d366;
+            color: white;
+        }
+
+        .share-btn-whatsapp:hover {
+            background: #1da851;
+        }
+
+        /* Family color coding */
+        .family-color-dot {
+            display: inline-block;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            margin-right: 0.25rem;
+        }
+
+        /* Ship bobbing animation on wave */
+        .ship-icon {
+            position: absolute;
+            bottom: 40px;
+            left: 15%;
+            font-size: 1.5rem;
+            z-index: 1;
+            animation: bob 3s ease-in-out infinite;
+        }
+
+        @keyframes bob {
+            0%, 100% { transform: translateY(0) rotate(-2deg); }
+            50% { transform: translateY(-8px) rotate(2deg); }
+        }
+
+        /* Grand total floating summary */
+        .grand-total-float {
+            max-width: 1200px;
+            margin: 0 auto 1rem;
+            padding: 0 1rem;
+            display: none;
+        }
+
+        .grand-total-float.visible {
+            display: block;
+        }
+
+        .grand-total-content {
+            background: linear-gradient(135deg, var(--deep-ocean), var(--ocean-blue));
+            color: white;
+            padding: 1rem 1.5rem;
+            border-radius: 12px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .grand-total-label {
+            font-size: 0.85rem;
+            opacity: 0.9;
+        }
+
+        .grand-total-amount {
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
     </style>
 </head>
 <body>
     <!-- Hero Header -->
     <header class="hero">
         <div class="hero-content">
-            <span class="version-badge">v2.2.2</span>
+            <span class="version-badge">v1.0.0</span>
+            <button class="dark-mode-toggle" id="darkModeToggle" title="Toggle dark mode">&#9790;</button>
             <h1 class="ship-name">
-                <a href="https://www.ncl.com/cruise-ships/norwegian-joy" target="_blank" rel="noopener">Norwegian Joy</a>
+                <a href="https://www.ncl.com/cruise-ships/norwegian-joy" target="_blank" rel="noopener" id="shipNameLink">Norwegian Joy</a>
             </h1>
-            <p class="cruise-dates">Fri, Nov 20 - Mon, Nov 23, 2026</p>
+            <p class="cruise-dates">Satizabal Family Cruise &middot; Fri, Nov 20 - Mon, Nov 23, 2026</p>
             <p class="itinerary-title">3-Day Bahamas Round-trip Miami: Great Stirrup Cay &amp; Nassau</p>
 
             <div class="itinerary-grid">
@@ -1420,14 +2069,24 @@
 
             <div class="validity-banner">
                 <span class="validity-icon">&#9888;</span>
-                <span>Prices valid as of <strong>January 30, 2026</strong></span>
+                <span>Prices valid as of <strong>February 1, 2026</strong></span>
             </div>
         </div>
 
         <div class="wave-container">
+            <span class="ship-icon">&#9972;</span>
             <div class="wave"></div>
         </div>
     </header>
+
+    <!-- Tab Navigation -->
+    <nav class="tab-nav">
+        <button class="tab-btn active" data-tab="selector">Cabin Selector <span class="tab-badge tab-badge-unbooked" id="tabBadgeUnbooked">0</span></button>
+        <button class="tab-btn" data-tab="tracker">Reservation Tracker <span class="tab-badge tab-badge-reserved" id="tabBadgeReserved">0</span></button>
+    </nav>
+
+    <!-- Page: Selector -->
+    <div class="tab-page active" id="page-selector">
 
     <!-- Controls Panel -->
     <section class="controls">
@@ -1451,27 +2110,35 @@
                 </select>
             </div>
 
+            <!-- Family Group Selection -->
+            <div class="family-section" id="familySection">
+                <div class="family-section-title">Select your travel group</div>
+                <div class="family-buttons" id="familyButtons"></div>
+                <div class="guest-summary" id="guestSummary" style="display:none;">
+                    <div id="guestSummaryText"></div>
+                    <div class="guest-summary-names" id="guestSummaryNames"></div>
+                </div>
+            </div>
+
             <div class="guest-section">
                 <div class="guest-input-group">
                     <label class="guest-input-label">Adults (21+)</label>
-                    <div class="stepper">
-                        <button class="stepper-btn" id="adultDec">-</button>
-                        <div class="stepper-value" id="adultCount">2</div>
-                        <button class="stepper-btn" id="adultInc">+</button>
+                    <div class="stepper" style="opacity:0.6; pointer-events:none;">
+                        <button class="stepper-btn" id="adultDec" disabled>-</button>
+                        <div class="stepper-value" id="adultCount">0</div>
+                        <button class="stepper-btn" id="adultInc" disabled>+</button>
                     </div>
                 </div>
                 <div class="guest-input-group">
                     <label class="guest-input-label">Children (0-20)</label>
-                    <div class="stepper">
-                        <button class="stepper-btn" id="childDec">-</button>
+                    <div class="stepper" style="opacity:0.6; pointer-events:none;">
+                        <button class="stepper-btn" id="childDec" disabled>-</button>
                         <div class="stepper-value" id="childCount">0</div>
-                        <button class="stepper-btn" id="childInc">+</button>
+                        <button class="stepper-btn" id="childInc" disabled>+</button>
                     </div>
                 </div>
-                <div class="guest-total" id="guestTotal">Total: 2 guests</div>
-                <div class="child-ages-inline" id="childAgesInline">
-                    <!-- Generated dynamically when children are added -->
-                </div>
+                <div class="guest-total" id="guestTotal">Select a family group above</div>
+                <div class="child-ages-inline" id="childAgesInline"></div>
             </div>
 
             <div class="package-toggles">
@@ -1546,12 +2213,30 @@
         </div>
     </section>
 
+    <!-- Suggestion Banner -->
+    <div class="suggestion-banner" id="suggestionBanner" style="display:none;">
+        <div class="suggestion-content">
+            <span class="suggestion-icon">&#128161;</span>
+            <span id="suggestionText"></span>
+        </div>
+    </div>
+
+    <!-- Grand Total Float -->
+    <div class="grand-total-float" id="grandTotalFloat">
+        <div class="grand-total-content">
+            <span class="grand-total-label" id="grandTotalLabel"></span>
+            <span class="grand-total-amount" id="grandTotalAmount"></span>
+        </div>
+    </div>
+
     <!-- Cabin Grid -->
     <main class="cabin-grid" id="cabinGrid">
         <!-- Cabins will be rendered here -->
     </main>
 
-    <!-- Comparison Tray -->
+    </div><!-- /page-selector -->
+
+    <!-- Comparison Tray (outside pages so it's always accessible) -->
     <div class="comparison-tray" id="comparisonTray">
         <div class="tray-content">
             <div class="tray-info">
@@ -1573,9 +2258,7 @@
                 <button class="modal-close" id="closeModal">&times;</button>
             </div>
             <div class="modal-body">
-                <div class="comparison-grid" id="comparisonGrid">
-                    <!-- Comparison content will be rendered here -->
-                </div>
+                <div class="comparison-grid" id="comparisonGrid"></div>
             </div>
         </div>
     </div>
@@ -1596,9 +2279,7 @@
                 <p style="background: #fef3c7; padding: 0.75rem; border-radius: 8px; font-size: 0.8rem;">
                     Free at Sea Plus applies ONLY to Guests 1 &amp; 2.
                 </p>
-                <table class="cost-benefit-table" id="costBenefitTable">
-                    <!-- Populated dynamically -->
-                </table>
+                <table class="cost-benefit-table" id="costBenefitTable"></table>
                 <p style="margin-top: 1.5rem; font-size: 0.8rem;">
                     <strong>Resources:</strong><br>
                     <a href="https://www.ncl.com/content/dam/ncl/us/en/promo/cruise-deals/Free_at_sea_Plus_ver_11042025.pdf" target="_blank" rel="noopener" style="color: var(--teal);">Free at Sea Plus Comparison (PDF)</a><br>
@@ -1608,6 +2289,50 @@
         </div>
     </div>
 
+    <!-- Page: Tracker -->
+    <div class="tab-page" id="page-tracker">
+        <div class="tracker-container">
+            <div class="countdown-section" id="countdownSection">
+                <div class="countdown-card" id="cruiseCountdown">
+                    <div class="countdown-label">Cruise Day</div>
+                    <div class="countdown-date">November 20, 2026</div>
+                    <div class="countdown-digits" id="cruiseCountdownDigits"></div>
+                </div>
+                <div class="countdown-card" id="paymentCountdown">
+                    <div class="countdown-label">Final Payment</div>
+                    <div class="countdown-date">July 23, 2026</div>
+                    <div class="countdown-digits" id="paymentCountdownDigits"></div>
+                </div>
+            </div>
+
+            <div class="progress-section">
+                <div class="progress-title">Reunion Progress</div>
+                <div class="progress-bar-track">
+                    <div class="progress-bar-fill" id="progressBarFill" style="width:0%"></div>
+                </div>
+                <div class="progress-stats">
+                    <span class="progress-count" id="progressCount">0/0 families booked</span>
+                    <span class="progress-message" id="progressMessage"></span>
+                </div>
+            </div>
+
+            <h3 class="tracker-section-title">Reserved Families</h3>
+            <div class="reserved-grid" id="reservedGrid"></div>
+
+            <div class="unbooked-section">
+                <h3 class="tracker-section-title" style="border:none;margin:0 0 0.75rem;padding:0;">Still Deciding</h3>
+                <div class="unbooked-pills" id="unbookedPills"></div>
+                <p style="font-size:0.85rem;color:var(--gray-500);margin-bottom:1rem;">Share this page to help them pick a cabin!</p>
+                <div class="share-actions">
+                    <button class="share-btn share-btn-copy" id="copyLinkBtn">Copy Link</button>
+                    <button class="share-btn share-btn-whatsapp" id="whatsappShareBtn">Share via WhatsApp</button>
+                </div>
+            </div>
+        </div>
+    </div><!-- /page-tracker -->
+
+    <canvas id="confettiCanvas" style="position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:9999;"></canvas>
+
     <!-- Footer -->
     <footer class="footer">
         <div class="footer-content">
@@ -1615,7 +2340,7 @@
                 <div class="payment-due-label">Final Payment Due</div>
                 <div class="payment-due-date">July 23, 2026</div>
             </div>
-            <p class="footer-note">Deposits are refundable if canceled by July 23, 2026</p>
+            <p class="footer-note">Satizabal Family Cruise 2026 &middot; Deposits are refundable if canceled by July 23, 2026</p>
         </div>
     </footer>
 
@@ -1626,8 +2351,17 @@
         const CRUISE_NIGHTS = 3;
         const TAX_PER_PERSON = 150;
         const EXTRA_GUEST_FARE = 438;
-        const PROMO_DISCOUNT = 0.50; // 50% off all cruises
-        const FREE_GUEST_POSITIONS = [3, 4]; // 3rd & 4th guest sail free
+        const PROMO_DISCOUNT = 0.50;
+        const FREE_GUEST_POSITIONS = [3, 4];
+
+        const CRUISE_DATE = new Date('2026-11-20T16:00:00');
+        const PAYMENT_DATE = new Date('2026-07-23T23:59:59');
+
+        const FAMILY_COLORS = [
+            '#f97316', '#06b6d4', '#ec4899', '#8b5cf6',
+            '#84cc16', '#f59e0b', '#3b82f6', '#ef4444',
+            '#14b8a6', '#a855f7', '#f43f5e', '#22c55e'
+        ];
 
         // CSV Parser for new format
         const CSVParser = {
@@ -1698,6 +2432,67 @@
             }
         };
 
+        // ==================== FAMILY CSV PARSER ====================
+        const FamilyCSVParser = {
+            async load(url) {
+                try {
+                    const response = await fetch(url);
+                    if (!response.ok) throw new Error('Failed to load family CSV');
+                    const text = await response.text();
+                    return this.parse(text);
+                } catch (error) {
+                    console.error('Error loading family CSV:', error);
+                    return { unbookedGroups: [], reservedGroups: [] };
+                }
+            },
+
+            parse(csvText) {
+                const lines = csvText.trim().split('\n');
+                if (lines.length < 2) return { unbookedGroups: [], reservedGroups: [] };
+
+                const unbookedMap = new Map();
+                const reservedMap = new Map();
+
+                for (let i = 1; i < lines.length; i++) {
+                    const values = CSVParser.parseCSVLine(lines[i]);
+                    if (!values[0] || !values[1]) continue;
+
+                    const label = values[0].trim();
+                    const name = values[1].trim();
+                    const age = parseInt(values[2]) || 0;
+                    const status = (values[3] || '').trim().toLowerCase();
+                    const cabinType = (values[4] || '').trim();
+                    const roomNumber = (values[5] || '').trim();
+                    const pricePaid = parseFloat(values[6]) || 0;
+                    const depositPaid = (values[7] || '').trim().toLowerCase() === 'yes';
+
+                    const member = { name, age };
+
+                    if (status === 'reserved') {
+                        if (!reservedMap.has(label)) {
+                            reservedMap.set(label, {
+                                label, members: [], cabinType, roomNumber, pricePaid, depositPaid
+                            });
+                        }
+                        const group = reservedMap.get(label);
+                        group.members.push(member);
+                        if (pricePaid > 0) group.pricePaid = pricePaid;
+                        if (depositPaid) group.depositPaid = true;
+                    } else {
+                        if (!unbookedMap.has(label)) {
+                            unbookedMap.set(label, { label, members: [] });
+                        }
+                        unbookedMap.get(label).members.push(member);
+                    }
+                }
+
+                return {
+                    unbookedGroups: Array.from(unbookedMap.values()),
+                    reservedGroups: Array.from(reservedMap.values())
+                };
+            }
+        };
+
         const NCL_LINKS = {
             "Inside": "https://www.ncl.com/cruise-ships/norwegian-joy/staterooms/options#filter=INSIDE",
             "Oceanview": "https://www.ncl.com/cruise-ships/norwegian-joy/staterooms/options#filter=OCEANVIEW",
@@ -1723,14 +2518,18 @@
              * Adults fill first, then children sorted by age descending.
              */
             buildGuestList() {
-                const guests = [];
-                for (let i = 0; i < AppState.adultCount; i++) {
-                    guests.push({ type: 'adult', age: 21, label: 'Adult' });
-                }
-                // Sort children oldest-first for position assignment
-                const sortedAges = [...AppState.childAges].sort((a, b) => b - a);
-                for (let i = 0; i < sortedAges.length; i++) {
-                    guests.push({ type: 'child', age: sortedAges[i], label: `Age ${sortedAges[i]}` });
+                const members = AppState.getSelectedMembers();
+                const adults = members.filter(m => m.age >= 21).map(m => ({ type: 'adult', age: m.age, label: m.name, name: m.name }));
+                const children = members.filter(m => m.age < 21).sort((a, b) => b.age - a.age).map(m => ({ type: 'child', age: m.age, label: `${m.name} (${m.age})`, name: m.name }));
+                const guests = [...adults, ...children];
+                if (guests.length === 0) {
+                    for (let i = 0; i < AppState.adultCount; i++) {
+                        guests.push({ type: 'adult', age: 21, label: 'Adult', name: 'Adult' });
+                    }
+                    const sortedAges = [...AppState.childAges].sort((a, b) => b - a);
+                    for (const age of sortedAges) {
+                        guests.push({ type: 'child', age, label: `Age ${age}`, name: `Child (${age})` });
+                    }
                 }
                 return guests;
             },
@@ -1933,11 +2732,46 @@
             tipsBeforeCruise: true,
             selectedCabins: new Set(),
             openBreakdowns: new Set(),
-            adultCount: 2,
+            adultCount: 0,
             childCount: 0,
             childAges: [],
             depositOption: 'regular',
-            freeAtSeaPlus: false
+            freeAtSeaPlus: false,
+            selectedGroups: new Set(),
+            familyGroups: [],
+            reservedGroups: [],
+            guestNames: [],
+
+            recomputeGuests() {
+                let adults = 0, children = 0, ages = [], names = [];
+                for (const label of this.selectedGroups) {
+                    const group = this.familyGroups.find(g => g.label === label);
+                    if (!group) continue;
+                    group.members.forEach(m => {
+                        names.push(m.name);
+                        if (m.age >= 21) adults++;
+                        else { children++; ages.push(m.age); }
+                    });
+                }
+                this.adultCount = adults;
+                this.childCount = children;
+                this.childAges = ages;
+                this.guestNames = names;
+            },
+
+            getSelectedMembers() {
+                const members = [];
+                for (const label of this.selectedGroups) {
+                    const group = this.familyGroups.find(g => g.label === label);
+                    if (!group) continue;
+                    group.members.forEach(m => members.push(m));
+                }
+                return members;
+            },
+
+            getSelectedGroupLabels() {
+                return Array.from(this.selectedGroups);
+            }
         };
 
         // ==================== RENDERER ====================
@@ -1950,11 +2784,25 @@
                 const totalGuests = AppState.adultCount + AppState.childCount;
                 const isDimmed = totalGuests > cabin.maxGuests;
 
+                let fitBadge = '';
+                if (totalGuests > 0 && !isDimmed) {
+                    if (cabin.maxGuests === totalGuests) {
+                        fitBadge = '<span class="fit-badge perfect">Perfect fit</span>';
+                    } else if (cabin.maxGuests >= totalGuests && cabin.maxGuests <= totalGuests + 2) {
+                        fitBadge = '<span class="fit-badge good">Good fit</span>';
+                    }
+                }
+
+                const namesForLabel = AppState.guestNames.length > 0
+                    ? AppState.guestNames.slice(0, 3).join(', ') + (AppState.guestNames.length > 3 ? ' +' + (AppState.guestNames.length - 3) : '')
+                    : (totalGuests > 0 ? totalGuests + ' guest' + (totalGuests !== 1 ? 's' : '') : '2 guests (default)');
+
                 const avgSuffix = pricing.allSameCost ? '' : ' (avg)';
                 const perPersonText = `<span class="original-price">${PriceCalculator.formatCurrency(pricing.originalPerPersonAvg)}</span>${PriceCalculator.formatCurrency(pricing.perPersonAvg)}/person${avgSuffix}`;
 
                 return `
                     <article class="cabin-card ${isSelected ? 'selected' : ''} ${isDimmed ? 'dimmed' : ''}" data-id="${cabin.id}">
+                        ${fitBadge}
                         ${isDimmed ? `<div class="max-guests-note">Max ${cabin.maxGuests} guest${cabin.maxGuests !== 1 ? 's' : ''}</div>` : ''}
                         <div class="cabin-header">
                             <span class="cabin-type-badge badge-${badgeClass}">${cabin.roomType}</span>
@@ -1988,7 +2836,7 @@
 
                         <div class="cabin-body">
                             <div class="price-display">
-                                <div class="price-label">${isDimmed ? 'Price (if ' + cabin.maxGuests + ' guests)' : 'Total Due by 7/23/2026'}</div>
+                                <div class="price-label">${isDimmed ? 'Price (if ' + cabin.maxGuests + ' guests)' : 'Total for ' + namesForLabel}</div>
                                 <div class="price-amount" data-cabin-id="${cabin.id}">${PriceCalculator.formatCurrency(pricing.grandTotal)}</div>
                                 <div class="price-per-person">${perPersonText}</div>
                                 ${!AppState.tipsBeforeCruise && pricing.tipsOnboard > 0 ? `
@@ -2177,7 +3025,7 @@
                     html += `
                         <div class="guest-breakdown-row">
                             <div>
-                                <div class="guest-breakdown-label">Guest ${gd.position} (${gd.guest.label}) ${freeTagsHtml}</div>
+                                <div class="guest-breakdown-label">${gd.guest.name || 'Guest ' + gd.position} (${gd.guest.type === 'adult' ? 'Adult' : 'Age ' + gd.guest.age}) ${freeTagsHtml}</div>
                                 <div class="guest-breakdown-detail">${items.join(' + ')}</div>
                             </div>
                             <div class="guest-breakdown-value">${PriceCalculator.formatCurrency(gd.total)}</div>
@@ -2426,7 +3274,10 @@
         // ==================== APP CONTROLLER ====================
         const App = {
             async init() {
-                CABIN_DATA = await CSVParser.load('cabin_base_price_20260130.csv');
+                CABIN_DATA = await CSVParser.load('cabin_base_price_20260131.csv');
+                const familyData = await FamilyCSVParser.load('family_groups.csv');
+                AppState.familyGroups = familyData.unbookedGroups;
+                AppState.reservedGroups = familyData.reservedGroups;
 
                 if (CABIN_DATA.length === 0) {
                     document.getElementById('cabinGrid').innerHTML = `
@@ -2438,24 +3289,102 @@
                     return;
                 }
 
+                this.renderFamilyButtons();
+                this.renderTracker();
+                this.updateTabBadges();
+                this.startCountdowns();
+                this.initDarkMode();
+                this.initEasterEgg();
                 this.bindEvents();
                 Renderer.updateToggleLabels();
                 this.updateFasPlusAvailability();
                 this.updateFasPlusDisplay();
+                this.updateGuestDisplay();
                 Renderer.renderGrid();
+            },
+
+            renderFamilyButtons() {
+                const container = document.getElementById('familyButtons');
+                container.innerHTML = AppState.familyGroups.map((group, idx) => {
+                    const color = FAMILY_COLORS[idx % FAMILY_COLORS.length];
+                    return `<button class="family-btn" data-label="${group.label}" style="--family-color:${color}">
+                        <span class="family-color-dot" style="background:${color}"></span>
+                        ${group.label}
+                        <span class="member-count">${group.members.length}</span>
+                    </button>`;
+                }).join('');
+            },
+
+            toggleFamilyGroup(label) {
+                if (AppState.selectedGroups.has(label)) {
+                    AppState.selectedGroups.delete(label);
+                } else {
+                    AppState.selectedGroups.add(label);
+                }
+                AppState.recomputeGuests();
+                this.updateGuestDisplay();
+                this.updateGuestSummary();
+                this.updateSuggestionBanner();
+                this.updateGrandTotalFloat();
+                this.updateFasPlusDisplay();
+                Renderer.updatePrices();
+                document.querySelectorAll('.family-btn').forEach(btn => {
+                    btn.classList.toggle('active', AppState.selectedGroups.has(btn.dataset.label));
+                });
+            },
+
+            updateGuestSummary() {
+                const el = document.getElementById('guestSummary');
+                const textEl = document.getElementById('guestSummaryText');
+                const namesEl = document.getElementById('guestSummaryNames');
+                const members = AppState.getSelectedMembers();
+                if (members.length === 0) { el.style.display = 'none'; return; }
+                el.style.display = 'block';
+                const adults = members.filter(m => m.age >= 21).length;
+                const children = members.filter(m => m.age < 21);
+                let text = `Selected: <strong>${adults} adult${adults !== 1 ? 's' : ''}</strong>`;
+                if (children.length > 0) {
+                    text += `, <strong>${children.length} child${children.length !== 1 ? 'ren' : ''}</strong> (${children.map(c => 'age ' + c.age).join(', ')})`;
+                }
+                text += ` = <strong>${members.length} guest${members.length !== 1 ? 's' : ''}</strong>`;
+                textEl.innerHTML = text;
+                namesEl.textContent = members.map(m => m.name).join(', ');
+            },
+
+            updateSuggestionBanner() {
+                const banner = document.getElementById('suggestionBanner');
+                const text = document.getElementById('suggestionText');
+                const total = AppState.adultCount + AppState.childCount;
+                if (total > 4 && AppState.selectedGroups.size >= 2) {
+                    const maxCabin = Math.max(...CABIN_DATA.map(c => c.maxGuests));
+                    if (total > maxCabin || CABIN_DATA.filter(c => c.maxGuests >= total).length <= 3) {
+                        banner.style.display = 'block';
+                        text.textContent = `With ${total} guests, consider splitting into 2 cabins for more options and better prices.`;
+                        return;
+                    }
+                }
+                banner.style.display = 'none';
+            },
+
+            updateGrandTotalFloat() {
+                const el = document.getElementById('grandTotalFloat');
+                const labelEl = document.getElementById('grandTotalLabel');
+                const amountEl = document.getElementById('grandTotalAmount');
+                const total = AppState.adultCount + AppState.childCount;
+                if (total === 0) { el.classList.remove('visible'); return; }
+                const labels = AppState.getSelectedGroupLabels().join(' + ');
+                labelEl.textContent = `Pricing for: ${labels}`;
+                amountEl.textContent = `${total} guest${total !== 1 ? 's' : ''}`;
+                el.classList.add('visible');
             },
 
             updateGuestDisplay() {
                 const total = AppState.adultCount + AppState.childCount;
                 document.getElementById('adultCount').textContent = AppState.adultCount;
                 document.getElementById('childCount').textContent = AppState.childCount;
-                document.getElementById('guestTotal').textContent = `Total: ${total} guest${total !== 1 ? 's' : ''}`;
-
-                // Update stepper button states
-                document.getElementById('adultDec').disabled = AppState.adultCount <= 1;
-                document.getElementById('adultInc').disabled = AppState.adultCount >= 8;
-                document.getElementById('childDec').disabled = AppState.childCount <= 0;
-                document.getElementById('childInc').disabled = (AppState.adultCount + AppState.childCount) >= 8;
+                document.getElementById('guestTotal').textContent = total > 0
+                    ? `Total: ${total} guest${total !== 1 ? 's' : ''}`
+                    : 'Select a family group above';
             },
 
             updateFasPlusAvailability() {
@@ -2660,7 +3589,232 @@
                 });
             },
 
+            // ==================== TAB NAVIGATION ====================
+            updateTabBadges() {
+                const unbookedCount = AppState.familyGroups.reduce((sum, g) => sum + g.members.length, 0);
+                const reservedCount = AppState.reservedGroups.reduce((sum, g) => sum + g.members.length, 0);
+                document.getElementById('tabBadgeUnbooked').textContent = unbookedCount;
+                document.getElementById('tabBadgeReserved').textContent = reservedCount;
+            },
+
+            switchTab(tabName) {
+                document.querySelectorAll('.tab-btn').forEach(btn => {
+                    btn.classList.toggle('active', btn.dataset.tab === tabName);
+                });
+                document.querySelectorAll('.tab-page').forEach(page => {
+                    page.classList.toggle('active', page.id === 'page-' + tabName);
+                });
+            },
+
+            // ==================== TRACKER PAGE ====================
+            renderTracker() {
+                this.renderReservedCards();
+                this.renderUnbookedPills();
+                this.updateProgress();
+            },
+
+            renderReservedCards() {
+                const grid = document.getElementById('reservedGrid');
+                grid.innerHTML = AppState.reservedGroups.map((group, idx) => {
+                    const memberNames = group.members.map(m => m.name).join(', ');
+                    const color = FAMILY_COLORS[(AppState.familyGroups.length + idx) % FAMILY_COLORS.length];
+                    return `<div class="reserved-card" data-cabin-type="${group.cabinType}" style="border-left:4px solid ${color}">
+                        <div class="reserved-card-body">
+                            <div class="reserved-card-label"><span class="family-color-dot" style="background:${color}"></span>${group.label}</div>
+                            <div class="reserved-card-members">${memberNames}</div>
+                            <div class="reserved-card-detail">
+                                <span class="reserved-detail-label">Cabin</span>
+                                <span class="reserved-detail-value">${group.cabinType}</span>
+                            </div>
+                            <div class="reserved-card-detail">
+                                <span class="reserved-detail-label">Room</span>
+                                <span class="reserved-detail-value">#${group.roomNumber}</span>
+                            </div>
+                            <div class="reserved-card-detail">
+                                <span class="reserved-detail-label">Price</span>
+                                <span class="reserved-detail-value">${PriceCalculator.formatCurrency(group.pricePaid)}</span>
+                            </div>
+                            <div class="reserved-card-detail">
+                                <span class="reserved-detail-label">Deposit</span>
+                                <span class="reserved-detail-value ${group.depositPaid ? 'deposit-yes' : 'deposit-no'}">${group.depositPaid ? 'Paid' : 'Not paid'}</span>
+                            </div>
+                        </div>
+                    </div>`;
+                }).join('');
+            },
+
+            renderUnbookedPills() {
+                const container = document.getElementById('unbookedPills');
+                container.innerHTML = AppState.familyGroups.map((group, idx) => {
+                    const color = FAMILY_COLORS[idx % FAMILY_COLORS.length];
+                    const firstName = group.members[0]?.name || group.label;
+                    return `<span class="unbooked-pill">
+                        <span class="family-color-dot" style="background:${color}"></span>
+                        ${group.label}
+                        <button class="nudge-btn" data-name="${firstName}" title="Send a nudge">Nudge</button>
+                    </span>`;
+                }).join('');
+            },
+
+            updateProgress() {
+                const totalGroups = AppState.familyGroups.length + AppState.reservedGroups.length;
+                const reserved = AppState.reservedGroups.length;
+                const pct = totalGroups > 0 ? Math.round((reserved / totalGroups) * 100) : 0;
+                document.getElementById('progressBarFill').style.width = pct + '%';
+                document.getElementById('progressCount').textContent = `${reserved}/${totalGroups} families booked`;
+                let message = '';
+                if (pct === 100) { message = 'FULL REUNION! All families are booked!'; this.triggerConfetti(); }
+                else if (pct >= 75) { message = `Almost there! Just ${totalGroups - reserved} famil${totalGroups - reserved === 1 ? 'y' : 'ies'} left`; }
+                else if (pct >= 50) { message = 'Over halfway there!'; }
+                else if (pct >= 25) { message = `Gaining momentum! ${totalGroups - reserved} more to go`; }
+                else { message = `The adventure begins! ${reserved} famil${reserved === 1 ? 'y has' : 'ies have'} booked`; }
+                document.getElementById('progressMessage').textContent = message;
+            },
+
+            // ==================== COUNTDOWNS ====================
+            countdownInterval: null,
+            startCountdowns() {
+                this.updateCountdowns();
+                this.countdownInterval = setInterval(() => this.updateCountdowns(), 1000);
+            },
+            updateCountdowns() {
+                const now = new Date();
+                this.renderCountdown('cruiseCountdownDigits', CRUISE_DATE, now);
+                this.renderCountdown('paymentCountdownDigits', PAYMENT_DATE, now, true);
+            },
+            renderCountdown(containerId, targetDate, now, isPayment) {
+                const container = document.getElementById(containerId);
+                const diff = targetDate - now;
+                if (diff <= 0 && isPayment) { container.innerHTML = '<div class="countdown-alert">PAYMENT DUE</div>'; return; }
+                if (diff <= 0) { container.innerHTML = '<div class="countdown-alert">BON VOYAGE!</div>'; return; }
+                const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+                let colorClass = 'green';
+                if (days < 7) colorClass = 'pulse';
+                else if (days < 30) colorClass = 'red';
+                else if (days < 90) colorClass = 'yellow';
+                container.innerHTML = [
+                    { val: days, label: 'Days' }, { val: hours, label: 'Hrs' },
+                    { val: minutes, label: 'Min' }, { val: seconds, label: 'Sec' }
+                ].map(u => `<div class="countdown-unit">
+                    <div class="countdown-number ${colorClass}">${String(u.val).padStart(2, '0')}</div>
+                    <div class="countdown-unit-label">${u.label}</div>
+                </div>`).join('');
+            },
+
+            // ==================== DARK MODE ====================
+            initDarkMode() {
+                if (localStorage.getItem('darkMode') === 'true') {
+                    document.body.classList.add('dark-mode');
+                    document.getElementById('darkModeToggle').textContent = '\u2600';
+                }
+            },
+            toggleDarkMode() {
+                const isDark = document.body.classList.toggle('dark-mode');
+                document.getElementById('darkModeToggle').textContent = isDark ? '\u2600' : '\u263E';
+                localStorage.setItem('darkMode', isDark);
+            },
+
+            // ==================== CONFETTI ====================
+            triggerConfetti() {
+                const canvas = document.getElementById('confettiCanvas');
+                const ctx = canvas.getContext('2d');
+                canvas.width = window.innerWidth;
+                canvas.height = window.innerHeight;
+                const pieces = [];
+                const colors = ['#f97316','#06b6d4','#ec4899','#8b5cf6','#84cc16','#f59e0b','#3b82f6','#22c55e'];
+                for (let i = 0; i < 150; i++) {
+                    pieces.push({
+                        x: Math.random() * canvas.width, y: Math.random() * -canvas.height,
+                        w: Math.random() * 10 + 5, h: Math.random() * 6 + 3,
+                        color: colors[Math.floor(Math.random() * colors.length)],
+                        vy: Math.random() * 3 + 2, vx: Math.random() * 2 - 1,
+                        rot: Math.random() * 360, rotSpeed: Math.random() * 6 - 3
+                    });
+                }
+                let frame = 0;
+                const animate = () => {
+                    ctx.clearRect(0, 0, canvas.width, canvas.height);
+                    let alive = false;
+                    pieces.forEach(p => {
+                        p.y += p.vy; p.x += p.vx; p.rot += p.rotSpeed;
+                        if (p.y < canvas.height + 20) alive = true;
+                        ctx.save(); ctx.translate(p.x, p.y); ctx.rotate(p.rot * Math.PI / 180);
+                        ctx.fillStyle = p.color; ctx.fillRect(-p.w/2, -p.h/2, p.w, p.h); ctx.restore();
+                    });
+                    frame++;
+                    if (alive && frame < 300) requestAnimationFrame(animate);
+                    else ctx.clearRect(0, 0, canvas.width, canvas.height);
+                };
+                animate();
+            },
+
+            // ==================== EASTER EGG ====================
+            shipClickCount: 0,
+            initEasterEgg() { this.shipClickCount = 0; },
+            handleShipClick() {
+                this.shipClickCount++;
+                if (this.shipClickCount >= 5) {
+                    this.shipClickCount = 0;
+                    this.triggerConfetti();
+                    const ship = document.querySelector('.ship-icon');
+                    if (ship) {
+                        ship.style.transition = 'transform 2s ease-in';
+                        ship.style.transform = 'translateX(300vw)';
+                        setTimeout(() => {
+                            ship.style.transition = 'none'; ship.style.transform = '';
+                            setTimeout(() => { ship.style.transition = ''; }, 50);
+                        }, 2200);
+                    }
+                }
+            },
+
             bindEvents() {
+                // Tab navigation
+                document.querySelectorAll('.tab-btn').forEach(btn => {
+                    btn.addEventListener('click', () => this.switchTab(btn.dataset.tab));
+                });
+
+                // Family group buttons
+                document.getElementById('familyButtons').addEventListener('click', (e) => {
+                    const btn = e.target.closest('.family-btn');
+                    if (btn) this.toggleFamilyGroup(btn.dataset.label);
+                });
+
+                // Dark mode
+                document.getElementById('darkModeToggle').addEventListener('click', () => this.toggleDarkMode());
+
+                // Easter egg
+                document.getElementById('shipNameLink').addEventListener('click', (e) => {
+                    e.preventDefault();
+                    this.handleShipClick();
+                });
+
+                // Share buttons
+                document.getElementById('copyLinkBtn').addEventListener('click', () => {
+                    navigator.clipboard.writeText(window.location.href).then(() => {
+                        const btn = document.getElementById('copyLinkBtn');
+                        btn.textContent = 'Copied!';
+                        setTimeout(() => { btn.textContent = 'Copy Link'; }, 2000);
+                    });
+                });
+
+                document.getElementById('whatsappShareBtn').addEventListener('click', () => {
+                    const msg = encodeURIComponent('Hey! Pick your cabin for our family cruise! ' + window.location.href);
+                    window.open('https://wa.me/?text=' + msg, '_blank');
+                });
+
+                // Nudge buttons
+                document.getElementById('unbookedPills').addEventListener('click', (e) => {
+                    if (e.target.classList.contains('nudge-btn')) {
+                        const name = e.target.dataset.name;
+                        const msg = encodeURIComponent(`Hey ${name}! Have you picked your cabin yet? Check out the options: ${window.location.href}`);
+                        window.open('https://wa.me/?text=' + msg, '_blank');
+                    }
+                });
+
                 // Filter tabs
                 document.querySelectorAll('.filter-tab').forEach(tab => {
                     tab.addEventListener('click', (e) => {
@@ -2675,47 +3829,6 @@
                 document.getElementById('sortSelect').addEventListener('change', (e) => {
                     AppState.currentSort = e.target.value;
                     Renderer.renderGrid();
-                });
-
-                // Guest count steppers
-                document.getElementById('adultDec').addEventListener('click', () => {
-                    if (AppState.adultCount > 1) {
-                        AppState.adultCount--;
-                        this.updateGuestDisplay();
-                        this.updateFasPlusDisplay();
-                        Renderer.updatePrices();
-                    }
-                });
-
-                document.getElementById('adultInc').addEventListener('click', () => {
-                    if (AppState.adultCount + AppState.childCount < 8) {
-                        AppState.adultCount++;
-                        this.updateGuestDisplay();
-                        this.updateFasPlusDisplay();
-                        Renderer.updatePrices();
-                    }
-                });
-
-                document.getElementById('childDec').addEventListener('click', () => {
-                    if (AppState.childCount > 0) {
-                        AppState.childCount--;
-                        AppState.childAges.pop();
-                        this.updateGuestDisplay();
-                        this.renderChildAgeInputs();
-                        this.updateFasPlusDisplay();
-                        Renderer.updatePrices();
-                    }
-                });
-
-                document.getElementById('childInc').addEventListener('click', () => {
-                    if (AppState.adultCount + AppState.childCount < 8) {
-                        AppState.childCount++;
-                        AppState.childAges.push(10);
-                        this.updateGuestDisplay();
-                        this.renderChildAgeInputs();
-                        this.updateFasPlusDisplay();
-                        Renderer.updatePrices();
-                    }
                 });
 
                 // Package toggles
