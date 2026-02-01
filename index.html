@@ -935,6 +935,10 @@
             transform: translateX(-50%) translateY(0);
         }
 
+        .toast.success {
+            background: #22c55e;
+        }
+
         .guest-breakdown-row {
             display: flex;
             justify-content: space-between;
@@ -3373,12 +3377,14 @@
 
         // ==================== TOAST ====================
         let toastTimer = null;
-        function showToast(msg) {
+        function showToast(msg, type) {
             const el = document.getElementById('toast');
             el.textContent = msg;
+            el.classList.remove('success');
+            if (type === 'success') el.classList.add('success');
             el.classList.add('visible');
             clearTimeout(toastTimer);
-            toastTimer = setTimeout(() => el.classList.remove('visible'), 3000);
+            toastTimer = setTimeout(() => { el.classList.remove('visible'); el.classList.remove('success'); }, 3000);
         }
 
         // ==================== VISITOR COUNTER ====================
@@ -3576,7 +3582,7 @@
                     body: JSON.stringify(selectionPayload)
                 });
                 document.getElementById('selectionModal').classList.remove('visible');
-                showToast(t('selection.toast'));
+                showToast(t('selection.toast'), 'success');
             } catch (err) {
                 showToast(t('selection.errorToast'));
                 confirmBtn.textContent = t('selection.confirm');
