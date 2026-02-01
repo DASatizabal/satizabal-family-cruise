@@ -2781,6 +2781,7 @@
                 'breakdown.totalDue': 'Total Due by 7/23/2026',
                 'breakdown.deposit': 'Deposit (pay today)',
                 'breakdown.balance': 'Balance (due 7/23/2026)',
+                'breakdown.perMonth': '~{amount}/mo over {months} months',
                 'breakdown.gratOnboard': 'Gratuities (pay onboard)',
                 'breakdown.fullTrip': 'Full Trip Cost',
                 'breakdown.perGuest': 'Per-Guest Breakdown',
@@ -2978,6 +2979,7 @@
                 'breakdown.totalDue': 'Total a Pagar antes del 23/7/2026',
                 'breakdown.deposit': 'Dep\u00F3sito (pagar hoy)',
                 'breakdown.balance': 'Saldo (vence 23/7/2026)',
+                'breakdown.perMonth': '~{amount}/mes en {months} meses',
                 'breakdown.gratOnboard': 'Propinas (pagar a bordo)',
                 'breakdown.fullTrip': 'Costo Total del Viaje',
                 'breakdown.perGuest': 'Desglose por Hu\u00E9sped',
@@ -3985,6 +3987,19 @@
                         <span class="breakdown-label">${t('breakdown.balance')}</span>
                         <span class="breakdown-value">${PriceCalculator.formatCurrency(pricing.balance)}</span>
                     </div>
+                    ${pricing.balance > 0 ? (() => {
+                        const now = new Date();
+                        const deadline = new Date(2026, 6, 23);
+                        let months = 0;
+                        let d = new Date(now.getFullYear(), now.getMonth(), 23);
+                        if (d <= now) d.setMonth(d.getMonth() + 1);
+                        while (d <= deadline) { months++; d.setMonth(d.getMonth() + 1); }
+                        if (months > 0) {
+                            const perMonth = pricing.balance / months;
+                            return '<div class="breakdown-row" style="border-bottom:none;padding-top:0;"><span class="breakdown-label" style="font-size:0.75rem;font-style:italic;color:var(--gray-400);">' + t('breakdown.perMonth', {amount: PriceCalculator.formatCurrency(perMonth), months: months}) + '</span></div>';
+                        }
+                        return '';
+                    })() : ''}
                 `;
 
                 if (!AppState.tipsBeforeCruise && pricing.tipsOnboard > 0) {
