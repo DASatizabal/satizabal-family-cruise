@@ -2030,6 +2030,315 @@
             font-size: 1.5rem;
             font-weight: 700;
         }
+
+        /* ==================== CONNECTING ROOMS ==================== */
+        .connecting-rooms-toggle {
+            display: none;
+            align-items: center;
+            gap: 0.75rem;
+            margin-top: 0.75rem;
+            padding: 0.75rem 1rem;
+            background: linear-gradient(135deg, rgba(13,148,136,0.08), rgba(30,58,95,0.08));
+            border: 1px solid rgba(13,148,136,0.2);
+            border-radius: 10px;
+        }
+
+        .connecting-rooms-toggle.visible {
+            display: flex;
+        }
+
+        .connecting-rooms-toggle .toggle-label {
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .connecting-rooms-toggle .toggle-desc {
+            font-size: 0.8rem;
+            color: var(--gray-500);
+        }
+
+        .room-assignment {
+            display: none;
+            gap: 0.75rem;
+            margin-top: 0.75rem;
+            grid-template-columns: 1fr 1fr;
+        }
+
+        .room-assignment.visible {
+            display: grid;
+        }
+
+        .room-column {
+            background: var(--gray-50);
+            border: 2px dashed var(--gray-300);
+            border-radius: 10px;
+            padding: 0.75rem;
+            min-height: 80px;
+        }
+
+        .room-column-header {
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--gray-500);
+            margin-bottom: 0.5rem;
+        }
+
+        .room-column-chips {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.4rem;
+        }
+
+        .room-group-chip {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.35rem;
+            padding: 0.35rem 0.65rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            cursor: pointer;
+            border: 2px solid transparent;
+            color: white;
+            transition: all 0.2s;
+        }
+
+        .room-group-chip:hover {
+            transform: scale(1.05);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+        }
+
+        .room-group-chip .chip-arrow {
+            font-size: 0.7rem;
+            opacity: 0.8;
+        }
+
+        .room-empty-msg {
+            font-size: 0.8rem;
+            color: var(--gray-400);
+            font-style: italic;
+            padding: 0.5rem 0;
+        }
+
+        .room-guest-count {
+            font-size: 0.75rem;
+            color: var(--gray-500);
+            margin-top: 0.35rem;
+        }
+
+        .connecting-pairs-section {
+            max-width: 1200px;
+            margin: 0 auto 1rem;
+            padding: 0 1rem;
+            display: none;
+        }
+
+        .connecting-pairs-section.visible {
+            display: block;
+        }
+
+        .connecting-pairs-header {
+            font-size: 1rem;
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+            color: var(--gray-800);
+        }
+
+        .connecting-pairs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 1rem;
+        }
+
+        .connecting-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+            border: 1px solid var(--gray-200);
+            transition: all 0.2s;
+        }
+
+        .connecting-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+        }
+
+        .connecting-card.dimmed {
+            opacity: 0.55;
+            order: 99;
+        }
+
+        .connecting-card-top {
+            height: 4px;
+            background: linear-gradient(90deg, var(--teal), var(--ocean-blue));
+        }
+
+        .connecting-card-body {
+            padding: 1rem;
+        }
+
+        .connecting-card-label {
+            font-size: 0.95rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .connecting-link-icon {
+            font-size: 0.8rem;
+            color: var(--teal);
+        }
+
+        .connecting-room-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.75rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .connecting-room-info {
+            background: var(--gray-50);
+            border-radius: 8px;
+            padding: 0.6rem 0.75rem;
+        }
+
+        .connecting-room-info-header {
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+            color: var(--gray-500);
+            margin-bottom: 0.25rem;
+        }
+
+        .connecting-room-type-badge {
+            display: inline-block;
+            font-size: 0.7rem;
+            font-weight: 600;
+            padding: 0.15rem 0.5rem;
+            border-radius: 6px;
+            margin-bottom: 0.25rem;
+        }
+
+        .connecting-room-specs {
+            font-size: 0.75rem;
+            color: var(--gray-500);
+            line-height: 1.4;
+        }
+
+        .connecting-room-guests {
+            font-size: 0.75rem;
+            color: var(--gray-600);
+            margin-top: 0.25rem;
+            font-weight: 500;
+        }
+
+        .connecting-room-subtotal {
+            font-size: 0.85rem;
+            font-weight: 700;
+            margin-top: 0.35rem;
+        }
+
+        .connecting-combined {
+            border-top: 2px solid var(--gray-200);
+            padding-top: 0.75rem;
+            margin-top: 0.25rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .connecting-combined-label {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--gray-600);
+        }
+
+        .connecting-combined-total {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--deep-ocean);
+        }
+
+        .connecting-combined-deposit {
+            font-size: 0.8rem;
+            color: var(--gray-500);
+            text-align: right;
+        }
+
+        .connecting-card-actions {
+            margin-top: 0.75rem;
+        }
+
+        .connecting-card .max-guests-note {
+            font-size: 0.75rem;
+            color: #ef4444;
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+        }
+
+        .connecting-breakdown {
+            display: none;
+            margin-top: 0.75rem;
+            border-top: 1px solid var(--gray-200);
+            padding-top: 0.75rem;
+        }
+
+        .connecting-breakdown.open {
+            display: block;
+        }
+
+        .connecting-breakdown-room-title {
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: var(--ocean-blue);
+            margin: 0.5rem 0 0.25rem;
+        }
+
+        /* Dark mode overrides for connecting rooms */
+        .dark-mode .connecting-rooms-toggle {
+            background: linear-gradient(135deg, rgba(13,148,136,0.15), rgba(30,58,95,0.15));
+            border-color: rgba(13,148,136,0.3);
+        }
+
+        .dark-mode .room-column {
+            background: var(--gray-800);
+            border-color: var(--gray-600);
+        }
+
+        .dark-mode .connecting-card {
+            background: var(--gray-800);
+            border-color: var(--gray-700);
+        }
+
+        .dark-mode .connecting-room-info {
+            background: var(--gray-700);
+        }
+
+        .dark-mode .connecting-combined-total {
+            color: var(--teal-light);
+        }
+
+        .dark-mode .connecting-pairs-header {
+            color: var(--gray-200);
+        }
+
+        @media (max-width: 600px) {
+            .room-assignment {
+                grid-template-columns: 1fr;
+            }
+            .connecting-room-row {
+                grid-template-columns: 1fr;
+            }
+            .connecting-pairs-grid {
+                grid-template-columns: 1fr;
+            }
+        }
     </style>
 </head>
 <body>
@@ -2117,6 +2426,29 @@
                 <div class="guest-summary" id="guestSummary" style="display:none;">
                     <div id="guestSummaryText"></div>
                     <div class="guest-summary-names" id="guestSummaryNames"></div>
+                </div>
+
+                <!-- Connecting Rooms Toggle -->
+                <div class="connecting-rooms-toggle" id="connectingRoomsToggle">
+                    <input type="checkbox" class="toggle-switch" id="connectingRoomsSwitch">
+                    <div>
+                        <div class="toggle-label">Connecting Rooms</div>
+                        <div class="toggle-desc">Price two adjacent cabins with a shared door</div>
+                    </div>
+                </div>
+
+                <!-- Room Assignment UI (for 3+ groups) -->
+                <div class="room-assignment" id="roomAssignment">
+                    <div class="room-column" id="room1Column">
+                        <div class="room-column-header">Room 1</div>
+                        <div class="room-column-chips" id="room1Chips"></div>
+                        <div class="room-guest-count" id="room1GuestCount"></div>
+                    </div>
+                    <div class="room-column" id="room2Column">
+                        <div class="room-column-header">Room 2</div>
+                        <div class="room-column-chips" id="room2Chips"></div>
+                        <div class="room-guest-count" id="room2GuestCount"></div>
+                    </div>
                 </div>
             </div>
 
@@ -2227,6 +2559,12 @@
             <span class="grand-total-label" id="grandTotalLabel"></span>
             <span class="grand-total-amount" id="grandTotalAmount"></span>
         </div>
+    </div>
+
+    <!-- Connecting Room Pairs -->
+    <div class="connecting-pairs-section" id="connectingPairsSection">
+        <div class="connecting-pairs-header">Connecting Room Options</div>
+        <div class="connecting-pairs-grid" id="connectingPairsGrid"></div>
     </div>
 
     <!-- Cabin Grid -->
@@ -2347,6 +2685,7 @@
     <script>
         // ==================== CABIN DATA (loaded from CSV) ====================
         let CABIN_DATA = [];
+        let CONNECTING_PAIRS = [];
 
         const CRUISE_NIGHTS = 3;
         const TAX_PER_PERSON = 150;
@@ -2490,6 +2829,79 @@
                     unbookedGroups: Array.from(unbookedMap.values()),
                     reservedGroups: Array.from(reservedMap.values())
                 };
+            }
+        };
+
+        // ==================== CONNECTING ROOMS PARSER ====================
+        const ConnectingRoomsParser = {
+            async load(connectingUrl, codeMapUrl) {
+                try {
+                    const [connectingResp, codeMapResp] = await Promise.all([
+                        fetch(connectingUrl),
+                        fetch(codeMapUrl)
+                    ]);
+                    if (!connectingResp.ok || !codeMapResp.ok) throw new Error('Failed to load connecting rooms CSV');
+                    const connectingText = await connectingResp.text();
+                    const codeMapText = await codeMapResp.text();
+                    return this.parse(connectingText, codeMapText);
+                } catch (error) {
+                    console.error('Error loading connecting rooms:', error);
+                    return [];
+                }
+            },
+
+            parse(connectingText, codeMapText) {
+                // Build code-to-category map
+                const codeToCategory = new Map();
+                const codeMapLines = codeMapText.trim().split('\n');
+                for (let i = 1; i < codeMapLines.length; i++) {
+                    const vals = CSVParser.parseCSVLine(codeMapLines[i]);
+                    if (vals[0] && vals[1]) {
+                        codeToCategory.set(vals[0].trim(), vals[1].trim()); // code -> cabin type (e.g. "Balcony")
+                    }
+                }
+
+                // Parse connecting pairs and deduplicate by cabin type pair
+                const seen = new Map();
+                const lines = connectingText.trim().split('\n');
+                for (let i = 1; i < lines.length; i++) {
+                    const vals = CSVParser.parseCSVLine(lines[i]);
+                    if (!vals[0] || !vals[1]) continue;
+                    const code1 = vals[0].trim();
+                    const code2 = vals[1].trim();
+                    const type1 = codeToCategory.get(code1);
+                    const type2 = codeToCategory.get(code2);
+                    if (!type1 || !type2) continue;
+
+                    // Canonical key: sorted types
+                    const key = [type1, type2].sort().join('|');
+                    if (seen.has(key)) continue;
+                    seen.set(key, { type1, type2 });
+                }
+
+                // Build pair objects from CABIN_DATA
+                const pairs = [];
+                let id = 1;
+                for (const [key, { type1, type2 }] of seen) {
+                    const cabin1 = CABIN_DATA.find(c => c.roomType === type1 && !c.isSolo);
+                    const cabin2 = CABIN_DATA.find(c => c.roomType === type2 && !c.isSolo);
+                    if (!cabin1 || !cabin2) continue;
+
+                    const isSameType = type1 === type2;
+                    const label = isSameType
+                        ? `${type1} + ${type2}`
+                        : `${type1} + ${type2}`;
+
+                    pairs.push({
+                        id: id++,
+                        label,
+                        room1Cabin: cabin1,
+                        room2Cabin: cabin2,
+                        isSameType
+                    });
+                }
+
+                return pairs;
             }
         };
 
@@ -2713,6 +3125,146 @@
                 };
             },
 
+            buildGuestListFromMembers(members) {
+                const adults = members.filter(m => m.age >= 21).map(m => ({ type: 'adult', age: m.age, label: m.name, name: m.name }));
+                const children = members.filter(m => m.age < 21).sort((a, b) => b.age - a.age).map(m => ({ type: 'child', age: m.age, label: `${m.name} (${m.age})`, name: m.name }));
+                return [...adults, ...children];
+            },
+
+            calculateForMembers(cabin, members, includeDrinks, includeDinner, tipsBeforeCruise) {
+                const totalGuests = members.length;
+                if (totalGuests === 0) {
+                    return {
+                        totalFare: 0, originalTotalFare: 0, discountedTotalFare: 0, originalPerPersonAvg: 0,
+                        taxes: 0, tips: 0, tipsPreCruise: 0, tipsOnboard: 0, drinks: 0, dinner: 0, fasPlusCost: 0,
+                        depositCredit: 0, grandTotalBeforeCredit: 0, grandTotal: 0, fullTripCost: 0,
+                        deposit: 0, balance: 0, perPersonAvg: 0, allSameCost: true, effectiveGuests: 0, exceedsMax: false,
+                        guestDetails: [], tipsBeforeCruise, isHighTier: false
+                    };
+                }
+                const effectiveGuests = cabin.isSolo ? 1 : Math.min(totalGuests, cabin.maxGuests);
+                const exceedsMax = totalGuests > cabin.maxGuests;
+
+                const allGuests = this.buildGuestListFromMembers(members);
+                const guests = allGuests.slice(0, effectiveGuests);
+
+                const discountedBase = cabin.basePrice * (1 - PROMO_DISCOUNT);
+                const discountedExtra = EXTRA_GUEST_FARE * (1 - PROMO_DISCOUNT);
+                let totalFare;
+                if (cabin.isSolo) {
+                    totalFare = discountedBase;
+                } else {
+                    let paidExtras = 0;
+                    for (let p = 3; p <= effectiveGuests; p++) {
+                        if (!FREE_GUEST_POSITIONS.includes(p)) paidExtras++;
+                    }
+                    totalFare = discountedBase + paidExtras * discountedExtra;
+                }
+
+                const tipPerPerson = this.getTipPerPerson(cabin.roomType);
+                const isHighTier = cabin.roomType === "Suite" || cabin.roomType === "The Haven";
+
+                const guestDetails = guests.map((guest, idx) => {
+                    const position = idx + 1;
+                    let fare, originalFare, discountedFareBeforeFree;
+                    const isFreeGuest = FREE_GUEST_POSITIONS.includes(position);
+                    if (cabin.isSolo) {
+                        fare = discountedBase; originalFare = cabin.basePrice; discountedFareBeforeFree = discountedBase;
+                    } else if (effectiveGuests === 1) {
+                        fare = discountedBase; originalFare = cabin.basePrice; discountedFareBeforeFree = discountedBase;
+                    } else if (position <= 2) {
+                        fare = discountedBase / 2; originalFare = cabin.basePrice / 2; discountedFareBeforeFree = discountedBase / 2;
+                    } else if (isFreeGuest) {
+                        fare = 0; originalFare = EXTRA_GUEST_FARE; discountedFareBeforeFree = discountedExtra;
+                    } else {
+                        fare = discountedExtra; originalFare = EXTRA_GUEST_FARE; discountedFareBeforeFree = discountedExtra;
+                    }
+
+                    const tax = TAX_PER_PERSON;
+                    const tipEligible = guest.age >= 3;
+                    let tip = tipEligible ? tipPerPerson : 0;
+                    let fasPlusFee = 0;
+                    if (AppState.freeAtSeaPlus && position <= 2) {
+                        fasPlusFee = 150; tip = 0;
+                    }
+
+                    let drink = 0;
+                    if (includeDrinks) {
+                        if (guest.age >= 21) drink = 85.50;
+                        else if (position <= 2) drink = 37.50;
+                    }
+
+                    let dinner = 0;
+                    if (includeDinner && position <= 2) {
+                        if (guest.age >= 13) dinner = 20;
+                    }
+
+                    const tipPreCruise = tipsBeforeCruise ? tip : 0;
+                    const tipOnboard = tipsBeforeCruise ? 0 : tip;
+                    const guestTotal = fare + tax + tipPreCruise + drink + dinner + fasPlusFee;
+                    const guestFullCost = fare + tax + tip + drink + dinner + fasPlusFee;
+
+                    return {
+                        position, guest, fare, originalFare, discountedFareBeforeFree, isFreeGuest,
+                        tax, tip, tipPreCruise, tipOnboard, drink, dinner, fasPlusFee,
+                        total: guestTotal, fullCost: guestFullCost
+                    };
+                });
+
+                const taxes = guestDetails.reduce((sum, g) => sum + g.tax, 0);
+                const tips = guestDetails.reduce((sum, g) => sum + g.tip, 0);
+                const tipsPreCruise = tipsBeforeCruise ? tips : 0;
+                const tipsOnboard = tipsBeforeCruise ? 0 : tips;
+                const drinks = guestDetails.reduce((sum, g) => sum + g.drink, 0);
+                const dinner = guestDetails.reduce((sum, g) => sum + g.dinner, 0);
+                const fasPlusCost = guestDetails.reduce((sum, g) => sum + g.fasPlusFee, 0);
+
+                let depositCredit = 0;
+                if (AppState.depositOption === 'credit150') depositCredit = 150;
+
+                const grandTotalBeforeCredit = totalFare + taxes + tipsPreCruise + drinks + dinner + fasPlusCost;
+                const grandTotal = grandTotalBeforeCredit - depositCredit;
+                const fullTripCost = totalFare + taxes + tips + drinks + dinner + fasPlusCost - depositCredit;
+
+                const originalTotalFare = cabin.isSolo
+                    ? cabin.basePrice
+                    : cabin.basePrice + Math.max(0, effectiveGuests - 2) * EXTRA_GUEST_FARE;
+                const discountedTotalFare = cabin.isSolo
+                    ? discountedBase
+                    : discountedBase + Math.max(0, effectiveGuests - 2) * discountedExtra;
+                const originalPerPersonAvg = effectiveGuests > 0 ? originalTotalFare / effectiveGuests : 0;
+
+                const deposit = isHighTier ? Math.round(totalFare * 0.10) : 100;
+                const balance = grandTotal - deposit;
+                const perPersonAvg = effectiveGuests > 0 ? grandTotal / effectiveGuests : 0;
+                const allSameCost = guestDetails.length > 1
+                    ? guestDetails.every(g => Math.abs(g.total - guestDetails[0].total) < 0.01) : true;
+
+                return {
+                    totalFare, originalTotalFare, discountedTotalFare, originalPerPersonAvg,
+                    taxes, tips, tipsPreCruise, tipsOnboard, drinks, dinner, fasPlusCost,
+                    depositCredit, grandTotalBeforeCredit, grandTotal, fullTripCost,
+                    deposit, balance, perPersonAvg, allSameCost, effectiveGuests, exceedsMax,
+                    guestDetails, tipsBeforeCruise, isHighTier
+                };
+            },
+
+            calculateConnectingPair(pair, room1Members, room2Members, includeDrinks, includeDinner, tipsBeforeCruise) {
+                const room1 = this.calculateForMembers(pair.room1Cabin, room1Members, includeDrinks, includeDinner, tipsBeforeCruise);
+                const room2 = this.calculateForMembers(pair.room2Cabin, room2Members, includeDrinks, includeDinner, tipsBeforeCruise);
+
+                return {
+                    room1,
+                    room2,
+                    combinedGrandTotal: room1.grandTotal + room2.grandTotal,
+                    combinedDeposit: room1.deposit + room2.deposit,
+                    combinedBalance: room1.balance + room2.balance,
+                    exceedsMax: room1.exceedsMax || room2.exceedsMax,
+                    room1Empty: room1Members.length === 0,
+                    room2Empty: room2Members.length === 0
+                };
+            },
+
             formatCurrency(amount) {
                 return new Intl.NumberFormat('en-US', {
                     style: 'currency',
@@ -2741,6 +3293,10 @@
             familyGroups: [],
             reservedGroups: [],
             guestNames: [],
+            connectingRoomsEnabled: false,
+            connectingRoom1Groups: new Set(),
+            connectingRoom2Groups: new Set(),
+            connectingOpenBreakdowns: new Set(),
 
             recomputeGuests() {
                 let adults = 0, children = 0, ages = [], names = [];
@@ -2771,6 +3327,33 @@
 
             getSelectedGroupLabels() {
                 return Array.from(this.selectedGroups);
+            },
+
+            getMembersForGroups(groupLabels) {
+                const members = [];
+                for (const label of groupLabels) {
+                    const group = this.familyGroups.find(g => g.label === label);
+                    if (!group) continue;
+                    group.members.forEach(m => members.push(m));
+                }
+                return members;
+            },
+
+            resetConnectingRooms() {
+                this.connectingRoomsEnabled = false;
+                this.connectingRoom1Groups.clear();
+                this.connectingRoom2Groups.clear();
+                this.connectingOpenBreakdowns.clear();
+                const toggle = document.getElementById('connectingRoomsSwitch');
+                if (toggle) toggle.checked = false;
+            },
+
+            autoAssignConnectingRooms() {
+                this.connectingRoom1Groups.clear();
+                this.connectingRoom2Groups.clear();
+                const labels = this.getSelectedGroupLabels();
+                if (labels.length >= 1) this.connectingRoom1Groups.add(labels[0]);
+                if (labels.length >= 2) this.connectingRoom2Groups.add(labels[1]);
             }
         };
 
@@ -3088,6 +3671,7 @@
                 this.renderGrid();
                 this.updateToggleLabels();
                 this.updateRunningTotals();
+                this.renderConnectingPairsGrid();
             },
 
             updateToggleLabels() {
@@ -3268,6 +3852,132 @@
                         </div>
                     `;
                 }).join('');
+            },
+
+            renderConnectingPairCard(pair, combinedPricing) {
+                const { room1, room2, combinedGrandTotal, combinedDeposit, exceedsMax, room1Empty, room2Empty } = combinedPricing;
+                const isOpen = AppState.connectingOpenBreakdowns.has(pair.id);
+                const isDimmed = exceedsMax || room1Empty || room2Empty;
+
+                const badgeClass1 = pair.room1Cabin.roomType.replace(/\s+/g, '-');
+                const badgeClass2 = pair.room2Cabin.roomType.replace(/\s+/g, '-');
+
+                const room1Members = AppState.getMembersForGroups(AppState.connectingRoom1Groups);
+                const room2Members = AppState.getMembersForGroups(AppState.connectingRoom2Groups);
+                const room1Names = room1Members.map(m => m.name).join(', ') || 'No guests';
+                const room2Names = room2Members.map(m => m.name).join(', ') || 'No guests';
+
+                let warningHtml = '';
+                if (room1Empty || room2Empty) {
+                    warningHtml = '<div class="max-guests-note">Assign guests to both rooms</div>';
+                } else if (room1.exceedsMax) {
+                    warningHtml = `<div class="max-guests-note">Room 1: max ${pair.room1Cabin.maxGuests} guests</div>`;
+                } else if (room2.exceedsMax) {
+                    warningHtml = `<div class="max-guests-note">Room 2: max ${pair.room2Cabin.maxGuests} guests</div>`;
+                }
+
+                const room1Specs = `${pair.room1Cabin.sqft} sq ft${pair.room1Cabin.balconySqft ? ', ' + pair.room1Cabin.balconySqft + ' sq ft balcony' : ''} · Max ${pair.room1Cabin.maxGuests}`;
+                const room2Specs = `${pair.room2Cabin.sqft} sq ft${pair.room2Cabin.balconySqft ? ', ' + pair.room2Cabin.balconySqft + ' sq ft balcony' : ''} · Max ${pair.room2Cabin.maxGuests}`;
+
+                let breakdownHtml = '';
+                if (isOpen && !room1Empty && !room2Empty) {
+                    breakdownHtml = `
+                        <div class="connecting-breakdown open">
+                            <div class="connecting-breakdown-room-title">Room 1: ${pair.room1Cabin.name}</div>
+                            ${Renderer.renderBreakdown(pair.room1Cabin, room1)}
+                            <div class="connecting-breakdown-room-title" style="margin-top:1rem;">Room 2: ${pair.room2Cabin.name}</div>
+                            ${Renderer.renderBreakdown(pair.room2Cabin, room2)}
+                        </div>
+                    `;
+                }
+
+                return `
+                    <div class="connecting-card ${isDimmed ? 'dimmed' : ''}" data-pair-id="${pair.id}">
+                        <div class="connecting-card-top"></div>
+                        <div class="connecting-card-body">
+                            ${warningHtml}
+                            <div class="connecting-card-label">
+                                <span class="connecting-link-icon">&#128279;</span>
+                                ${pair.label}
+                            </div>
+
+                            <div class="connecting-room-row">
+                                <div class="connecting-room-info">
+                                    <div class="connecting-room-info-header">Room 1</div>
+                                    <span class="connecting-room-type-badge cabin-type-badge badge-${badgeClass1}">${pair.room1Cabin.roomType}</span>
+                                    <div class="connecting-room-specs">${room1Specs}</div>
+                                    <div class="connecting-room-guests">${room1Names}</div>
+                                    ${!room1Empty ? `<div class="connecting-room-subtotal">${PriceCalculator.formatCurrency(room1.grandTotal)}</div>` : ''}
+                                </div>
+                                <div class="connecting-room-info">
+                                    <div class="connecting-room-info-header">Room 2</div>
+                                    <span class="connecting-room-type-badge cabin-type-badge badge-${badgeClass2}">${pair.room2Cabin.roomType}</span>
+                                    <div class="connecting-room-specs">${room2Specs}</div>
+                                    <div class="connecting-room-guests">${room2Names}</div>
+                                    ${!room2Empty ? `<div class="connecting-room-subtotal">${PriceCalculator.formatCurrency(room2.grandTotal)}</div>` : ''}
+                                </div>
+                            </div>
+
+                            ${!isDimmed ? `
+                                <div class="connecting-combined">
+                                    <div>
+                                        <div class="connecting-combined-label">Combined Total</div>
+                                        <div class="connecting-combined-deposit">Deposit: ${PriceCalculator.formatCurrency(combinedDeposit)}</div>
+                                    </div>
+                                    <div class="connecting-combined-total">${PriceCalculator.formatCurrency(combinedGrandTotal)}</div>
+                                </div>
+                            ` : ''}
+
+                            <div class="connecting-card-actions">
+                                <button class="btn btn-secondary toggle-connecting-breakdown" data-pair-id="${pair.id}">
+                                    ${isOpen ? 'Hide' : 'View'} Breakdown
+                                </button>
+                            </div>
+
+                            ${breakdownHtml}
+                        </div>
+                    </div>
+                `;
+            },
+
+            renderConnectingPairsGrid() {
+                const section = document.getElementById('connectingPairsSection');
+                const grid = document.getElementById('connectingPairsGrid');
+
+                if (!AppState.connectingRoomsEnabled || CONNECTING_PAIRS.length === 0) {
+                    section.classList.remove('visible');
+                    return;
+                }
+
+                const room1Members = AppState.getMembersForGroups(AppState.connectingRoom1Groups);
+                const room2Members = AppState.getMembersForGroups(AppState.connectingRoom2Groups);
+
+                if (room1Members.length === 0 && room2Members.length === 0) {
+                    section.classList.remove('visible');
+                    return;
+                }
+
+                section.classList.add('visible');
+
+                const cards = CONNECTING_PAIRS.map(pair => {
+                    const combinedPricing = PriceCalculator.calculateConnectingPair(
+                        pair, room1Members, room2Members,
+                        AppState.includeDrinks, AppState.includeDinner, AppState.tipsBeforeCruise
+                    );
+                    return { pair, combinedPricing };
+                });
+
+                // Sort: non-dimmed first by combined price, dimmed at end
+                cards.sort((a, b) => {
+                    const aDimmed = a.combinedPricing.exceedsMax || a.combinedPricing.room1Empty || a.combinedPricing.room2Empty ? 1 : 0;
+                    const bDimmed = b.combinedPricing.exceedsMax || b.combinedPricing.room1Empty || b.combinedPricing.room2Empty ? 1 : 0;
+                    if (aDimmed !== bDimmed) return aDimmed - bDimmed;
+                    return a.combinedPricing.combinedGrandTotal - b.combinedPricing.combinedGrandTotal;
+                });
+
+                grid.innerHTML = cards.map(({ pair, combinedPricing }) =>
+                    this.renderConnectingPairCard(pair, combinedPricing)
+                ).join('');
             }
         };
 
@@ -3278,6 +3988,9 @@
                 const familyData = await FamilyCSVParser.load('family_groups.csv');
                 AppState.familyGroups = familyData.unbookedGroups;
                 AppState.reservedGroups = familyData.reservedGroups;
+
+                // Load connecting rooms data (requires CABIN_DATA to be loaded first)
+                CONNECTING_PAIRS = await ConnectingRoomsParser.load('connectingRooms.csv', 'cabin_code_map.csv');
 
                 if (CABIN_DATA.length === 0) {
                     document.getElementById('cabinGrid').innerHTML = `
@@ -3316,11 +4029,42 @@
             },
 
             toggleFamilyGroup(label) {
-                if (AppState.selectedGroups.has(label)) {
+                const wasSelected = AppState.selectedGroups.has(label);
+                if (wasSelected) {
                     AppState.selectedGroups.delete(label);
+                    // Remove from room assignments
+                    AppState.connectingRoom1Groups.delete(label);
+                    AppState.connectingRoom2Groups.delete(label);
                 } else {
                     AppState.selectedGroups.add(label);
                 }
+
+                const groupCount = AppState.selectedGroups.size;
+                const toggleEl = document.getElementById('connectingRoomsToggle');
+
+                if (groupCount >= 2) {
+                    toggleEl.classList.add('visible');
+                } else {
+                    toggleEl.classList.remove('visible');
+                    if (AppState.connectingRoomsEnabled) {
+                        AppState.resetConnectingRooms();
+                    }
+                }
+
+                // Handle connecting room assignments
+                if (AppState.connectingRoomsEnabled) {
+                    if (groupCount < 2) {
+                        AppState.resetConnectingRooms();
+                    } else if (groupCount === 2) {
+                        AppState.autoAssignConnectingRooms();
+                    } else if (!wasSelected) {
+                        // New group added with 3+ groups: add to Room 1 by default
+                        AppState.connectingRoom1Groups.add(label);
+                    }
+                    this.updateRoomAssignmentUI();
+                    this.renderRoomAssignmentChips();
+                }
+
                 AppState.recomputeGuests();
                 this.updateGuestDisplay();
                 this.updateGuestSummary();
@@ -3771,6 +4515,46 @@
                 }
             },
 
+            updateRoomAssignmentUI() {
+                const assignmentEl = document.getElementById('roomAssignment');
+                if (!AppState.connectingRoomsEnabled) {
+                    assignmentEl.classList.remove('visible');
+                    return;
+                }
+                if (AppState.selectedGroups.size >= 3) {
+                    assignmentEl.classList.add('visible');
+                } else {
+                    assignmentEl.classList.remove('visible');
+                }
+            },
+
+            renderRoomAssignmentChips() {
+                const room1Container = document.getElementById('room1Chips');
+                const room2Container = document.getElementById('room2Chips');
+                const room1CountEl = document.getElementById('room1GuestCount');
+                const room2CountEl = document.getElementById('room2GuestCount');
+
+                const renderChips = (groups, targetRoom) => {
+                    if (groups.size === 0) {
+                        return '<div class="room-empty-msg">Click a group chip to move it here</div>';
+                    }
+                    return Array.from(groups).map(label => {
+                        const idx = AppState.familyGroups.findIndex(g => g.label === label);
+                        const color = FAMILY_COLORS[idx >= 0 ? idx % FAMILY_COLORS.length : 0];
+                        const arrow = targetRoom === 1 ? '&#8594;' : '&#8592;';
+                        return `<span class="room-group-chip" data-label="${label}" data-from-room="${targetRoom}" style="background:${color}">${label} <span class="chip-arrow">${arrow}</span></span>`;
+                    }).join('');
+                };
+
+                room1Container.innerHTML = renderChips(AppState.connectingRoom1Groups, 1);
+                room2Container.innerHTML = renderChips(AppState.connectingRoom2Groups, 2);
+
+                const room1Members = AppState.getMembersForGroups(AppState.connectingRoom1Groups);
+                const room2Members = AppState.getMembersForGroups(AppState.connectingRoom2Groups);
+                room1CountEl.textContent = room1Members.length > 0 ? `${room1Members.length} guest${room1Members.length !== 1 ? 's' : ''}` : '';
+                room2CountEl.textContent = room2Members.length > 0 ? `${room2Members.length} guest${room2Members.length !== 1 ? 's' : ''}` : '';
+            },
+
             bindEvents() {
                 // Tab navigation
                 document.querySelectorAll('.tab-btn').forEach(btn => {
@@ -3781,6 +4565,64 @@
                 document.getElementById('familyButtons').addEventListener('click', (e) => {
                     const btn = e.target.closest('.family-btn');
                     if (btn) this.toggleFamilyGroup(btn.dataset.label);
+                });
+
+                // Connecting rooms toggle
+                document.getElementById('connectingRoomsSwitch').addEventListener('change', (e) => {
+                    AppState.connectingRoomsEnabled = e.target.checked;
+                    if (e.target.checked) {
+                        if (AppState.selectedGroups.size === 2) {
+                            AppState.autoAssignConnectingRooms();
+                        } else if (AppState.selectedGroups.size >= 3) {
+                            // Put all in Room 1 initially, let user assign
+                            AppState.connectingRoom1Groups.clear();
+                            AppState.connectingRoom2Groups.clear();
+                            const labels = AppState.getSelectedGroupLabels();
+                            labels.forEach((l, i) => {
+                                if (i === 0) AppState.connectingRoom1Groups.add(l);
+                                else if (i === 1) AppState.connectingRoom2Groups.add(l);
+                                else AppState.connectingRoom1Groups.add(l);
+                            });
+                        }
+                    } else {
+                        AppState.connectingRoom1Groups.clear();
+                        AppState.connectingRoom2Groups.clear();
+                        AppState.connectingOpenBreakdowns.clear();
+                    }
+                    this.updateRoomAssignmentUI();
+                    this.renderRoomAssignmentChips();
+                    Renderer.renderConnectingPairsGrid();
+                    document.getElementById('connectingPairsSection').classList.toggle('visible', e.target.checked && CONNECTING_PAIRS.length > 0);
+                });
+
+                // Room assignment chip clicks (delegation)
+                document.getElementById('roomAssignment').addEventListener('click', (e) => {
+                    const chip = e.target.closest('.room-group-chip');
+                    if (!chip) return;
+                    const label = chip.dataset.label;
+                    const fromRoom = parseInt(chip.dataset.fromRoom);
+                    if (fromRoom === 1) {
+                        AppState.connectingRoom1Groups.delete(label);
+                        AppState.connectingRoom2Groups.add(label);
+                    } else {
+                        AppState.connectingRoom2Groups.delete(label);
+                        AppState.connectingRoom1Groups.add(label);
+                    }
+                    this.renderRoomAssignmentChips();
+                    Renderer.renderConnectingPairsGrid();
+                });
+
+                // Connecting pair card breakdown toggle (delegation)
+                document.getElementById('connectingPairsGrid').addEventListener('click', (e) => {
+                    if (e.target.classList.contains('toggle-connecting-breakdown')) {
+                        const pairId = parseInt(e.target.dataset.pairId);
+                        if (AppState.connectingOpenBreakdowns.has(pairId)) {
+                            AppState.connectingOpenBreakdowns.delete(pairId);
+                        } else {
+                            AppState.connectingOpenBreakdowns.add(pairId);
+                        }
+                        Renderer.renderConnectingPairsGrid();
+                    }
                 });
 
                 // Dark mode
