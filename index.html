@@ -74,6 +74,39 @@
             letter-spacing: 0.025em;
         }
 
+        .lang-toggle {
+            position: absolute;
+            top: 2rem;
+            right: 0;
+            display: flex;
+            gap: 0.35rem;
+            z-index: 3;
+        }
+
+        .lang-btn {
+            padding: 0.3rem 0.75rem;
+            border: 1.5px solid rgba(255,255,255,0.4);
+            border-radius: 9999px;
+            background: transparent;
+            color: rgba(255,255,255,0.7);
+            font-size: 0.75rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+            letter-spacing: 0.03em;
+        }
+
+        .lang-btn:hover {
+            border-color: rgba(255,255,255,0.7);
+            color: white;
+        }
+
+        .lang-btn.active {
+            border-color: var(--teal-light);
+            color: white;
+            background: rgba(13,148,136,0.3);
+        }
+
         .ship-name {
             font-size: 2.5rem;
             font-weight: 700;
@@ -2261,39 +2294,43 @@
     <!-- Hero Header -->
     <header class="hero">
         <div class="hero-content">
-            <span class="version-badge">v1.2.0</span>
+            <span class="version-badge">v1.3.0</span>
+            <div class="lang-toggle">
+                <button class="lang-btn active" data-lang="en">EN</button>
+                <button class="lang-btn" data-lang="es">ES</button>
+            </div>
             <h1 class="ship-name">
                 <a href="https://www.ncl.com/cruise-ships/norwegian-joy" target="_blank" rel="noopener" id="shipNameLink">Norwegian Joy</a>
             </h1>
-            <p class="cruise-dates">Satizabal Family Cruise &middot; Fri, Nov 20 - Mon, Nov 23, 2026</p>
-            <p class="itinerary-title">3-Day Bahamas Round-trip Miami: Great Stirrup Cay &amp; Nassau</p>
+            <p class="cruise-dates" data-i18n="hero.cruiseDates">Satizabal Family Cruise &middot; Fri, Nov 20 - Mon, Nov 23, 2026</p>
+            <p class="itinerary-title" data-i18n="hero.itinerary">3-Day Bahamas Round-trip Miami: Great Stirrup Cay &amp; Nassau</p>
 
             <div class="itinerary-grid">
                 <div class="port-card">
-                    <div class="port-day">Friday</div>
+                    <div class="port-day" data-i18n="port.day1">Friday</div>
                     <div class="port-name">Miami, Florida</div>
-                    <div class="port-time">Embark 4:00 PM</div>
+                    <div class="port-time" data-i18n="port.time1">Embark 4:00 PM</div>
                 </div>
                 <div class="port-card">
-                    <div class="port-day">Saturday</div>
+                    <div class="port-day" data-i18n="port.day2">Saturday</div>
                     <div class="port-name">Nassau, Bahamas</div>
                     <div class="port-time">7:00 AM - 5:00 PM</div>
                 </div>
                 <div class="port-card">
-                    <div class="port-day">Sunday</div>
+                    <div class="port-day" data-i18n="port.day3">Sunday</div>
                     <div class="port-name">Great Stirrup Cay</div>
                     <div class="port-time">7:00 AM - 5:00 PM</div>
                 </div>
                 <div class="port-card">
-                    <div class="port-day">Monday</div>
+                    <div class="port-day" data-i18n="port.day4">Monday</div>
                     <div class="port-name">Miami, Florida</div>
-                    <div class="port-time">Debark 7:00 AM</div>
+                    <div class="port-time" data-i18n="port.time4">Debark 7:00 AM</div>
                 </div>
             </div>
 
             <div class="validity-banner">
                 <span class="validity-icon">&#9888;</span>
-                <span>Prices valid as of <strong>February 1, 2026</strong></span>
+                <span data-i18n="hero.validity" data-i18n-html>Prices valid as of <strong>February 1, 2026</strong></span>
             </div>
         </div>
 
@@ -2305,8 +2342,8 @@
 
     <!-- Tab Navigation -->
     <nav class="tab-nav">
-        <button class="tab-btn active" data-tab="selector">Cabin Selector <span class="tab-badge tab-badge-unbooked" id="tabBadgeUnbooked">0</span></button>
-        <button class="tab-btn" data-tab="tracker">Reservation Tracker <span class="tab-badge tab-badge-reserved" id="tabBadgeReserved">0</span></button>
+        <button class="tab-btn active" data-tab="selector"><span data-i18n="tab.selector">Cabin Selector</span> <span class="tab-badge tab-badge-unbooked" id="tabBadgeUnbooked">0</span></button>
+        <button class="tab-btn" data-tab="tracker"><span data-i18n="tab.tracker">Reservation Tracker</span> <span class="tab-badge tab-badge-reserved" id="tabBadgeReserved">0</span></button>
     </nav>
 
     <!-- Page: Selector -->
@@ -2317,26 +2354,26 @@
         <div class="controls-panel">
             <div class="controls-row">
                 <div class="filter-tabs">
-                    <button class="filter-tab active" data-filter="All">All</button>
-                    <button class="filter-tab" data-filter="Inside">Inside</button>
-                    <button class="filter-tab" data-filter="Oceanview">Oceanview</button>
-                    <button class="filter-tab" data-filter="Balcony">Balcony</button>
-                    <button class="filter-tab" data-filter="Club Balcony Suite">Club Balcony</button>
-                    <button class="filter-tab" data-filter="Suite">Suite</button>
-                    <button class="filter-tab" data-filter="The Haven">The Haven</button>
+                    <button class="filter-tab active" data-filter="All" data-i18n="filter.all">All</button>
+                    <button class="filter-tab" data-filter="Inside" data-i18n="filter.inside">Inside</button>
+                    <button class="filter-tab" data-filter="Oceanview" data-i18n="filter.oceanview">Oceanview</button>
+                    <button class="filter-tab" data-filter="Balcony" data-i18n="filter.balcony">Balcony</button>
+                    <button class="filter-tab" data-filter="Club Balcony Suite" data-i18n="filter.clubBalcony">Club Balcony</button>
+                    <button class="filter-tab" data-filter="Suite" data-i18n="filter.suite">Suite</button>
+                    <button class="filter-tab" data-filter="The Haven" data-i18n="filter.haven">The Haven</button>
                 </div>
 
                 <select class="sort-select" id="sortSelect">
-                    <option value="price-asc">Price: Low to High</option>
-                    <option value="price-desc">Price: High to Low</option>
-                    <option value="sqft-desc">Sq Ft: Large to Small</option>
-                    <option value="sqft-asc">Sq Ft: Small to Large</option>
+                    <option value="price-asc" data-i18n="sort.priceAsc">Price: Low to High</option>
+                    <option value="price-desc" data-i18n="sort.priceDesc">Price: High to Low</option>
+                    <option value="sqft-desc" data-i18n="sort.sqftDesc">Sq Ft: Large to Small</option>
+                    <option value="sqft-asc" data-i18n="sort.sqftAsc">Sq Ft: Small to Large</option>
                 </select>
             </div>
 
             <!-- Family Group Selection -->
             <div class="family-section" id="familySection">
-                <div class="family-section-title">Select your travel group</div>
+                <div class="family-section-title" data-i18n="family.title">Select your travel group</div>
                 <div class="family-buttons" id="familyButtons"></div>
                 <div class="guest-summary" id="guestSummary" style="display:none;">
                     <div id="guestSummaryText"></div>
@@ -2347,20 +2384,20 @@
                 <div class="connecting-rooms-toggle" id="connectingRoomsToggle">
                     <input type="checkbox" class="toggle-switch" id="connectingRoomsSwitch">
                     <div>
-                        <div class="toggle-label">Connecting Rooms</div>
-                        <div class="toggle-desc">Price two adjacent cabins with a shared door</div>
+                        <div class="toggle-label" data-i18n="connecting.label">Connecting Rooms</div>
+                        <div class="toggle-desc" data-i18n="connecting.desc">Price two adjacent cabins with a shared door</div>
                     </div>
                 </div>
 
                 <!-- Room Assignment UI (for 3+ groups) -->
                 <div class="room-assignment" id="roomAssignment">
                     <div class="room-column" id="room1Column">
-                        <div class="room-column-header">Room 1</div>
+                        <div class="room-column-header" data-i18n="room.room1">Room 1</div>
                         <div class="room-column-chips" id="room1Chips"></div>
                         <div class="room-guest-count" id="room1GuestCount"></div>
                     </div>
                     <div class="room-column" id="room2Column">
-                        <div class="room-column-header">Room 2</div>
+                        <div class="room-column-header" data-i18n="room.room2">Room 2</div>
                         <div class="room-column-chips" id="room2Chips"></div>
                         <div class="room-guest-count" id="room2GuestCount"></div>
                     </div>
@@ -2369,7 +2406,7 @@
 
             <div class="guest-section">
                 <div class="guest-input-group">
-                    <label class="guest-input-label">Adults (21+)</label>
+                    <label class="guest-input-label" data-i18n="guest.adults">Adults (21+)</label>
                     <div class="stepper" style="opacity:0.6; pointer-events:none;">
                         <button class="stepper-btn" id="adultDec" disabled>-</button>
                         <div class="stepper-value" id="adultCount">0</div>
@@ -2377,7 +2414,7 @@
                     </div>
                 </div>
                 <div class="guest-input-group">
-                    <label class="guest-input-label">Children (0-20)</label>
+                    <label class="guest-input-label" data-i18n="guest.children">Children (0-20)</label>
                     <div class="stepper" style="opacity:0.6; pointer-events:none;">
                         <button class="stepper-btn" id="childDec" disabled>-</button>
                         <div class="stepper-value" id="childCount">0</div>
@@ -2392,7 +2429,7 @@
                 <div class="toggle-container">
                     <input type="checkbox" class="toggle-switch" id="drinkToggle">
                     <div>
-                        <div class="toggle-label">Drink Package</div>
+                        <div class="toggle-label" data-i18n="toggle.drink">Drink Package</div>
                         <div class="toggle-price" id="drinkToggleDesc">+$171 (2 adults x $85.50)</div>
                     </div>
                 </div>
@@ -2400,7 +2437,7 @@
                 <div class="toggle-container">
                     <input type="checkbox" class="toggle-switch" id="dinnerToggle">
                     <div>
-                        <div class="toggle-label">Dinner Package</div>
+                        <div class="toggle-label" data-i18n="toggle.dinner">Dinner Package</div>
                         <div class="toggle-price" id="dinnerToggleDesc">+$40 (2 guests x $20)</div>
                     </div>
                 </div>
@@ -2408,7 +2445,7 @@
                 <div class="toggle-container">
                     <input type="checkbox" class="toggle-switch" id="tipsToggle" checked>
                     <div>
-                        <div class="toggle-label">When to Pay Tips</div>
+                        <div class="toggle-label" data-i18n="toggle.tips">When to Pay Tips</div>
                         <div class="toggle-price" id="tipsToggleDesc">Before cruise (by 7/23/2026)</div>
                     </div>
                 </div>
@@ -2420,11 +2457,11 @@
                     <input type="checkbox" class="toggle-switch" id="fasPlusToggle">
                     <div class="fas-plus-info">
                         <div class="fas-plus-title">
-                            Free at Sea Plus
+                            <span data-i18n="fas.title">Free at Sea Plus</span>
                             <button class="fas-plus-info-btn" id="fasPlusInfoBtn" title="What's included?">?</button>
                         </div>
                         <div class="fas-plus-desc" id="fasPlusDesc">+$300 (2 guests x $150) &mdash; Includes prepaid gratuities</div>
-                        <div class="fas-plus-requires" id="fasPlusRequires" style="display: none;">Enabling will auto-select Drink &amp; Dinner packages if not already selected</div>
+                        <div class="fas-plus-requires" id="fasPlusRequires" style="display: none;" data-i18n="fas.requires">Enabling will auto-select Drink &amp; Dinner packages if not already selected</div>
                         <div class="fas-plus-savings" id="fasPlusSavings" style="display: none;"></div>
                     </div>
                 </div>
@@ -2432,20 +2469,20 @@
 
             <!-- Deposit Options -->
             <div class="deposit-options-section" id="depositOptionsSection">
-                <div class="deposit-options-title">Deposit Option</div>
+                <div class="deposit-options-title" data-i18n="deposit.title">Deposit Option</div>
                 <div class="deposit-radio-group" id="depositRadioGroup">
                     <label class="deposit-radio-label active" data-option="regular">
                         <input type="radio" name="depositOption" value="regular" checked>
                         <div class="deposit-radio-info">
-                            <span class="deposit-radio-name">Regular Deposit</span>
-                            <span class="deposit-radio-desc">Suite/Haven: 10% of fare | Others: $100</span>
+                            <span class="deposit-radio-name" data-i18n="deposit.regularName">Regular Deposit</span>
+                            <span class="deposit-radio-desc" data-i18n="deposit.regularDesc">Suite/Haven: 10% of fare | Others: $100</span>
                         </div>
                     </label>
                     <label class="deposit-radio-label" data-option="credit150">
                         <input type="radio" name="depositOption" value="credit150">
                         <div class="deposit-radio-info">
-                            <span class="deposit-radio-name">$150 Credit Deposit</span>
-                            <span class="deposit-radio-desc">Pay $150 deposit, receive $150 credit toward your cruise</span>
+                            <span class="deposit-radio-name" data-i18n="deposit.creditName">$150 Credit Deposit</span>
+                            <span class="deposit-radio-desc" data-i18n="deposit.creditDesc">Pay $150 deposit, receive $150 credit toward your cruise</span>
                         </div>
                     </label>
                 </div>
@@ -2453,7 +2490,7 @@
 
             <div class="running-totals" id="runningTotals" style="display: none;">
                 <div class="running-total-item">
-                    <span class="running-total-label">Package additions: </span>
+                    <span class="running-total-label" data-i18n="totals.packageAdditions">Package additions: </span>
                     <span class="running-total-value" id="packageTotal">$0</span>
                 </div>
             </div>
@@ -2478,7 +2515,7 @@
 
     <!-- Connecting Room Pairs -->
     <div class="connecting-pairs-section" id="connectingPairsSection">
-        <div class="connecting-pairs-header">Connecting Room Options</div>
+        <div class="connecting-pairs-header" data-i18n="connecting.pairsHeader">Connecting Room Options</div>
         <div class="connecting-pairs-grid" id="connectingPairsGrid"></div>
     </div>
 
@@ -2494,11 +2531,11 @@
         <div class="tray-content">
             <div class="tray-info">
                 <div class="tray-count" id="trayCount">0</div>
-                <div class="tray-text">cabins selected for comparison (max 3)</div>
+                <div class="tray-text" data-i18n="tray.text">cabins selected for comparison (max 3)</div>
             </div>
             <div class="tray-actions">
-                <button class="btn-tray btn-clear" id="clearComparison">Clear All</button>
-                <button class="btn-tray btn-compare-now" id="compareNow">Compare Now</button>
+                <button class="btn-tray btn-clear" id="clearComparison" data-i18n="tray.clearAll">Clear All</button>
+                <button class="btn-tray btn-compare-now" id="compareNow" data-i18n="tray.compareNow">Compare Now</button>
             </div>
         </div>
     </div>
@@ -2507,7 +2544,7 @@
     <div class="modal-overlay" id="comparisonModal">
         <div class="modal">
             <div class="modal-header">
-                <h2 class="modal-title">Side-by-Side Comparison</h2>
+                <h2 class="modal-title" data-i18n="compare.title">Side-by-Side Comparison</h2>
                 <button class="modal-close" id="closeModal">&times;</button>
             </div>
             <div class="modal-body">
@@ -2520,21 +2557,21 @@
     <div class="fas-modal-overlay" id="fasPlusModal">
         <div class="fas-modal">
             <div class="fas-modal-header">
-                <h3 class="fas-modal-title">Free at Sea Plus &mdash; Cost/Benefit Analysis</h3>
+                <h3 class="fas-modal-title" data-i18n="fasModal.title">Free at Sea Plus &mdash; Cost/Benefit Analysis</h3>
                 <button class="fas-modal-close" id="closeFasModal">&times;</button>
             </div>
             <div class="fas-modal-body">
-                <p>
+                <p data-i18n="fasModal.desc" data-i18n-html>
                     Free at Sea Plus is an upgrade package that adds premium perks on top of the standard
                     Free at Sea benefits. It costs <strong>$49.99/person/day</strong>, totaling approximately
                     <strong>$300 for a 3-day cruise (2 guests)</strong>.
                 </p>
-                <p style="background: #fef3c7; padding: 0.75rem; border-radius: 8px; font-size: 0.8rem;">
+                <p style="background: #fef3c7; padding: 0.75rem; border-radius: 8px; font-size: 0.8rem;" data-i18n="fasModal.onlyGuests12" data-i18n-html>
                     Free at Sea Plus applies ONLY to Guests 1 &amp; 2.
                 </p>
                 <table class="cost-benefit-table" id="costBenefitTable"></table>
                 <p style="margin-top: 1.5rem; font-size: 0.8rem;">
-                    <strong>Resources:</strong><br>
+                    <strong data-i18n="fasModal.resources">Resources:</strong><br>
                     <a href="https://www.ncl.com/content/dam/ncl/us/en/promo/cruise-deals/Free_at_sea_Plus_ver_11042025.pdf" target="_blank" rel="noopener" style="color: var(--teal);">Free at Sea Plus Comparison (PDF)</a><br>
                     <a href="https://www.ncl.com/faq/what-is-included-in-free-at-sea-plus-and-how-much-does-it-cost-" target="_blank" rel="noopener" style="color: var(--teal);">What is included in Free at Sea Plus? (NCL FAQ)</a>
                 </p>
@@ -2547,19 +2584,19 @@
         <div class="tracker-container">
             <div class="countdown-section" id="countdownSection">
                 <div class="countdown-card" id="cruiseCountdown">
-                    <div class="countdown-label">Cruise Day</div>
-                    <div class="countdown-date">November 20, 2026</div>
+                    <div class="countdown-label" data-i18n="tracker.cruiseDay">Cruise Day</div>
+                    <div class="countdown-date" data-i18n="tracker.cruiseDate">November 20, 2026</div>
                     <div class="countdown-digits" id="cruiseCountdownDigits"></div>
                 </div>
                 <div class="countdown-card" id="paymentCountdown">
-                    <div class="countdown-label">Final Payment</div>
-                    <div class="countdown-date">July 23, 2026</div>
+                    <div class="countdown-label" data-i18n="tracker.finalPayment">Final Payment</div>
+                    <div class="countdown-date" data-i18n="tracker.paymentDate">July 23, 2026</div>
                     <div class="countdown-digits" id="paymentCountdownDigits"></div>
                 </div>
             </div>
 
             <div class="progress-section">
-                <div class="progress-title">Reunion Progress</div>
+                <div class="progress-title" data-i18n="tracker.reunionProgress">Reunion Progress</div>
                 <div class="progress-bar-track">
                     <div class="progress-bar-fill" id="progressBarFill" style="width:0%"></div>
                 </div>
@@ -2569,16 +2606,16 @@
                 </div>
             </div>
 
-            <h3 class="tracker-section-title">Reserved Families</h3>
+            <h3 class="tracker-section-title" data-i18n="tracker.reservedFamilies">Reserved Families</h3>
             <div class="reserved-grid" id="reservedGrid"></div>
 
             <div class="unbooked-section">
-                <h3 class="tracker-section-title" style="border:none;margin:0 0 0.75rem;padding:0;">Still Deciding</h3>
+                <h3 class="tracker-section-title" style="border:none;margin:0 0 0.75rem;padding:0;" data-i18n="tracker.stillDeciding">Still Deciding</h3>
                 <div class="unbooked-pills" id="unbookedPills"></div>
-                <p style="font-size:0.85rem;color:var(--gray-500);margin-bottom:1rem;">Share this page to help them pick a cabin!</p>
+                <p style="font-size:0.85rem;color:var(--gray-500);margin-bottom:1rem;" data-i18n="tracker.shareHelp">Share this page to help them pick a cabin!</p>
                 <div class="share-actions">
-                    <button class="share-btn share-btn-copy" id="copyLinkBtn">Copy Link</button>
-                    <button class="share-btn share-btn-whatsapp" id="whatsappShareBtn">Share via WhatsApp</button>
+                    <button class="share-btn share-btn-copy" id="copyLinkBtn" data-i18n="tracker.copyLink">Copy Link</button>
+                    <button class="share-btn share-btn-whatsapp" id="whatsappShareBtn" data-i18n="tracker.whatsapp">Share via WhatsApp</button>
                 </div>
             </div>
         </div>
@@ -2590,10 +2627,10 @@
     <footer class="footer">
         <div class="footer-content">
             <div class="payment-due">
-                <div class="payment-due-label">Final Payment Due</div>
-                <div class="payment-due-date">July 23, 2026</div>
+                <div class="payment-due-label" data-i18n="footer.paymentDue">Final Payment Due</div>
+                <div class="payment-due-date" data-i18n="footer.paymentDate">July 23, 2026</div>
             </div>
-            <p class="footer-note">Satizabal Family Cruise 2026 &middot; Deposits are refundable if canceled by July 23, 2026</p>
+            <p class="footer-note" data-i18n="footer.note">Satizabal Family Cruise 2026 &middot; Deposits are refundable if canceled by July 23, 2026</p>
         </div>
     </footer>
 
@@ -2616,6 +2653,450 @@
             '#84cc16', '#f59e0b', '#3b82f6', '#ef4444',
             '#14b8a6', '#a855f7', '#f43f5e', '#22c55e'
         ];
+
+        // ==================== TRANSLATIONS ====================
+        const TRANSLATIONS = {
+            en: {
+                // Hero
+                'hero.cruiseDates': 'Satizabal Family Cruise \u00B7 Fri, Nov 20 - Mon, Nov 23, 2026',
+                'hero.itinerary': '3-Day Bahamas Round-trip Miami: Great Stirrup Cay & Nassau',
+                'hero.validity': 'Prices valid as of <strong>February 1, 2026</strong>',
+                // Ports
+                'port.day1': 'Friday', 'port.day2': 'Saturday', 'port.day3': 'Sunday', 'port.day4': 'Monday',
+                'port.time1': 'Embark 4:00 PM', 'port.time4': 'Debark 7:00 AM',
+                // Tabs
+                'tab.selector': 'Cabin Selector', 'tab.tracker': 'Reservation Tracker',
+                // Filters
+                'filter.all': 'All', 'filter.inside': 'Inside', 'filter.oceanview': 'Oceanview',
+                'filter.balcony': 'Balcony', 'filter.clubBalcony': 'Club Balcony',
+                'filter.suite': 'Suite', 'filter.haven': 'The Haven',
+                // Sort
+                'sort.priceAsc': 'Price: Low to High', 'sort.priceDesc': 'Price: High to Low',
+                'sort.sqftDesc': 'Sq Ft: Large to Small', 'sort.sqftAsc': 'Sq Ft: Small to Large',
+                // Family section
+                'family.title': 'Select your travel group',
+                // Connecting rooms
+                'connecting.label': 'Connecting Rooms',
+                'connecting.desc': 'Price two adjacent cabins with a shared door',
+                'connecting.pairsHeader': 'Connecting Room Options',
+                // Room assignment
+                'room.room1': 'Room 1', 'room.room2': 'Room 2',
+                // Guest
+                'guest.adults': 'Adults (21+)', 'guest.children': 'Children (0-20)',
+                'guest.total': 'Total: {count} {guestWord}',
+                'guest.selectFamily': 'Select a family group above',
+                'guest.selected': 'Selected:',
+                'guest.adult': 'adult', 'guest.adults_plural': 'adults',
+                'guest.child': 'child', 'guest.children_plural': 'children',
+                'guest.guestSingular': 'guest', 'guest.guestPlural': 'guests',
+                'guest.age': 'age',
+                'guest.guestsDefault': '{count} guests (default)',
+                // Toggle labels
+                'toggle.drink': 'Drink Package', 'toggle.dinner': 'Dinner Package',
+                'toggle.tips': 'When to Pay Tips',
+                'toggle.tipsBefore': 'Before cruise (by 7/23/2026)',
+                'toggle.tipsOnboard': 'Onboard (end of cruise)',
+                'toggle.noEligible': 'No eligible guests',
+                'toggle.freeChildren': 'FREE for children under 13',
+                'toggle.drinkAdult': '{count} {word} x $85.50',
+                'toggle.drinkChild': '{count} child x $37.50 soda',
+                'toggle.dinnerDesc': 'first {count} guests x $20',
+                // FAS Plus
+                'fas.title': 'Free at Sea Plus',
+                'fas.requires': 'Enabling will auto-select Drink & Dinner packages if not already selected',
+                'fas.desc': '+{cost} ({count} {guestWord} x $150) \u2014 Includes prepaid gratuities',
+                'fas.savings': 'Includes ${low}-${high} in prepaid gratuities (varies by cabin)',
+                // FAS Modal
+                'fasModal.title': 'Free at Sea Plus \u2014 Cost/Benefit Analysis',
+                'fasModal.desc': 'Free at Sea Plus is an upgrade package that adds premium perks on top of the standard Free at Sea benefits. It costs <strong>$49.99/person/day</strong>, totaling approximately <strong>$300 for a 3-day cruise (2 guests)</strong>.',
+                'fasModal.onlyGuests12': 'Free at Sea Plus applies ONLY to Guests 1 & 2.',
+                'fasModal.resources': 'Resources:',
+                // Cost-benefit table
+                'cbt.item': 'Item', 'cbt.without': 'Without FAS Plus', 'cbt.with': 'With FAS Plus',
+                'cbt.packageCost': 'Package Cost',
+                'cbt.fasLine': 'Free at Sea Plus ({nights} days x {guests} guests)',
+                'cbt.savingsValue': 'Savings & Value',
+                'cbt.standardCabins': 'Standard cabins ($20/day)', 'cbt.suiteHaven': 'Suite/Haven ($25/day)',
+                'cbt.prepaidGrat': 'Prepaid Gratuities - {label}',
+                'cbt.paySeparately': '$0 (pay separately)', 'cbt.included': '(included)',
+                'cbt.gscBar': 'Unlimited Bar at Great Stirrup Cay',
+                'cbt.gscBarDesc': '$0 (standard packages NOT valid on island after March 2026)',
+                'cbt.starbucks': 'Unlimited Starbucks (1 drink per visit)',
+                'cbt.topShelf': 'Premium Top-Shelf Spirits (Patr\u00F3n A\u00F1ejo, Macallan 12-Year, etc.)',
+                'cbt.energy': 'Energy Drinks & Fresh Juices',
+                'cbt.water': 'Bottled Water (Bars & Restaurants)',
+                'cbt.gscPrices': 'Great Stirrup Cay Drink Prices (If No Plus Package)',
+                'cbt.cocktails': 'Cocktails', 'cbt.cocktailPrice': '$12.50+ each (plus 20% gratuity)',
+                'cbt.beer': 'Beer', 'cbt.beerPrice': '$7.50+ each (plus 20% gratuity)',
+                'cbt.soda': 'Soda', 'cbt.sodaPrice': '$3.50 each (plus 20% gratuity)',
+                'cbt.example': 'Example: 4 cocktails + 4 beers on island',
+                'cbt.examplePrice': '~$96 + tip per couple',
+                'cbt.netCost': 'Net Cost After Tip Savings',
+                // Deposit
+                'deposit.title': 'Deposit Option',
+                'deposit.regularName': 'Regular Deposit',
+                'deposit.regularDesc': 'Suite/Haven: 10% of fare | Others: $100',
+                'deposit.creditName': '$150 Credit Deposit',
+                'deposit.creditDesc': 'Pay $150 deposit, receive $150 credit toward your cruise',
+                // Running totals
+                'totals.packageAdditions': 'Package additions: ',
+                // Cabin card
+                'cabin.perfectFit': 'Perfect fit', 'cabin.goodFit': 'Good fit',
+                'cabin.maxGuests': 'Max {count} {guestWord}',
+                'cabin.sqft': 'sq ft', 'cabin.sqftBalcony': 'sq ft balcony',
+                'cabin.upTo': 'Up to {count}',
+                'cabin.totalFor': 'Total for {names}',
+                'cabin.priceIf': 'Price (if {count} guests)',
+                'cabin.perPerson': '/person', 'cabin.avg': '(avg)',
+                'cabin.tipsOnboard': '+ {amount} tips paid onboard',
+                'cabin.payToday': 'Pay today (deposit)',
+                'cabin.viewBreakdown': 'View Breakdown', 'cabin.hideBreakdown': 'Hide Breakdown',
+                'cabin.compare': 'Compare', 'cabin.selected': 'Selected',
+                'cabin.viewNcl': 'View on NCL',
+                // Room type display names
+                'roomType.Inside': 'Inside', 'roomType.Oceanview': 'Oceanview',
+                'roomType.Balcony': 'Balcony', 'roomType.Club Balcony Suite': 'Club Balcony Suite',
+                'roomType.Suite': 'Suite', 'roomType.The Haven': 'The Haven',
+                // Breakdown
+                'breakdown.promoHalf': '50% OFF', 'breakdown.promoFull': '50% OFF + 3rd/4th FREE',
+                'breakdown.baseFare': 'Base Fare ({count})',
+                'breakdown.oneGuest': '1 guest',
+                'breakdown.nGuests': '{count} guests',
+                'breakdown.taxes': 'Taxes (${rate} x {count})',
+                'breakdown.gratuities': 'Gratuities (${rate}/day x {nights} nights x {count} guests)',
+                'breakdown.drinkPkg': 'Drink Package', 'breakdown.dinnerPkg': 'Dinner Package',
+                'breakdown.fasPlus': 'Free at Sea Plus ($150 x {count} guests)',
+                'breakdown.subtotal': 'Subtotal', 'breakdown.depositCredit': 'Deposit Credit',
+                'breakdown.totalDue': 'Total Due by 7/23/2026',
+                'breakdown.deposit': 'Deposit (pay today)',
+                'breakdown.balance': 'Balance (due 7/23/2026)',
+                'breakdown.gratOnboard': 'Gratuities (pay onboard)',
+                'breakdown.fullTrip': 'Full Trip Cost',
+                'breakdown.perGuest': 'Per-Guest Breakdown',
+                'breakdown.adult': 'Adult', 'breakdown.ageN': 'Age {age}',
+                'breakdown.fare': 'fare', 'breakdown.tax': 'tax',
+                'breakdown.tip': 'tip', 'breakdown.tipOnboard': 'tip (onboard: {amount})',
+                'breakdown.tipIncl': '$0 tip (incl.)', 'breakdown.tipZero': '$0 tip',
+                'breakdown.sodaJuice': 'soda/juice', 'breakdown.drink': 'drink',
+                'breakdown.drinkZero': '$0 drink', 'breakdown.dinner': 'dinner',
+                'breakdown.dinnerZero': '$0 dinner',
+                'breakdown.freeFare': 'FREE fare',
+                'breakdown.freeCruiseFare': 'Cruise Fare', 'breakdown.freeTips': 'Tips',
+                'breakdown.freeDrinks': 'Drinks', 'breakdown.freeDinner': 'Dinner',
+                'breakdown.free': 'FREE {item}',
+                // Comparison
+                'compare.title': 'Side-by-Side Comparison',
+                'compare.cabinSize': 'Cabin Size', 'compare.balcony': 'Balcony',
+                'compare.maxGuests': 'Max Guests', 'compare.perPerson': 'Per Person',
+                'compare.baseFare': 'Base Fare', 'compare.taxes': 'Taxes',
+                'compare.gratuities': 'Gratuities', 'compare.fasPlus': 'Free at Sea Plus',
+                'compare.drinkPkg': 'Drink Package', 'compare.dinnerPkg': 'Dinner Package',
+                'compare.deposit': 'Deposit', 'compare.balanceDue': 'Balance Due',
+                'compare.grandTotal': 'Grand Total',
+                // Comparison tray
+                'tray.text': 'cabins selected for comparison (max 3)',
+                'tray.clearAll': 'Clear All', 'tray.compareNow': 'Compare Now',
+                // Connecting pairs
+                'connectPair.noGuests': 'No guests',
+                'connectPair.assignBoth': 'Assign guests to both rooms',
+                'connectPair.roomMax': 'Room {room}: max {count} guests',
+                'connectPair.room1': 'Room 1', 'connectPair.room2': 'Room 2',
+                'connectPair.combinedTotal': 'Combined Total',
+                'connectPair.deposit': 'Deposit:',
+                'connectPair.max': 'Max {count}',
+                // Grand total float
+                'grandTotal.pricingFor': 'Pricing for:',
+                // Suggestion
+                'suggestion.split': 'With {count} guests, consider splitting into 2 cabins for more options and better prices.',
+                // Child ages
+                'childAge.child': 'Child {n}', 'childAge.age': 'Age:',
+                // Tracker
+                'tracker.cruiseDay': 'Cruise Day',
+                'tracker.cruiseDate': 'November 20, 2026',
+                'tracker.finalPayment': 'Final Payment',
+                'tracker.paymentDate': 'July 23, 2026',
+                'tracker.reunionProgress': 'Reunion Progress',
+                'tracker.reservedFamilies': 'Reserved Families',
+                'tracker.stillDeciding': 'Still Deciding',
+                'tracker.shareHelp': 'Share this page to help them pick a cabin!',
+                'tracker.copyLink': 'Copy Link', 'tracker.whatsapp': 'Share via WhatsApp',
+                'tracker.copied': 'Copied!',
+                'tracker.familiesBooked': '{reserved}/{total} families booked',
+                'tracker.progressFull': 'FULL REUNION! All families are booked!',
+                'tracker.progressAlmost': 'Almost there! Just {count} {familyWord} left',
+                'tracker.progressHalf': 'Over halfway there!',
+                'tracker.progressQuarter': 'Gaining momentum! {count} more to go',
+                'tracker.progressStart': 'The adventure begins! {count} {familyWord} booked',
+                'tracker.familySingular': 'family', 'tracker.familyPlural': 'families',
+                'tracker.familyHas': 'family has', 'tracker.familiesHave': 'families have',
+                // Reserved cards
+                'reserved.cabin': 'Cabin', 'reserved.room': 'Room', 'reserved.price': 'Price',
+                'reserved.deposit': 'Deposit', 'reserved.paid': 'Paid', 'reserved.notPaid': 'Not paid',
+                // Nudge
+                'nudge.btn': 'Nudge', 'nudge.title': 'Send a nudge',
+                'nudge.msg': 'Hey {name}! Have you picked your cabin yet? Check out the options: {url}',
+                // WhatsApp
+                'whatsapp.msg': 'Hey! Pick your cabin for our family cruise! {url}',
+                // Countdown
+                'countdown.paymentDue': 'PAYMENT DUE', 'countdown.bonVoyage': 'BON VOYAGE!',
+                'countdown.days': 'Days', 'countdown.hrs': 'Hrs',
+                'countdown.min': 'Min', 'countdown.sec': 'Sec',
+                // Footer
+                'footer.paymentDue': 'Final Payment Due',
+                'footer.paymentDate': 'July 23, 2026',
+                'footer.note': 'Satizabal Family Cruise 2026 \u00B7 Deposits are refundable if canceled by July 23, 2026',
+                // No results
+                'noResults.text': 'No cabins found for this filter.',
+                'noResults.loadFail': 'Failed to load cabin data. Please refresh the page.',
+                // Room assignment
+                'roomAssign.clickToMove': 'Click a group chip to move it here',
+            },
+            es: {
+                // Hero
+                'hero.cruiseDates': 'Crucero Familiar Satizabal \u00B7 Vie, Nov 20 - Lun, Nov 23, 2026',
+                'hero.itinerary': '3 D\u00EDas Bahamas Ida y Vuelta Miami: Great Stirrup Cay y Nassau',
+                'hero.validity': 'Precios vigentes desde el <strong>1 de febrero de 2026</strong>',
+                // Ports
+                'port.day1': 'Viernes', 'port.day2': 'S\u00E1bado', 'port.day3': 'Domingo', 'port.day4': 'Lunes',
+                'port.time1': 'Embarque 4:00 PM', 'port.time4': 'Desembarque 7:00 AM',
+                // Tabs
+                'tab.selector': 'Selector de Cabinas', 'tab.tracker': 'Seguimiento de Reservas',
+                // Filters
+                'filter.all': 'Todas', 'filter.inside': 'Interior', 'filter.oceanview': 'Vista al Mar',
+                'filter.balcony': 'Balc\u00F3n', 'filter.clubBalcony': 'Balc\u00F3n Club',
+                'filter.suite': 'Suite', 'filter.haven': 'The Haven',
+                // Sort
+                'sort.priceAsc': 'Precio: Menor a Mayor', 'sort.priceDesc': 'Precio: Mayor a Menor',
+                'sort.sqftDesc': 'Pies\u00B2: Mayor a Menor', 'sort.sqftAsc': 'Pies\u00B2: Menor a Mayor',
+                // Family section
+                'family.title': 'Selecciona tu grupo de viaje',
+                // Connecting rooms
+                'connecting.label': 'Cabinas Conectadas',
+                'connecting.desc': 'Precios de dos cabinas adyacentes con puerta compartida',
+                'connecting.pairsHeader': 'Opciones de Cabinas Conectadas',
+                // Room assignment
+                'room.room1': 'Cabina 1', 'room.room2': 'Cabina 2',
+                // Guest
+                'guest.adults': 'Adultos (21+)', 'guest.children': 'Ni\u00F1os (0-20)',
+                'guest.total': 'Total: {count} {guestWord}',
+                'guest.selectFamily': 'Selecciona un grupo familiar arriba',
+                'guest.selected': 'Seleccionados:',
+                'guest.adult': 'adulto', 'guest.adults_plural': 'adultos',
+                'guest.child': 'ni\u00F1o', 'guest.children_plural': 'ni\u00F1os',
+                'guest.guestSingular': 'hu\u00E9sped', 'guest.guestPlural': 'hu\u00E9spedes',
+                'guest.age': 'edad',
+                'guest.guestsDefault': '{count} hu\u00E9spedes (predeterminado)',
+                // Toggle labels
+                'toggle.drink': 'Paquete de Bebidas', 'toggle.dinner': 'Paquete de Cenas',
+                'toggle.tips': 'Cu\u00E1ndo Pagar Propinas',
+                'toggle.tipsBefore': 'Antes del crucero (antes del 23/7/2026)',
+                'toggle.tipsOnboard': 'A bordo (final del crucero)',
+                'toggle.noEligible': 'Sin hu\u00E9spedes elegibles',
+                'toggle.freeChildren': 'GRATIS para ni\u00F1os menores de 13',
+                'toggle.drinkAdult': '{count} {word} x $85.50',
+                'toggle.drinkChild': '{count} ni\u00F1o x $37.50 refresco',
+                'toggle.dinnerDesc': 'primeros {count} hu\u00E9spedes x $20',
+                // FAS Plus
+                'fas.title': 'Free at Sea Plus',
+                'fas.requires': 'Al activar se seleccionar\u00E1n autom\u00E1ticamente los paquetes de Bebidas y Cenas',
+                'fas.desc': '+{cost} ({count} {guestWord} x $150) \u2014 Incluye propinas prepagadas',
+                'fas.savings': 'Incluye ${low}-${high} en propinas prepagadas (var\u00EDa seg\u00FAn cabina)',
+                // FAS Modal
+                'fasModal.title': 'Free at Sea Plus \u2014 An\u00E1lisis Costo/Beneficio',
+                'fasModal.desc': 'Free at Sea Plus es un paquete de mejora que agrega beneficios premium sobre los beneficios est\u00E1ndar de Free at Sea. Cuesta <strong>$49.99/persona/d\u00EDa</strong>, totalizando aproximadamente <strong>$300 para un crucero de 3 d\u00EDas (2 hu\u00E9spedes)</strong>.',
+                'fasModal.onlyGuests12': 'Free at Sea Plus aplica SOLO a los Hu\u00E9spedes 1 y 2.',
+                'fasModal.resources': 'Recursos:',
+                // Cost-benefit table
+                'cbt.item': 'Concepto', 'cbt.without': 'Sin FAS Plus', 'cbt.with': 'Con FAS Plus',
+                'cbt.packageCost': 'Costo del Paquete',
+                'cbt.fasLine': 'Free at Sea Plus ({nights} d\u00EDas x {guests} hu\u00E9spedes)',
+                'cbt.savingsValue': 'Ahorros y Valor',
+                'cbt.standardCabins': 'Cabinas est\u00E1ndar ($20/d\u00EDa)', 'cbt.suiteHaven': 'Suite/Haven ($25/d\u00EDa)',
+                'cbt.prepaidGrat': 'Propinas Prepagadas - {label}',
+                'cbt.paySeparately': '$0 (pagar por separado)', 'cbt.included': '(incluido)',
+                'cbt.gscBar': 'Bar Ilimitado en Great Stirrup Cay',
+                'cbt.gscBarDesc': '$0 (paquetes est\u00E1ndar NO v\u00E1lidos en la isla despu\u00E9s de marzo 2026)',
+                'cbt.starbucks': 'Starbucks Ilimitado (1 bebida por visita)',
+                'cbt.topShelf': 'Licores Premium (Patr\u00F3n A\u00F1ejo, Macallan 12 A\u00F1os, etc.)',
+                'cbt.energy': 'Bebidas Energ\u00E9ticas y Jugos Frescos',
+                'cbt.water': 'Agua Embotellada (Bares y Restaurantes)',
+                'cbt.gscPrices': 'Precios de Bebidas en Great Stirrup Cay (Sin Paquete Plus)',
+                'cbt.cocktails': 'C\u00F3cteles', 'cbt.cocktailPrice': '$12.50+ c/u (m\u00E1s 20% propina)',
+                'cbt.beer': 'Cerveza', 'cbt.beerPrice': '$7.50+ c/u (m\u00E1s 20% propina)',
+                'cbt.soda': 'Refresco', 'cbt.sodaPrice': '$3.50 c/u (m\u00E1s 20% propina)',
+                'cbt.example': 'Ejemplo: 4 c\u00F3cteles + 4 cervezas en la isla',
+                'cbt.examplePrice': '~$96 + propina por pareja',
+                'cbt.netCost': 'Costo Neto Despu\u00E9s de Ahorro en Propinas',
+                // Deposit
+                'deposit.title': 'Opci\u00F3n de Dep\u00F3sito',
+                'deposit.regularName': 'Dep\u00F3sito Regular',
+                'deposit.regularDesc': 'Suite/Haven: 10% de tarifa | Otros: $100',
+                'deposit.creditName': 'Dep\u00F3sito con Cr\u00E9dito de $150',
+                'deposit.creditDesc': 'Paga $150 de dep\u00F3sito, recibe $150 de cr\u00E9dito para tu crucero',
+                // Running totals
+                'totals.packageAdditions': 'Adiciones del paquete: ',
+                // Cabin card
+                'cabin.perfectFit': 'Ajuste perfecto', 'cabin.goodFit': 'Buen ajuste',
+                'cabin.maxGuests': 'M\u00E1x {count} {guestWord}',
+                'cabin.sqft': 'pies\u00B2', 'cabin.sqftBalcony': 'pies\u00B2 balc\u00F3n',
+                'cabin.upTo': 'Hasta {count}',
+                'cabin.totalFor': 'Total para {names}',
+                'cabin.priceIf': 'Precio (si {count} hu\u00E9spedes)',
+                'cabin.perPerson': '/persona', 'cabin.avg': '(prom)',
+                'cabin.tipsOnboard': '+ {amount} propinas a bordo',
+                'cabin.payToday': 'Pagar hoy (dep\u00F3sito)',
+                'cabin.viewBreakdown': 'Ver Desglose', 'cabin.hideBreakdown': 'Ocultar Desglose',
+                'cabin.compare': 'Comparar', 'cabin.selected': 'Seleccionado',
+                'cabin.viewNcl': 'Ver en NCL',
+                // Room type display names
+                'roomType.Inside': 'Interior', 'roomType.Oceanview': 'Vista al Mar',
+                'roomType.Balcony': 'Balc\u00F3n', 'roomType.Club Balcony Suite': 'Suite Balc\u00F3n Club',
+                'roomType.Suite': 'Suite', 'roomType.The Haven': 'The Haven',
+                // Breakdown
+                'breakdown.promoHalf': '50% DESC', 'breakdown.promoFull': '50% DESC + 3ro/4to GRATIS',
+                'breakdown.baseFare': 'Tarifa Base ({count})',
+                'breakdown.oneGuest': '1 hu\u00E9sped',
+                'breakdown.nGuests': '{count} hu\u00E9spedes',
+                'breakdown.taxes': 'Impuestos (${rate} x {count})',
+                'breakdown.gratuities': 'Propinas (${rate}/d\u00EDa x {nights} noches x {count} hu\u00E9spedes)',
+                'breakdown.drinkPkg': 'Paquete de Bebidas', 'breakdown.dinnerPkg': 'Paquete de Cenas',
+                'breakdown.fasPlus': 'Free at Sea Plus ($150 x {count} hu\u00E9spedes)',
+                'breakdown.subtotal': 'Subtotal', 'breakdown.depositCredit': 'Cr\u00E9dito de Dep\u00F3sito',
+                'breakdown.totalDue': 'Total a Pagar antes del 23/7/2026',
+                'breakdown.deposit': 'Dep\u00F3sito (pagar hoy)',
+                'breakdown.balance': 'Saldo (vence 23/7/2026)',
+                'breakdown.gratOnboard': 'Propinas (pagar a bordo)',
+                'breakdown.fullTrip': 'Costo Total del Viaje',
+                'breakdown.perGuest': 'Desglose por Hu\u00E9sped',
+                'breakdown.adult': 'Adulto', 'breakdown.ageN': 'Edad {age}',
+                'breakdown.fare': 'tarifa', 'breakdown.tax': 'impuesto',
+                'breakdown.tip': 'propina', 'breakdown.tipOnboard': 'propina (a bordo: {amount})',
+                'breakdown.tipIncl': '$0 propina (incl.)', 'breakdown.tipZero': '$0 propina',
+                'breakdown.sodaJuice': 'refresco/jugo', 'breakdown.drink': 'bebida',
+                'breakdown.drinkZero': '$0 bebida', 'breakdown.dinner': 'cena',
+                'breakdown.dinnerZero': '$0 cena',
+                'breakdown.freeFare': 'GRATIS tarifa',
+                'breakdown.freeCruiseFare': 'Tarifa Crucero', 'breakdown.freeTips': 'Propinas',
+                'breakdown.freeDrinks': 'Bebidas', 'breakdown.freeDinner': 'Cena',
+                'breakdown.free': 'GRATIS {item}',
+                // Comparison
+                'compare.title': 'Comparaci\u00F3n Lado a Lado',
+                'compare.cabinSize': 'Tama\u00F1o de Cabina', 'compare.balcony': 'Balc\u00F3n',
+                'compare.maxGuests': 'M\u00E1x Hu\u00E9spedes', 'compare.perPerson': 'Por Persona',
+                'compare.baseFare': 'Tarifa Base', 'compare.taxes': 'Impuestos',
+                'compare.gratuities': 'Propinas', 'compare.fasPlus': 'Free at Sea Plus',
+                'compare.drinkPkg': 'Paquete de Bebidas', 'compare.dinnerPkg': 'Paquete de Cenas',
+                'compare.deposit': 'Dep\u00F3sito', 'compare.balanceDue': 'Saldo Pendiente',
+                'compare.grandTotal': 'Total General',
+                // Comparison tray
+                'tray.text': 'cabinas seleccionadas para comparar (m\u00E1x 3)',
+                'tray.clearAll': 'Limpiar Todo', 'tray.compareNow': 'Comparar Ahora',
+                // Connecting pairs
+                'connectPair.noGuests': 'Sin hu\u00E9spedes',
+                'connectPair.assignBoth': 'Asigna hu\u00E9spedes a ambas cabinas',
+                'connectPair.roomMax': 'Cabina {room}: m\u00E1x {count} hu\u00E9spedes',
+                'connectPair.room1': 'Cabina 1', 'connectPair.room2': 'Cabina 2',
+                'connectPair.combinedTotal': 'Total Combinado',
+                'connectPair.deposit': 'Dep\u00F3sito:',
+                'connectPair.max': 'M\u00E1x {count}',
+                // Grand total float
+                'grandTotal.pricingFor': 'Precio para:',
+                // Suggestion
+                'suggestion.split': 'Con {count} hu\u00E9spedes, considera dividir en 2 cabinas para m\u00E1s opciones y mejores precios.',
+                // Child ages
+                'childAge.child': 'Ni\u00F1o {n}', 'childAge.age': 'Edad:',
+                // Tracker
+                'tracker.cruiseDay': 'D\u00EDa del Crucero',
+                'tracker.cruiseDate': '20 de noviembre de 2026',
+                'tracker.finalPayment': 'Pago Final',
+                'tracker.paymentDate': '23 de julio de 2026',
+                'tracker.reunionProgress': 'Progreso de la Reuni\u00F3n',
+                'tracker.reservedFamilies': 'Familias Reservadas',
+                'tracker.stillDeciding': 'A\u00FAn Decidiendo',
+                'tracker.shareHelp': '\u00A1Comparte esta p\u00E1gina para ayudarles a elegir cabina!',
+                'tracker.copyLink': 'Copiar Enlace', 'tracker.whatsapp': 'Compartir por WhatsApp',
+                'tracker.copied': '\u00A1Copiado!',
+                'tracker.familiesBooked': '{reserved}/{total} familias reservadas',
+                'tracker.progressFull': '\u00A1REUNI\u00D3N COMPLETA! \u00A1Todas las familias reservaron!',
+                'tracker.progressAlmost': '\u00A1Casi listo! Solo faltan {count} {familyWord}',
+                'tracker.progressHalf': '\u00A1M\u00E1s de la mitad!',
+                'tracker.progressQuarter': '\u00A1Ganando impulso! Faltan {count} m\u00E1s',
+                'tracker.progressStart': '\u00A1La aventura comienza! {count} {familyWord} reservaron',
+                'tracker.familySingular': 'familia', 'tracker.familyPlural': 'familias',
+                'tracker.familyHas': 'familia ha', 'tracker.familiesHave': 'familias han',
+                // Reserved cards
+                'reserved.cabin': 'Cabina', 'reserved.room': 'Cabina', 'reserved.price': 'Precio',
+                'reserved.deposit': 'Dep\u00F3sito', 'reserved.paid': 'Pagado', 'reserved.notPaid': 'No pagado',
+                // Nudge
+                'nudge.btn': 'Recordar', 'nudge.title': 'Enviar recordatorio',
+                'nudge.msg': '\u00A1Hola {name}! \u00BFYa elegiste tu cabina? Mira las opciones: {url}',
+                // WhatsApp
+                'whatsapp.msg': '\u00A1Hola! \u00A1Elige tu cabina para nuestro crucero familiar! {url}',
+                // Countdown
+                'countdown.paymentDue': 'PAGO VENCIDO', 'countdown.bonVoyage': '\u00A1BUEN VIAJE!',
+                'countdown.days': 'D\u00EDas', 'countdown.hrs': 'Hrs',
+                'countdown.min': 'Min', 'countdown.sec': 'Seg',
+                // Footer
+                'footer.paymentDue': 'Fecha L\u00EDmite de Pago',
+                'footer.paymentDate': '23 de julio de 2026',
+                'footer.note': 'Crucero Familiar Satizabal 2026 \u00B7 Los dep\u00F3sitos son reembolsables si se cancela antes del 23 de julio de 2026',
+                // No results
+                'noResults.text': 'No se encontraron cabinas para este filtro.',
+                'noResults.loadFail': 'Error al cargar datos de cabinas. Por favor recarga la p\u00E1gina.',
+                // Room assignment
+                'roomAssign.clickToMove': 'Haz clic en un grupo para moverlo aqu\u00ED',
+            }
+        };
+
+        function t(key, params) {
+            let str = (TRANSLATIONS[AppState.lang] && TRANSLATIONS[AppState.lang][key])
+                    || TRANSLATIONS.en[key] || key;
+            if (params) {
+                Object.keys(params).forEach(k => {
+                    str = str.replace(new RegExp('\\{' + k + '\\}', 'g'), params[k]);
+                });
+            }
+            return str;
+        }
+
+        function translatePage() {
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                const translated = t(key);
+                if (el.hasAttribute('data-i18n-html')) {
+                    el.innerHTML = translated;
+                } else {
+                    el.textContent = translated;
+                }
+            });
+        }
+
+        function switchLanguage(lang) {
+            AppState.lang = lang;
+            localStorage.setItem('cruise-lang', lang);
+            document.documentElement.lang = lang;
+            // Update toggle buttons
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                btn.classList.toggle('active', btn.dataset.lang === lang);
+            });
+            // Translate static HTML
+            translatePage();
+            // Update tips toggle desc (dynamic, not data-i18n)
+            document.getElementById('tipsToggleDesc').textContent = AppState.tipsBeforeCruise
+                ? t('toggle.tipsBefore') : t('toggle.tipsOnboard');
+            // Re-render all dynamic content
+            Renderer.renderGrid();
+            Renderer.updateToggleLabels();
+            Renderer.updateRunningTotals();
+            Renderer.renderConnectingPairsGrid();
+            Renderer.updateComparisonTray();
+            App.updateGuestSummary();
+            App.updateGuestDisplay();
+            App.updateSuggestionBanner();
+            App.updateGrandTotalFloat();
+            App.updateFasPlusDisplay();
+            App.renderTracker();
+        }
 
         // CSV Parser for new format
         const CSVParser = {
@@ -3192,6 +3673,7 @@
 
         // ==================== APP STATE ====================
         const AppState = {
+            lang: 'en',
             currentFilter: 'All',
             currentSort: 'price-asc',
             includeDrinks: false,
@@ -3285,39 +3767,39 @@
                 let fitBadge = '';
                 if (totalGuests > 0 && !isDimmed) {
                     if (cabin.maxGuests === totalGuests) {
-                        fitBadge = '<span class="fit-badge perfect">Perfect fit</span>';
+                        fitBadge = `<span class="fit-badge perfect">${t('cabin.perfectFit')}</span>`;
                     } else if (cabin.maxGuests >= totalGuests && cabin.maxGuests <= totalGuests + 2) {
-                        fitBadge = '<span class="fit-badge good">Good fit</span>';
+                        fitBadge = `<span class="fit-badge good">${t('cabin.goodFit')}</span>`;
                     }
                 }
 
                 const namesForLabel = AppState.guestNames.length > 0
                     ? AppState.guestNames.slice(0, 3).join(', ') + (AppState.guestNames.length > 3 ? ' +' + (AppState.guestNames.length - 3) : '')
-                    : (totalGuests > 0 ? totalGuests + ' guest' + (totalGuests !== 1 ? 's' : '') : '2 guests (default)');
+                    : (totalGuests > 0 ? totalGuests + ' ' + (totalGuests !== 1 ? t('guest.guestPlural') : t('guest.guestSingular')) : t('guest.guestsDefault', {count: 2}));
 
-                const avgSuffix = pricing.allSameCost ? '' : ' (avg)';
-                const perPersonText = `<span class="original-price">${PriceCalculator.formatCurrency(pricing.originalPerPersonAvg)}</span>${PriceCalculator.formatCurrency(pricing.perPersonAvg)}/person${avgSuffix}`;
+                const avgSuffix = pricing.allSameCost ? '' : ' ' + t('cabin.avg');
+                const perPersonText = `<span class="original-price">${PriceCalculator.formatCurrency(pricing.originalPerPersonAvg)}</span>${PriceCalculator.formatCurrency(pricing.perPersonAvg)}${t('cabin.perPerson')}${avgSuffix}`;
 
                 return `
                     <article class="cabin-card ${isSelected ? 'selected' : ''} ${isDimmed ? 'dimmed' : ''}" data-id="${cabin.id}">
                         ${fitBadge}
-                        ${isDimmed ? `<div class="max-guests-note">Max ${cabin.maxGuests} guest${cabin.maxGuests !== 1 ? 's' : ''}</div>` : ''}
+                        ${isDimmed ? `<div class="max-guests-note">${t('cabin.maxGuests', {count: cabin.maxGuests, guestWord: cabin.maxGuests !== 1 ? t('guest.guestPlural') : t('guest.guestSingular')})}</div>` : ''}
                         <div class="cabin-header">
-                            <span class="cabin-type-badge badge-${badgeClass}">${cabin.roomType}</span>
+                            <span class="cabin-type-badge badge-${badgeClass}">${t('roomType.' + cabin.roomType)}</span>
                             <h3 class="cabin-name">${cabin.name}</h3>
                             <div class="cabin-specs">
                                 <span class="cabin-spec">
                                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                         <rect x="3" y="3" width="18" height="18" rx="2"/>
                                     </svg>
-                                    ${cabin.sqft} sq ft
+                                    ${cabin.sqft} ${t('cabin.sqft')}
                                 </span>
                                 ${cabin.balconySqft ? `
                                     <span class="cabin-spec">
                                         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                             <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
                                         </svg>
-                                        ${cabin.balconySqft} sq ft balcony
+                                        ${cabin.balconySqft} ${t('cabin.sqftBalcony')}
                                     </span>
                                 ` : ''}
                                 <span class="cabin-spec">
@@ -3327,32 +3809,32 @@
                                         <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
                                         <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
                                     </svg>
-                                    Up to ${cabin.maxGuests}
+                                    ${t('cabin.upTo', {count: cabin.maxGuests})}
                                 </span>
                             </div>
                         </div>
 
                         <div class="cabin-body">
                             <div class="price-display">
-                                <div class="price-label">${isDimmed ? 'Price (if ' + cabin.maxGuests + ' guests)' : 'Total for ' + namesForLabel}</div>
+                                <div class="price-label">${isDimmed ? t('cabin.priceIf', {count: cabin.maxGuests}) : t('cabin.totalFor', {names: namesForLabel})}</div>
                                 <div class="price-amount" data-cabin-id="${cabin.id}">${PriceCalculator.formatCurrency(pricing.grandTotal)}</div>
                                 <div class="price-per-person">${perPersonText}</div>
                                 ${!AppState.tipsBeforeCruise && pricing.tipsOnboard > 0 ? `
-                                    <div class="tips-onboard-note">+ ${PriceCalculator.formatCurrency(pricing.tipsOnboard)} tips paid onboard</div>
+                                    <div class="tips-onboard-note">${t('cabin.tipsOnboard', {amount: PriceCalculator.formatCurrency(pricing.tipsOnboard)})}</div>
                                 ` : ''}
                             </div>
 
                             <div class="deposit-info">
-                                <span class="deposit-label">Pay today (deposit)${pricing.depositCredit > 0 ? ' <span class="credit-badge">-$' + pricing.depositCredit + ' credit</span>' : ''}</span>
+                                <span class="deposit-label">${t('cabin.payToday')}${pricing.depositCredit > 0 ? ' <span class="credit-badge">-$' + pricing.depositCredit + ' credit</span>' : ''}</span>
                                 <span class="deposit-amount">${PriceCalculator.formatCurrency(pricing.deposit)}</span>
                             </div>
 
                             <div class="cabin-actions">
                                 <button class="btn btn-secondary toggle-breakdown" data-id="${cabin.id}">
-                                    ${isBreakdownOpen ? 'Hide' : 'View'} Breakdown
+                                    ${isBreakdownOpen ? t('cabin.hideBreakdown') : t('cabin.viewBreakdown')}
                                 </button>
                                 <button class="btn btn-compare ${isSelected ? 'selected' : ''}" data-id="${cabin.id}">
-                                    ${isSelected ? 'Selected' : 'Compare'}
+                                    ${isSelected ? t('cabin.selected') : t('cabin.compare')}
                                 </button>
                             </div>
 
@@ -3364,7 +3846,7 @@
                         </div>
 
                         <a href="${NCL_LINKS[cabin.roomType]}" target="_blank" rel="noopener" class="ncl-link">
-                            View on NCL &rarr;
+                            ${t('cabin.viewNcl')} &rarr;
                         </a>
                     </article>
                 `;
@@ -3376,17 +3858,18 @@
 
                 // Summary section
                 const hasFreeGuests = pricing.guestDetails.some(g => g.isFreeGuest);
-                const promoLabels = hasFreeGuests ? '50% OFF + 3rd/4th FREE' : '50% OFF';
+                const promoLabels = hasFreeGuests ? t('breakdown.promoFull') : t('breakdown.promoHalf');
                 const fareStrikethrough = hasFreeGuests && pricing.discountedTotalFare !== pricing.totalFare
                     ? `<span class="original-price">${PriceCalculator.formatCurrency(pricing.originalTotalFare)}</span><span class="original-price">${PriceCalculator.formatCurrency(pricing.discountedTotalFare)}</span> ${PriceCalculator.formatCurrency(pricing.totalFare)}`
                     : `<span class="original-price">${PriceCalculator.formatCurrency(pricing.originalTotalFare)}</span> ${PriceCalculator.formatCurrency(pricing.totalFare)}`;
+                const guestCountLabel = cabin.isSolo ? t('breakdown.oneGuest') : t('breakdown.nGuests', {count: pricing.effectiveGuests});
                 html += `
                     <div class="breakdown-row">
-                        <span class="breakdown-label">Base Fare (${cabin.isSolo ? '1 guest' : pricing.effectiveGuests + ' guests'}) <span style="color:var(--teal);font-weight:600;font-size:0.75rem;">${promoLabels}</span></span>
+                        <span class="breakdown-label">${t('breakdown.baseFare', {count: guestCountLabel})} <span style="color:var(--teal);font-weight:600;font-size:0.75rem;">${promoLabels}</span></span>
                         <span class="breakdown-value">${fareStrikethrough}</span>
                     </div>
                     <div class="breakdown-row">
-                        <span class="breakdown-label">Taxes ($${TAX_PER_PERSON} x ${pricing.effectiveGuests})</span>
+                        <span class="breakdown-label">${t('breakdown.taxes', {rate: TAX_PER_PERSON, count: pricing.effectiveGuests})}</span>
                         <span class="breakdown-value">${PriceCalculator.formatCurrency(pricing.taxes)}</span>
                     </div>
                 `;
@@ -3394,7 +3877,7 @@
                 if (AppState.tipsBeforeCruise) {
                     html += `
                         <div class="breakdown-row">
-                            <span class="breakdown-label">Gratuities ($${tipRate}/day x ${CRUISE_NIGHTS} nights x ${pricing.guestDetails.filter(g => g.tip > 0).length} guests)</span>
+                            <span class="breakdown-label">${t('breakdown.gratuities', {rate: tipRate, nights: CRUISE_NIGHTS, count: pricing.guestDetails.filter(g => g.tip > 0).length})}</span>
                             <span class="breakdown-value">${PriceCalculator.formatCurrency(pricing.tips)}</span>
                         </div>
                     `;
@@ -3403,7 +3886,7 @@
                 if (AppState.includeDrinks) {
                     html += `
                         <div class="breakdown-row">
-                            <span class="breakdown-label">Drink Package</span>
+                            <span class="breakdown-label">${t('breakdown.drinkPkg')}</span>
                             <span class="breakdown-value">${PriceCalculator.formatCurrency(pricing.drinks)}</span>
                         </div>
                     `;
@@ -3412,7 +3895,7 @@
                 if (AppState.includeDinner) {
                     html += `
                         <div class="breakdown-row">
-                            <span class="breakdown-label">Dinner Package</span>
+                            <span class="breakdown-label">${t('breakdown.dinnerPkg')}</span>
                             <span class="breakdown-value">${PriceCalculator.formatCurrency(pricing.dinner)}</span>
                         </div>
                     `;
@@ -3421,7 +3904,7 @@
                 if (pricing.fasPlusCost > 0) {
                     html += `
                         <div class="breakdown-row">
-                            <span class="breakdown-label">Free at Sea Plus ($150 x ${pricing.guestDetails.filter(g => g.fasPlusFee > 0).length} guests)</span>
+                            <span class="breakdown-label">${t('breakdown.fasPlus', {count: pricing.guestDetails.filter(g => g.fasPlusFee > 0).length})}</span>
                             <span class="breakdown-value">${PriceCalculator.formatCurrency(pricing.fasPlusCost)}</span>
                         </div>
                     `;
@@ -3430,11 +3913,11 @@
                 if (pricing.depositCredit > 0) {
                     html += `
                         <div class="breakdown-row">
-                            <span class="breakdown-label">Subtotal</span>
+                            <span class="breakdown-label">${t('breakdown.subtotal')}</span>
                             <span class="breakdown-value">${PriceCalculator.formatCurrency(pricing.grandTotalBeforeCredit)}</span>
                         </div>
                         <div class="breakdown-row" style="color: var(--teal);">
-                            <span class="breakdown-label">Deposit Credit</span>
+                            <span class="breakdown-label">${t('breakdown.depositCredit')}</span>
                             <span class="breakdown-value">-${PriceCalculator.formatCurrency(pricing.depositCredit)}</span>
                         </div>
                     `;
@@ -3442,15 +3925,15 @@
 
                 html += `
                     <div class="breakdown-row total">
-                        <span class="breakdown-label">Total Due by 7/23/2026</span>
+                        <span class="breakdown-label">${t('breakdown.totalDue')}</span>
                         <span class="breakdown-value">${PriceCalculator.formatCurrency(pricing.grandTotal)}</span>
                     </div>
                     <div class="breakdown-row">
-                        <span class="breakdown-label">Deposit (pay today)</span>
+                        <span class="breakdown-label">${t('breakdown.deposit')}</span>
                         <span class="breakdown-value">${PriceCalculator.formatCurrency(pricing.deposit)}</span>
                     </div>
                     <div class="breakdown-row">
-                        <span class="breakdown-label">Balance (due 7/23/2026)</span>
+                        <span class="breakdown-label">${t('breakdown.balance')}</span>
                         <span class="breakdown-value">${PriceCalculator.formatCurrency(pricing.balance)}</span>
                     </div>
                 `;
@@ -3458,72 +3941,77 @@
                 if (!AppState.tipsBeforeCruise && pricing.tipsOnboard > 0) {
                     html += `
                         <div class="breakdown-row tips-onboard">
-                            <span class="breakdown-label">Gratuities (pay onboard)</span>
+                            <span class="breakdown-label">${t('breakdown.gratOnboard')}</span>
                             <span class="breakdown-value">${PriceCalculator.formatCurrency(pricing.tipsOnboard)}</span>
                         </div>
                         <div class="breakdown-row">
-                            <span class="breakdown-label">Full Trip Cost</span>
+                            <span class="breakdown-label">${t('breakdown.fullTrip')}</span>
                             <span class="breakdown-value">${PriceCalculator.formatCurrency(pricing.fullTripCost)}</span>
                         </div>
                     `;
                 }
 
                 // Per-guest breakdown
-                html += `<div class="breakdown-section-header">Per-Guest Breakdown</div>`;
+                html += `<div class="breakdown-section-header">${t('breakdown.perGuest')}</div>`;
 
                 pricing.guestDetails.forEach(gd => {
                     const items = [];
                     if (gd.isFreeGuest) {
-                        items.push(`<span class="original-price">${PriceCalculator.formatCurrency(gd.originalFare)}</span><span class="original-price">${PriceCalculator.formatCurrency(gd.discountedFareBeforeFree)}</span>FREE fare`);
+                        items.push(`<span class="original-price">${PriceCalculator.formatCurrency(gd.originalFare)}</span><span class="original-price">${PriceCalculator.formatCurrency(gd.discountedFareBeforeFree)}</span>${t('breakdown.freeFare')}`);
                     } else {
-                        items.push(`<span class="original-price">${PriceCalculator.formatCurrency(gd.originalFare)}</span>${PriceCalculator.formatCurrency(gd.fare)} fare`);
+                        items.push(`<span class="original-price">${PriceCalculator.formatCurrency(gd.originalFare)}</span>${PriceCalculator.formatCurrency(gd.fare)} ${t('breakdown.fare')}`);
                     }
-                    items.push(`${PriceCalculator.formatCurrency(gd.tax)} tax`);
+                    items.push(`${PriceCalculator.formatCurrency(gd.tax)} ${t('breakdown.tax')}`);
 
                     if (gd.fasPlusFee > 0) {
                         items.push(`${PriceCalculator.formatCurrency(gd.fasPlusFee)} FAS+`);
-                        items.push(`$0 tip (incl.)`);
+                        items.push(t('breakdown.tipIncl'));
                     } else if (gd.tip > 0) {
-                        items.push(`${PriceCalculator.formatCurrency(AppState.tipsBeforeCruise ? gd.tip : 0)} tip${!AppState.tipsBeforeCruise ? ' (onboard: ' + PriceCalculator.formatCurrency(gd.tip) + ')' : ''}`);
+                        if (!AppState.tipsBeforeCruise) {
+                            items.push(`${PriceCalculator.formatCurrency(0)} ${t('breakdown.tipOnboard', {amount: PriceCalculator.formatCurrency(gd.tip)})}`);
+                        } else {
+                            items.push(`${PriceCalculator.formatCurrency(gd.tip)} ${t('breakdown.tip')}`);
+                        }
                     } else {
-                        items.push(`$0 tip`);
+                        items.push(t('breakdown.tipZero'));
                     }
 
                     if (AppState.includeDrinks) {
                         if (gd.drink > 0) {
                             if (gd.guest.age < 21 && gd.position <= 2) {
-                                items.push(`${PriceCalculator.formatCurrency(gd.drink)} soda/juice`);
+                                items.push(`${PriceCalculator.formatCurrency(gd.drink)} ${t('breakdown.sodaJuice')}`);
                             } else {
-                                items.push(`${PriceCalculator.formatCurrency(gd.drink)} drink`);
+                                items.push(`${PriceCalculator.formatCurrency(gd.drink)} ${t('breakdown.drink')}`);
                             }
                         } else {
-                            items.push(`$0 drink`);
+                            items.push(t('breakdown.drinkZero'));
                         }
                     }
 
                     if (AppState.includeDinner) {
                         if (gd.position <= 2) {
                             if (gd.dinner > 0) {
-                                items.push(`${PriceCalculator.formatCurrency(gd.dinner)} dinner`);
+                                items.push(`${PriceCalculator.formatCurrency(gd.dinner)} ${t('breakdown.dinner')}`);
                             } else {
-                                items.push(`$0 dinner`);
+                                items.push(t('breakdown.dinnerZero'));
                             }
                         }
                     }
 
                     // Build free tags
                     const freeTags = [];
-                    if (gd.isFreeGuest) freeTags.push('Cruise Fare');
-                    if (gd.tip === 0 && gd.guest.age < 3) freeTags.push('Tips');
-                    if (AppState.includeDrinks && gd.drink === 0 && gd.position > 2 && gd.guest.age < 21) freeTags.push('Drinks');
-                    if (AppState.includeDinner && gd.dinner === 0 && gd.position <= 2 && gd.guest.age < 13) freeTags.push('Dinner');
+                    if (gd.isFreeGuest) freeTags.push(t('breakdown.freeCruiseFare'));
+                    if (gd.tip === 0 && gd.guest.age < 3) freeTags.push(t('breakdown.freeTips'));
+                    if (AppState.includeDrinks && gd.drink === 0 && gd.position > 2 && gd.guest.age < 21) freeTags.push(t('breakdown.freeDrinks'));
+                    if (AppState.includeDinner && gd.dinner === 0 && gd.position <= 2 && gd.guest.age < 13) freeTags.push(t('breakdown.freeDinner'));
 
-                    const freeTagsHtml = freeTags.map(t => `<span class="free-tag">FREE ${t}</span>`).join(' ');
+                    const freeTagsHtml = freeTags.map(tag => `<span class="free-tag">${t('breakdown.free', {item: tag})}</span>`).join(' ');
 
+                    const guestTypeLabel = gd.guest.type === 'adult' ? t('breakdown.adult') : t('breakdown.ageN', {age: gd.guest.age});
                     html += `
                         <div class="guest-breakdown-row">
                             <div>
-                                <div class="guest-breakdown-label">${gd.guest.name || 'Guest ' + gd.position} (${gd.guest.type === 'adult' ? 'Adult' : 'Age ' + gd.guest.age}) ${freeTagsHtml}</div>
+                                <div class="guest-breakdown-label">${gd.guest.name || 'Guest ' + gd.position} (${guestTypeLabel}) ${freeTagsHtml}</div>
                                 <div class="guest-breakdown-detail">${items.join(' + ')}</div>
                             </div>
                             <div class="guest-breakdown-value">${PriceCalculator.formatCurrency(gd.total)}</div>
@@ -3568,7 +4056,7 @@
                     grid.innerHTML = `
                         <div class="no-results">
                             <div class="no-results-icon">&#128674;</div>
-                            <p>No cabins found for this filter.</p>
+                            <p>${t('noResults.text')}</p>
                         </div>
                     `;
                     return;
@@ -3601,16 +4089,16 @@
 
                 if (adultsCount > 0) {
                     drinkTotal += adultsCount * 85.50;
-                    drinkParts.push(`${adultsCount} adult${adultsCount > 1 ? 's' : ''} x $85.50`);
+                    drinkParts.push(t('toggle.drinkAdult', {count: adultsCount, word: adultsCount > 1 ? t('guest.adults_plural') : t('guest.adult')}));
                 }
                 if (under21Pos1or2 > 0) {
                     drinkTotal += under21Pos1or2 * 37.50;
-                    drinkParts.push(`${under21Pos1or2} child x $37.50 soda`);
+                    drinkParts.push(t('toggle.drinkChild', {count: under21Pos1or2}));
                 }
 
                 document.getElementById('drinkToggleDesc').textContent = drinkParts.length > 0
                     ? `+${PriceCalculator.formatCurrency(drinkTotal)} (${drinkParts.join(', ')})`
-                    : 'No eligible guests';
+                    : t('toggle.noEligible');
 
                 // Dinner toggle
                 const dinnerEligible = Math.min(totalGuests, 2);
@@ -3621,12 +4109,11 @@
                 });
                 if (dinnerTotal > 0) {
                     document.getElementById('dinnerToggleDesc').textContent =
-                        `+${PriceCalculator.formatCurrency(dinnerTotal)} (first ${dinnerEligible} guests x $20)`;
+                        `+${PriceCalculator.formatCurrency(dinnerTotal)} (${t('toggle.dinnerDesc', {count: dinnerEligible})})`;
                 } else if (dinnerEligible > 0) {
-                    document.getElementById('dinnerToggleDesc').textContent =
-                        `FREE for children under 13`;
+                    document.getElementById('dinnerToggleDesc').textContent = t('toggle.freeChildren');
                 } else {
-                    document.getElementById('dinnerToggleDesc').textContent = 'No eligible guests';
+                    document.getElementById('dinnerToggleDesc').textContent = t('toggle.noEligible');
                 }
             },
 
@@ -3689,79 +4176,79 @@
 
                     const perPersonText = pricing.allSameCost
                         ? PriceCalculator.formatCurrency(pricing.perPersonAvg)
-                        : `${PriceCalculator.formatCurrency(pricing.perPersonAvg)} (avg)`;
+                        : `${PriceCalculator.formatCurrency(pricing.perPersonAvg)} ${t('cabin.avg')}`;
 
                     return `
                         <div class="comparison-column">
                             <div class="comparison-cabin-header">
-                                <span class="cabin-type-badge badge-${badgeClass}">${cabin.roomType}</span>
+                                <span class="cabin-type-badge badge-${badgeClass}">${t('roomType.' + cabin.roomType)}</span>
                                 <div class="comparison-cabin-name">${cabin.name}</div>
                             </div>
                             <div class="comparison-cabin-body">
                                 <div class="comparison-row">
-                                    <span class="comparison-label">Cabin Size</span>
-                                    <span class="comparison-value">${cabin.sqft} sq ft</span>
+                                    <span class="comparison-label">${t('compare.cabinSize')}</span>
+                                    <span class="comparison-value">${cabin.sqft} ${t('cabin.sqft')}</span>
                                 </div>
                                 ${cabin.balconySqft ? `
                                     <div class="comparison-row">
-                                        <span class="comparison-label">Balcony</span>
-                                        <span class="comparison-value">${cabin.balconySqft} sq ft</span>
+                                        <span class="comparison-label">${t('compare.balcony')}</span>
+                                        <span class="comparison-value">${cabin.balconySqft} ${t('cabin.sqft')}</span>
                                     </div>
                                 ` : `
                                     <div class="comparison-row">
-                                        <span class="comparison-label">Balcony</span>
+                                        <span class="comparison-label">${t('compare.balcony')}</span>
                                         <span class="comparison-value">-</span>
                                     </div>
                                 `}
                                 <div class="comparison-row">
-                                    <span class="comparison-label">Max Guests</span>
+                                    <span class="comparison-label">${t('compare.maxGuests')}</span>
                                     <span class="comparison-value">${cabin.maxGuests}</span>
                                 </div>
                                 <div class="comparison-row">
-                                    <span class="comparison-label">Per Person</span>
+                                    <span class="comparison-label">${t('compare.perPerson')}</span>
                                     <span class="comparison-value">${perPersonText}</span>
                                 </div>
                                 <div class="comparison-row highlight">
-                                    <span class="comparison-label">Base Fare</span>
+                                    <span class="comparison-label">${t('compare.baseFare')}</span>
                                     <span class="comparison-value">${PriceCalculator.formatCurrency(pricing.totalFare)}</span>
                                 </div>
                                 <div class="comparison-row">
-                                    <span class="comparison-label">Taxes</span>
+                                    <span class="comparison-label">${t('compare.taxes')}</span>
                                     <span class="comparison-value">${PriceCalculator.formatCurrency(pricing.taxes)}</span>
                                 </div>
                                 <div class="comparison-row">
-                                    <span class="comparison-label">Gratuities</span>
+                                    <span class="comparison-label">${t('compare.gratuities')}</span>
                                     <span class="comparison-value">${PriceCalculator.formatCurrency(pricing.tips)}</span>
                                 </div>
                                 ${pricing.fasPlusCost > 0 ? `
                                     <div class="comparison-row">
-                                        <span class="comparison-label">Free at Sea Plus</span>
+                                        <span class="comparison-label">${t('compare.fasPlus')}</span>
                                         <span class="comparison-value">${PriceCalculator.formatCurrency(pricing.fasPlusCost)}</span>
                                     </div>
                                 ` : ''}
                                 ${AppState.includeDrinks ? `
                                     <div class="comparison-row">
-                                        <span class="comparison-label">Drink Package</span>
+                                        <span class="comparison-label">${t('compare.drinkPkg')}</span>
                                         <span class="comparison-value">${PriceCalculator.formatCurrency(pricing.drinks)}</span>
                                     </div>
                                 ` : ''}
                                 ${AppState.includeDinner ? `
                                     <div class="comparison-row">
-                                        <span class="comparison-label">Dinner Package</span>
+                                        <span class="comparison-label">${t('compare.dinnerPkg')}</span>
                                         <span class="comparison-value">${PriceCalculator.formatCurrency(pricing.dinner)}</span>
                                     </div>
                                 ` : ''}
                                 <div class="comparison-row highlight">
-                                    <span class="comparison-label">Deposit${pricing.depositCredit > 0 ? ' <span class="credit-badge">-$' + pricing.depositCredit + ' credit</span>' : ''}</span>
+                                    <span class="comparison-label">${t('compare.deposit')}${pricing.depositCredit > 0 ? ' <span class="credit-badge">-$' + pricing.depositCredit + ' credit</span>' : ''}</span>
                                     <span class="comparison-value">${PriceCalculator.formatCurrency(pricing.deposit)}</span>
                                 </div>
                                 <div class="comparison-row">
-                                    <span class="comparison-label">Balance Due</span>
+                                    <span class="comparison-label">${t('compare.balanceDue')}</span>
                                     <span class="comparison-value">${PriceCalculator.formatCurrency(pricing.balance)}</span>
                                 </div>
                             </div>
                             <div class="comparison-total">
-                                <div class="comparison-total-label">Grand Total</div>
+                                <div class="comparison-total-label">${t('compare.grandTotal')}</div>
                                 <div class="comparison-total-amount">${PriceCalculator.formatCurrency(pricing.grandTotal)}</div>
                             </div>
                         </div>
@@ -3779,28 +4266,28 @@
 
                 const room1Members = AppState.getMembersForGroups(AppState.connectingRoom1Groups);
                 const room2Members = AppState.getMembersForGroups(AppState.connectingRoom2Groups);
-                const room1Names = room1Members.map(m => m.name).join(', ') || 'No guests';
-                const room2Names = room2Members.map(m => m.name).join(', ') || 'No guests';
+                const room1Names = room1Members.map(m => m.name).join(', ') || t('connectPair.noGuests');
+                const room2Names = room2Members.map(m => m.name).join(', ') || t('connectPair.noGuests');
 
                 let warningHtml = '';
                 if (room1Empty || room2Empty) {
-                    warningHtml = '<div class="max-guests-note">Assign guests to both rooms</div>';
+                    warningHtml = `<div class="max-guests-note">${t('connectPair.assignBoth')}</div>`;
                 } else if (room1.exceedsMax) {
-                    warningHtml = `<div class="max-guests-note">Room 1: max ${pair.room1Cabin.maxGuests} guests</div>`;
+                    warningHtml = `<div class="max-guests-note">${t('connectPair.roomMax', {room: '1', count: pair.room1Cabin.maxGuests})}</div>`;
                 } else if (room2.exceedsMax) {
-                    warningHtml = `<div class="max-guests-note">Room 2: max ${pair.room2Cabin.maxGuests} guests</div>`;
+                    warningHtml = `<div class="max-guests-note">${t('connectPair.roomMax', {room: '2', count: pair.room2Cabin.maxGuests})}</div>`;
                 }
 
-                const room1Specs = `${pair.room1Cabin.sqft} sq ft${pair.room1Cabin.balconySqft ? ', ' + pair.room1Cabin.balconySqft + ' sq ft balcony' : ''} · Max ${pair.room1Cabin.maxGuests}`;
-                const room2Specs = `${pair.room2Cabin.sqft} sq ft${pair.room2Cabin.balconySqft ? ', ' + pair.room2Cabin.balconySqft + ' sq ft balcony' : ''} · Max ${pair.room2Cabin.maxGuests}`;
+                const room1Specs = `${pair.room1Cabin.sqft} ${t('cabin.sqft')}${pair.room1Cabin.balconySqft ? ', ' + pair.room1Cabin.balconySqft + ' ' + t('cabin.sqftBalcony') : ''} \u00B7 ${t('connectPair.max', {count: pair.room1Cabin.maxGuests})}`;
+                const room2Specs = `${pair.room2Cabin.sqft} ${t('cabin.sqft')}${pair.room2Cabin.balconySqft ? ', ' + pair.room2Cabin.balconySqft + ' ' + t('cabin.sqftBalcony') : ''} \u00B7 ${t('connectPair.max', {count: pair.room2Cabin.maxGuests})}`;
 
                 let breakdownHtml = '';
                 if (isOpen && !room1Empty && !room2Empty) {
                     breakdownHtml = `
                         <div class="connecting-breakdown open">
-                            <div class="connecting-breakdown-room-title">Room 1: ${pair.room1Cabin.name}</div>
+                            <div class="connecting-breakdown-room-title">${t('connectPair.room1')}: ${pair.room1Cabin.name}</div>
                             ${Renderer.renderBreakdown(pair.room1Cabin, room1)}
-                            <div class="connecting-breakdown-room-title" style="margin-top:1rem;">Room 2: ${pair.room2Cabin.name}</div>
+                            <div class="connecting-breakdown-room-title" style="margin-top:1rem;">${t('connectPair.room2')}: ${pair.room2Cabin.name}</div>
                             ${Renderer.renderBreakdown(pair.room2Cabin, room2)}
                         </div>
                     `;
@@ -3813,20 +4300,20 @@
                             ${warningHtml}
                             <div class="connecting-card-label">
                                 <span class="connecting-link-icon">&#128279;</span>
-                                ${pair.label}
+                                ${t('roomType.' + pair.room1Cabin.roomType)} + ${t('roomType.' + pair.room2Cabin.roomType)}
                             </div>
 
                             <div class="connecting-room-row">
                                 <div class="connecting-room-info">
-                                    <div class="connecting-room-info-header">Room 1</div>
-                                    <span class="connecting-room-type-badge cabin-type-badge badge-${badgeClass1}">${pair.room1Cabin.roomType}</span>
+                                    <div class="connecting-room-info-header">${t('connectPair.room1')}</div>
+                                    <span class="connecting-room-type-badge cabin-type-badge badge-${badgeClass1}">${t('roomType.' + pair.room1Cabin.roomType)}</span>
                                     <div class="connecting-room-specs">${room1Specs}</div>
                                     <div class="connecting-room-guests">${room1Names}</div>
                                     ${!room1Empty ? `<div class="connecting-room-subtotal">${PriceCalculator.formatCurrency(room1.grandTotal)}</div>` : ''}
                                 </div>
                                 <div class="connecting-room-info">
-                                    <div class="connecting-room-info-header">Room 2</div>
-                                    <span class="connecting-room-type-badge cabin-type-badge badge-${badgeClass2}">${pair.room2Cabin.roomType}</span>
+                                    <div class="connecting-room-info-header">${t('connectPair.room2')}</div>
+                                    <span class="connecting-room-type-badge cabin-type-badge badge-${badgeClass2}">${t('roomType.' + pair.room2Cabin.roomType)}</span>
                                     <div class="connecting-room-specs">${room2Specs}</div>
                                     <div class="connecting-room-guests">${room2Names}</div>
                                     ${!room2Empty ? `<div class="connecting-room-subtotal">${PriceCalculator.formatCurrency(room2.grandTotal)}</div>` : ''}
@@ -3836,8 +4323,8 @@
                             ${!isDimmed ? `
                                 <div class="connecting-combined">
                                     <div>
-                                        <div class="connecting-combined-label">Combined Total</div>
-                                        <div class="connecting-combined-deposit">Deposit: ${PriceCalculator.formatCurrency(combinedDeposit)}</div>
+                                        <div class="connecting-combined-label">${t('connectPair.combinedTotal')}</div>
+                                        <div class="connecting-combined-deposit">${t('connectPair.deposit')} ${PriceCalculator.formatCurrency(combinedDeposit)}</div>
                                     </div>
                                     <div class="connecting-combined-total">${PriceCalculator.formatCurrency(combinedGrandTotal)}</div>
                                 </div>
@@ -3845,7 +4332,7 @@
 
                             <div class="connecting-card-actions">
                                 <button class="btn btn-secondary toggle-connecting-breakdown" data-pair-id="${pair.id}">
-                                    ${isOpen ? 'Hide' : 'View'} Breakdown
+                                    ${isOpen ? t('cabin.hideBreakdown') : t('cabin.viewBreakdown')}
                                 </button>
                             </div>
 
@@ -3911,7 +4398,7 @@
                     document.getElementById('cabinGrid').innerHTML = `
                         <div class="no-results">
                             <div class="no-results-icon">&#9888;</div>
-                            <p>Failed to load cabin data. Please refresh the page.</p>
+                            <p>${t('noResults.loadFail')}</p>
                         </div>
                     `;
                     return;
@@ -3928,6 +4415,12 @@
                 this.updateFasPlusDisplay();
                 this.updateGuestDisplay();
                 Renderer.renderGrid();
+
+                // Restore saved language preference
+                const savedLang = localStorage.getItem('cruise-lang');
+                if (savedLang && savedLang !== 'en') {
+                    switchLanguage(savedLang);
+                }
             },
 
             renderFamilyButtons() {
@@ -4000,11 +4493,11 @@
                 el.style.display = 'block';
                 const adults = members.filter(m => m.age >= 21).length;
                 const children = members.filter(m => m.age < 21);
-                let text = `Selected: <strong>${adults} adult${adults !== 1 ? 's' : ''}</strong>`;
+                let text = `${t('guest.selected')} <strong>${adults} ${adults !== 1 ? t('guest.adults_plural') : t('guest.adult')}</strong>`;
                 if (children.length > 0) {
-                    text += `, <strong>${children.length} child${children.length !== 1 ? 'ren' : ''}</strong> (${children.map(c => 'age ' + c.age).join(', ')})`;
+                    text += `, <strong>${children.length} ${children.length !== 1 ? t('guest.children_plural') : t('guest.child')}</strong> (${children.map(c => t('guest.age') + ' ' + c.age).join(', ')})`;
                 }
-                text += ` = <strong>${members.length} guest${members.length !== 1 ? 's' : ''}</strong>`;
+                text += ` = <strong>${members.length} ${members.length !== 1 ? t('guest.guestPlural') : t('guest.guestSingular')}</strong>`;
                 textEl.innerHTML = text;
                 namesEl.textContent = members.map(m => m.name).join(', ');
             },
@@ -4017,7 +4510,7 @@
                     const maxCabin = Math.max(...CABIN_DATA.map(c => c.maxGuests));
                     if (total > maxCabin || CABIN_DATA.filter(c => c.maxGuests >= total).length <= 3) {
                         banner.style.display = 'block';
-                        text.textContent = `With ${total} guests, consider splitting into 2 cabins for more options and better prices.`;
+                        text.textContent = t('suggestion.split', {count: total});
                         return;
                     }
                 }
@@ -4031,8 +4524,8 @@
                 const total = AppState.adultCount + AppState.childCount;
                 if (total === 0) { el.classList.remove('visible'); return; }
                 const labels = AppState.getSelectedGroupLabels().join(' + ');
-                labelEl.textContent = `Pricing for: ${labels}`;
-                amountEl.textContent = `${total} guest${total !== 1 ? 's' : ''}`;
+                labelEl.textContent = `${t('grandTotal.pricingFor')} ${labels}`;
+                amountEl.textContent = `${total} ${total !== 1 ? t('guest.guestPlural') : t('guest.guestSingular')}`;
                 el.classList.add('visible');
             },
 
@@ -4041,8 +4534,8 @@
                 document.getElementById('adultCount').textContent = AppState.adultCount;
                 document.getElementById('childCount').textContent = AppState.childCount;
                 document.getElementById('guestTotal').textContent = total > 0
-                    ? `Total: ${total} guest${total !== 1 ? 's' : ''}`
-                    : 'Select a family group above';
+                    ? t('guest.total', {count: total, guestWord: total !== 1 ? t('guest.guestPlural') : t('guest.guestSingular')})
+                    : t('guest.selectFamily');
             },
 
             updateFasPlusAvailability() {
@@ -4074,7 +4567,7 @@
                 const fasGuestCount = Math.min(guests.length, 2);
                 const fasCost = fasGuestCount * 150;
 
-                descEl.textContent = `+${PriceCalculator.formatCurrency(fasCost)} (${fasGuestCount} guest${fasGuestCount !== 1 ? 's' : ''} x $150) \u2014 Includes prepaid gratuities`;
+                descEl.textContent = t('fas.desc', {cost: PriceCalculator.formatCurrency(fasCost), count: fasGuestCount, guestWord: fasGuestCount !== 1 ? t('guest.guestPlural') : t('guest.guestSingular')});
 
                 if (AppState.freeAtSeaPlus) {
                     // Calculate tip savings
@@ -4088,7 +4581,7 @@
                     });
                     if (tipSavings > 0) {
                         savingsEl.style.display = 'block';
-                        savingsEl.textContent = `Includes $${tipSavings}-$${Math.round(tipSavings * 75/60)} in prepaid gratuities (varies by cabin)`;
+                        savingsEl.textContent = t('fas.savings', {low: tipSavings, high: Math.round(tipSavings * 75/60)});
                     } else {
                         savingsEl.style.display = 'none';
                     }
@@ -4106,83 +4599,83 @@
                 let html = `
                     <thead>
                         <tr>
-                            <th>Item</th>
-                            <th>Without FAS Plus</th>
-                            <th>With FAS Plus</th>
+                            <th>${t('cbt.item')}</th>
+                            <th>${t('cbt.without')}</th>
+                            <th>${t('cbt.with')}</th>
                         </tr>
                     </thead>
                     <tbody>
-                    <tr><td colspan="3" style="font-weight:600;color:var(--ocean-blue);padding-top:0.5rem;">Package Cost</td></tr>
+                    <tr><td colspan="3" style="font-weight:600;color:var(--ocean-blue);padding-top:0.5rem;">${t('cbt.packageCost')}</td></tr>
                     <tr>
-                        <td>Free at Sea Plus (${CRUISE_NIGHTS} days x ${fasGuestCount} guests)</td>
+                        <td>${t('cbt.fasLine', {nights: CRUISE_NIGHTS, guests: fasGuestCount})}</td>
                         <td>$0</td>
                         <td>+${PriceCalculator.formatCurrency(fasCost)}</td>
                     </tr>
-                    <tr><td colspan="3" style="font-weight:600;color:var(--teal);padding-top:1rem;">Savings &amp; Value</td></tr>
+                    <tr><td colspan="3" style="font-weight:600;color:var(--teal);padding-top:1rem;">${t('cbt.savingsValue')}</td></tr>
                 `;
 
                 // Tip savings per cabin tier
                 const tiers = [
-                    { label: 'Standard cabins ($20/day)', tipPerDay: 20 },
-                    { label: 'Suite/Haven ($25/day)', tipPerDay: 25 }
+                    { label: t('cbt.standardCabins'), tipPerDay: 20 },
+                    { label: t('cbt.suiteHaven'), tipPerDay: 25 }
                 ];
 
                 tiers.forEach(tier => {
                     const tipTotal = tier.tipPerDay * CRUISE_NIGHTS * fasGuestCount;
                     html += `
                         <tr>
-                            <td>Prepaid Gratuities - ${tier.label}</td>
-                            <td>$0 (pay separately)</td>
-                            <td class="savings">-${PriceCalculator.formatCurrency(tipTotal)} (included)</td>
+                            <td>${t('cbt.prepaidGrat', {label: tier.label})}</td>
+                            <td>${t('cbt.paySeparately')}</td>
+                            <td class="savings">-${PriceCalculator.formatCurrency(tipTotal)} ${t('cbt.included')}</td>
                         </tr>
                     `;
                 });
 
                 html += `
                     <tr>
-                        <td>Unlimited Bar at Great Stirrup Cay</td>
-                        <td>$0 (standard packages NOT valid on island after March 2026)</td>
+                        <td>${t('cbt.gscBar')}</td>
+                        <td>${t('cbt.gscBarDesc')}</td>
                         <td class="savings">-$50 to -$100+ value</td>
                     </tr>
                     <tr>
-                        <td>Unlimited Starbucks (1 drink per visit)</td>
+                        <td>${t('cbt.starbucks')}</td>
                         <td>$0</td>
-                        <td class="savings">-$20 to -$40+ (~$6-8 per specialty drink)</td>
+                        <td class="savings">-$20 to -$40+ (~$6-8)</td>
                     </tr>
                     <tr>
-                        <td>Premium Top-Shelf Spirits (Patr&oacute;n A&ntilde;ejo, Macallan 12-Year, etc.)</td>
+                        <td>${t('cbt.topShelf')}</td>
                         <td>$0</td>
-                        <td class="savings">-$15 to -$50+ ($15+ per drink)</td>
+                        <td class="savings">-$15 to -$50+ ($15+)</td>
                     </tr>
                     <tr>
-                        <td>Energy Drinks &amp; Fresh Juices</td>
+                        <td>${t('cbt.energy')}</td>
                         <td>$0</td>
-                        <td class="savings">-$20 to -$40 (~$6.25 each)</td>
+                        <td class="savings">-$20 to -$40 (~$6.25)</td>
                     </tr>
                     <tr>
-                        <td>Bottled Water (Bars &amp; Restaurants)</td>
+                        <td>${t('cbt.water')}</td>
                         <td>$0</td>
-                        <td class="savings">-$15 to -$30 ($4.50 per bottle)</td>
+                        <td class="savings">-$15 to -$30 ($4.50)</td>
                     </tr>
-                    <tr><td colspan="3" style="font-weight:600;color:var(--ocean-blue);padding-top:1rem;">Great Stirrup Cay Drink Prices (If No Plus Package)</td></tr>
+                    <tr><td colspan="3" style="font-weight:600;color:var(--ocean-blue);padding-top:1rem;">${t('cbt.gscPrices')}</td></tr>
                     <tr>
-                        <td>Cocktails</td>
-                        <td>$12.50+ each (plus 20% gratuity)</td>
-                        <td class="savings">Included</td>
-                    </tr>
-                    <tr>
-                        <td>Beer</td>
-                        <td>$7.50+ each (plus 20% gratuity)</td>
-                        <td class="savings">Included</td>
+                        <td>${t('cbt.cocktails')}</td>
+                        <td>${t('cbt.cocktailPrice')}</td>
+                        <td class="savings">${t('cbt.included')}</td>
                     </tr>
                     <tr>
-                        <td>Soda</td>
-                        <td>$3.50 each (plus 20% gratuity)</td>
-                        <td class="savings">Included</td>
+                        <td>${t('cbt.beer')}</td>
+                        <td>${t('cbt.beerPrice')}</td>
+                        <td class="savings">${t('cbt.included')}</td>
                     </tr>
                     <tr>
-                        <td><em>Example: 4 cocktails + 4 beers on island</em></td>
-                        <td><em>~$96 + tip per couple</em></td>
+                        <td>${t('cbt.soda')}</td>
+                        <td>${t('cbt.sodaPrice')}</td>
+                        <td class="savings">${t('cbt.included')}</td>
+                    </tr>
+                    <tr>
+                        <td><em>${t('cbt.example')}</em></td>
+                        <td><em>${t('cbt.examplePrice')}</em></td>
                         <td class="savings"><em>$0</em></td>
                     </tr>
                 `;
@@ -4195,7 +4688,7 @@
 
                 html += `
                     <tr class="total-row" style="background: rgba(13,148,136,0.1);">
-                        <td>Net Cost After Tip Savings</td>
+                        <td>${t('cbt.netCost')}</td>
                         <td>&mdash;</td>
                         <td>${PriceCalculator.formatCurrency(netLow)}-${PriceCalculator.formatCurrency(netHigh)} + all the extras above</td>
                     </tr>
@@ -4222,9 +4715,9 @@
                 for (let i = 0; i < AppState.childCount; i++) {
                     html += `
                         <div class="child-age-card">
-                            <span class="child-age-card-label">Child ${i + 1}</span>
+                            <span class="child-age-card-label">${t('childAge.child', {n: i + 1})}</span>
                             <div class="child-age-card-row">
-                                Age: <input type="number" class="child-age-inline-input" data-index="${i}"
+                                ${t('childAge.age')} <input type="number" class="child-age-inline-input" data-index="${i}"
                                        min="0" max="20" value="${AppState.childAges[i]}">
                             </div>
                         </div>
@@ -4281,20 +4774,20 @@
                             <div class="reserved-card-label"><span class="family-color-dot" style="background:${color}"></span>${group.label}</div>
                             <div class="reserved-card-members">${memberNames}</div>
                             <div class="reserved-card-detail">
-                                <span class="reserved-detail-label">Cabin</span>
-                                <span class="reserved-detail-value">${group.cabinType}</span>
+                                <span class="reserved-detail-label">${t('reserved.cabin')}</span>
+                                <span class="reserved-detail-value">${t('roomType.' + group.cabinType) || group.cabinType}</span>
                             </div>
                             <div class="reserved-card-detail">
-                                <span class="reserved-detail-label">Room</span>
+                                <span class="reserved-detail-label">${t('reserved.room')}</span>
                                 <span class="reserved-detail-value">#${group.roomNumber}</span>
                             </div>
                             <div class="reserved-card-detail">
-                                <span class="reserved-detail-label">Price</span>
+                                <span class="reserved-detail-label">${t('reserved.price')}</span>
                                 <span class="reserved-detail-value">${PriceCalculator.formatCurrency(group.pricePaid)}</span>
                             </div>
                             <div class="reserved-card-detail">
-                                <span class="reserved-detail-label">Deposit</span>
-                                <span class="reserved-detail-value ${group.depositPaid ? 'deposit-yes' : 'deposit-no'}">${group.depositPaid ? 'Paid' : 'Not paid'}</span>
+                                <span class="reserved-detail-label">${t('reserved.deposit')}</span>
+                                <span class="reserved-detail-value ${group.depositPaid ? 'deposit-yes' : 'deposit-no'}">${group.depositPaid ? t('reserved.paid') : t('reserved.notPaid')}</span>
                             </div>
                         </div>
                     </div>`;
@@ -4309,7 +4802,7 @@
                     return `<span class="unbooked-pill">
                         <span class="family-color-dot" style="background:${color}"></span>
                         ${group.label}
-                        <button class="nudge-btn" data-name="${firstName}" title="Send a nudge">Nudge</button>
+                        <button class="nudge-btn" data-name="${firstName}" title="${t('nudge.title')}">${t('nudge.btn')}</button>
                     </span>`;
                 }).join('');
             },
@@ -4319,13 +4812,14 @@
                 const reserved = AppState.reservedGroups.length;
                 const pct = totalGroups > 0 ? Math.round((reserved / totalGroups) * 100) : 0;
                 document.getElementById('progressBarFill').style.width = pct + '%';
-                document.getElementById('progressCount').textContent = `${reserved}/${totalGroups} families booked`;
+                document.getElementById('progressCount').textContent = t('tracker.familiesBooked', {reserved, total: totalGroups});
+                const remaining = totalGroups - reserved;
                 let message = '';
-                if (pct === 100) { message = 'FULL REUNION! All families are booked!'; this.triggerConfetti(); }
-                else if (pct >= 75) { message = `Almost there! Just ${totalGroups - reserved} famil${totalGroups - reserved === 1 ? 'y' : 'ies'} left`; }
-                else if (pct >= 50) { message = 'Over halfway there!'; }
-                else if (pct >= 25) { message = `Gaining momentum! ${totalGroups - reserved} more to go`; }
-                else { message = `The adventure begins! ${reserved} famil${reserved === 1 ? 'y has' : 'ies have'} booked`; }
+                if (pct === 100) { message = t('tracker.progressFull'); this.triggerConfetti(); }
+                else if (pct >= 75) { message = t('tracker.progressAlmost', {count: remaining, familyWord: remaining === 1 ? t('tracker.familySingular') : t('tracker.familyPlural')}); }
+                else if (pct >= 50) { message = t('tracker.progressHalf'); }
+                else if (pct >= 25) { message = t('tracker.progressQuarter', {count: remaining}); }
+                else { message = t('tracker.progressStart', {count: reserved, familyWord: reserved === 1 ? t('tracker.familyHas') : t('tracker.familiesHave')}); }
                 document.getElementById('progressMessage').textContent = message;
             },
 
@@ -4343,8 +4837,8 @@
             renderCountdown(containerId, targetDate, now, isPayment) {
                 const container = document.getElementById(containerId);
                 const diff = targetDate - now;
-                if (diff <= 0 && isPayment) { container.innerHTML = '<div class="countdown-alert">PAYMENT DUE</div>'; return; }
-                if (diff <= 0) { container.innerHTML = '<div class="countdown-alert">BON VOYAGE!</div>'; return; }
+                if (diff <= 0 && isPayment) { container.innerHTML = `<div class="countdown-alert">${t('countdown.paymentDue')}</div>`; return; }
+                if (diff <= 0) { container.innerHTML = `<div class="countdown-alert">${t('countdown.bonVoyage')}</div>`; return; }
                 const days = Math.floor(diff / (1000 * 60 * 60 * 24));
                 const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
                 const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
@@ -4354,8 +4848,8 @@
                 else if (days < 30) colorClass = 'red';
                 else if (days < 90) colorClass = 'yellow';
                 container.innerHTML = [
-                    { val: days, label: 'Days' }, { val: hours, label: 'Hrs' },
-                    { val: minutes, label: 'Min' }, { val: seconds, label: 'Sec' }
+                    { val: days, label: t('countdown.days') }, { val: hours, label: t('countdown.hrs') },
+                    { val: minutes, label: t('countdown.min') }, { val: seconds, label: t('countdown.sec') }
                 ].map(u => `<div class="countdown-unit">
                     <div class="countdown-number ${colorClass}">${String(u.val).padStart(2, '0')}</div>
                     <div class="countdown-unit-label">${u.label}</div>
@@ -4437,7 +4931,7 @@
 
                 const renderChips = (groups, targetRoom) => {
                     if (groups.size === 0) {
-                        return '<div class="room-empty-msg">Click a group chip to move it here</div>';
+                        return `<div class="room-empty-msg">${t('roomAssign.clickToMove')}</div>`;
                     }
                     return Array.from(groups).map(label => {
                         const idx = AppState.familyGroups.findIndex(g => g.label === label);
@@ -4452,11 +4946,16 @@
 
                 const room1Members = AppState.getMembersForGroups(AppState.connectingRoom1Groups);
                 const room2Members = AppState.getMembersForGroups(AppState.connectingRoom2Groups);
-                room1CountEl.textContent = room1Members.length > 0 ? `${room1Members.length} guest${room1Members.length !== 1 ? 's' : ''}` : '';
-                room2CountEl.textContent = room2Members.length > 0 ? `${room2Members.length} guest${room2Members.length !== 1 ? 's' : ''}` : '';
+                room1CountEl.textContent = room1Members.length > 0 ? `${room1Members.length} ${room1Members.length !== 1 ? t('guest.guestPlural') : t('guest.guestSingular')}` : '';
+                room2CountEl.textContent = room2Members.length > 0 ? `${room2Members.length} ${room2Members.length !== 1 ? t('guest.guestPlural') : t('guest.guestSingular')}` : '';
             },
 
             bindEvents() {
+                // Language toggle
+                document.querySelectorAll('.lang-btn').forEach(btn => {
+                    btn.addEventListener('click', () => switchLanguage(btn.dataset.lang));
+                });
+
                 // Tab navigation
                 document.querySelectorAll('.tab-btn').forEach(btn => {
                     btn.addEventListener('click', () => this.switchTab(btn.dataset.tab));
@@ -4536,13 +5035,13 @@
                 document.getElementById('copyLinkBtn').addEventListener('click', () => {
                     navigator.clipboard.writeText(window.location.href).then(() => {
                         const btn = document.getElementById('copyLinkBtn');
-                        btn.textContent = 'Copied!';
-                        setTimeout(() => { btn.textContent = 'Copy Link'; }, 2000);
+                        btn.textContent = t('tracker.copied');
+                        setTimeout(() => { btn.textContent = t('tracker.copyLink'); }, 2000);
                     });
                 });
 
                 document.getElementById('whatsappShareBtn').addEventListener('click', () => {
-                    const msg = encodeURIComponent('Hey! Pick your cabin for our family cruise! ' + window.location.href);
+                    const msg = encodeURIComponent(t('whatsapp.msg', {url: window.location.href}));
                     window.open('https://wa.me/?text=' + msg, '_blank');
                 });
 
@@ -4550,7 +5049,7 @@
                 document.getElementById('unbookedPills').addEventListener('click', (e) => {
                     if (e.target.classList.contains('nudge-btn')) {
                         const name = e.target.dataset.name;
-                        const msg = encodeURIComponent(`Hey ${name}! Have you picked your cabin yet? Check out the options: ${window.location.href}`);
+                        const msg = encodeURIComponent(t('nudge.msg', {name, url: window.location.href}));
                         window.open('https://wa.me/?text=' + msg, '_blank');
                     }
                 });
@@ -4585,8 +5084,8 @@
                 document.getElementById('tipsToggle').addEventListener('change', (e) => {
                     AppState.tipsBeforeCruise = e.target.checked;
                     document.getElementById('tipsToggleDesc').textContent = e.target.checked
-                        ? 'Before cruise (by 7/23/2026)'
-                        : 'Onboard (end of cruise)';
+                        ? t('toggle.tipsBefore')
+                        : t('toggle.tipsOnboard');
                     Renderer.updatePrices();
                 });
 
