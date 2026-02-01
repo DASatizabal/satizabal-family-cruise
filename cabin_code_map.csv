@@ -1,0 +1,53 @@
+Cabin Code,Cabin Type,Cabin Category
+B1,Balcony,Aft-Facing Balcony
+B4,Balcony,Family Balcony
+B6,Balcony,Large Balcony
+B8,Balcony,Balcony
+BA,Balcony,Balcony
+BB,Balcony,Balcony
+BC,Balcony,Balcony
+BD,Balcony,Balcony
+BF,Balcony,Balcony
+BT,Balcony,Solo Balcony
+BX,Balcony,Balcony (Guarantee)
+CF,Inside,Concierge Family Inside
+I1,Inside,Inside
+I4,Inside,Inside
+IA,Inside,Inside
+IB,Inside,Inside
+ID,Inside,Inside
+IF,Inside,Inside
+IT,Inside,Solo Inside
+IX,Inside,Inside (Guarantee)
+M4,Club Balcony Suite,Family Club Balcony Suite
+M6,Club Balcony Suite,Club Balcony Suite with Larger Balcony
+M8,Club Balcony Suite,Club Balcony Suite
+MA,Club Balcony Suite,Club Balcony Suite
+MB,Club Balcony Suite,Club Balcony Suite
+MC,Club Balcony Suite,Club Balcony Suite
+MX,Club Balcony Suite,Club Balcony Suite (Guarantee)
+O1,Oceanview,Oceanview
+O4,Oceanview,Family Oceanview
+O5,Oceanview,Family Oceanview
+OA,Oceanview,Oceanview with Picture Window
+OB,Oceanview,Oceanview
+OT,Oceanview,Solo Oceanview
+OX,Oceanview,Oceanview (Guarantee)
+SC,Suite,Penthouse Suite with Balcony
+SP,Suite,Family Suite
+H2,The Haven,The Haven Premier Owner's Suite with Large Balcony
+H4,The Haven,The Haven 2-Bedroom Family Villa with Balcony
+H5,The Haven,The Haven Courtyard Penthouse with Balcony
+H6,The Haven,The Haven Aft-Facing Penthouse with Balcony
+H7,The Haven,The Haven Forward-Facing Penthouse with Balcony
+H8,The Haven,The Haven Spa Suite with Balcony
+HA,The Haven,The Haven Courtyard Penthouse with Large Balcony
+HB,The Haven,The Haven Aft-Facing Penthouse with Balcony
+HC,The Haven,The Haven Aft-Facing Penthouse with Balcony
+HE,The Haven,The Haven Courtyard Penthouse with Balcony
+HF,The Haven,The Haven Family Villa Suite with Balcony
+HG,The Haven,The Haven Forward-Facing Penthouse with Balcony
+HH,The Haven,The Haven Family Villa Suite with Balcony
+HI,The Haven,The Haven Penthouse Suite with Balcony
+HJ,The Haven,The Haven Suite with Balcony
+HS,The Haven,The Haven Penthouse Suite with Balcony
