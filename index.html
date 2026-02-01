@@ -219,7 +219,7 @@
             bottom: 0;
             left: 0;
             width: 100%;
-            height: 80px;
+            height: 120px;
             overflow: hidden;
         }
 
@@ -754,6 +754,28 @@
 
         .breakdown-row.tips-onboard .breakdown-value {
             color: var(--suite-color);
+        }
+
+        .toast {
+            position: fixed;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%) translateY(100%);
+            background: #dc2626;
+            color: var(--white);
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.5rem;
+            font-size: 0.875rem;
+            font-weight: 500;
+            z-index: 9999;
+            opacity: 0;
+            transition: opacity 0.3s, transform 0.3s;
+            pointer-events: none;
+        }
+
+        .toast.visible {
+            opacity: 1;
+            transform: translateX(-50%) translateY(0);
         }
 
         .guest-breakdown-row {
@@ -1980,8 +2002,8 @@
         }
 
         @keyframes bob {
-            0%, 100% { transform: translateY(0) rotate(-2deg); }
-            50% { transform: translateY(-8px) rotate(2deg); }
+            0%, 100% { transform: scale(5, 2) translateY(0) rotate(-2deg); }
+            50% { transform: scale(5, 2) translateY(-8px) rotate(2deg); }
         }
 
         /* Grand total floating summary */
@@ -2304,7 +2326,7 @@
     <!-- Hero Header -->
     <header class="hero">
         <div class="hero-content">
-            <span class="version-badge">v1.4.0</span>
+            <span class="version-badge">v1.6.5</span>
             <span class="visitor-counter" id="visitorCounter"></span>
             <div class="lang-toggle">
                 <button class="lang-btn active" data-lang="en">EN</button>
@@ -2645,6 +2667,8 @@
         </div>
     </footer>
 
+    <div class="toast" id="toast"></div>
+
     <script>
         // ==================== CABIN DATA (loaded from CSV) ====================
         let CABIN_DATA = [];
@@ -2864,6 +2888,8 @@
                 'roomAssign.clickToMove': 'Click a group chip to move it here',
                 // Visitor counter
                 'visitor.count': '{count} visitors',
+                // Toast
+                'toast.selectGroup': 'Please select your travel group first',
             },
             es: {
                 // Hero
@@ -3062,6 +3088,8 @@
                 'roomAssign.clickToMove': 'Haz clic en un grupo para moverlo aqu\u00ED',
                 // Visitor counter
                 'visitor.count': '{count} visitantes',
+                // Toast
+                'toast.selectGroup': 'Por favor selecciona tu grupo de viaje primero',
             }
         };
 
@@ -3114,6 +3142,16 @@
             App.updateFasPlusDisplay();
             App.renderTracker();
             updateVisitorCounterText();
+        }
+
+        // ==================== TOAST ====================
+        let toastTimer = null;
+        function showToast(msg) {
+            const el = document.getElementById('toast');
+            el.textContent = msg;
+            el.classList.add('visible');
+            clearTimeout(toastTimer);
+            toastTimer = setTimeout(() => el.classList.remove('visible'), 3000);
         }
 
         // ==================== VISITOR COUNTER ====================
@@ -4968,7 +5006,7 @@
                     const ship = document.querySelector('.ship-icon');
                     if (ship) {
                         ship.style.transition = 'transform 2s ease-in';
-                        ship.style.transform = 'translateX(300vw)';
+                        ship.style.transform = 'scale(5, 2) translateX(60vw)';
                         setTimeout(() => {
                             ship.style.transition = 'none'; ship.style.transform = '';
                             setTimeout(() => { ship.style.transition = ''; }, 50);
@@ -5203,6 +5241,10 @@
                 // Cabin grid event delegation
                 document.getElementById('cabinGrid').addEventListener('click', (e) => {
                     if (e.target.classList.contains('toggle-breakdown')) {
+                        if (AppState.selectedGroups.size === 0) {
+                            showToast(t('toast.selectGroup'));
+                            return;
+                        }
                         const id = parseInt(e.target.dataset.id);
                         if (AppState.openBreakdowns.has(id)) {
                             AppState.openBreakdowns.delete(id);
@@ -5213,6 +5255,10 @@
                     }
 
                     if (e.target.classList.contains('btn-compare')) {
+                        if (AppState.selectedGroups.size === 0) {
+                            showToast(t('toast.selectGroup'));
+                            return;
+                        }
                         const id = parseInt(e.target.dataset.id);
                         if (AppState.selectedCabins.has(id)) {
                             AppState.selectedCabins.delete(id);
