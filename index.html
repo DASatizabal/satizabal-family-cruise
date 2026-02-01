@@ -74,6 +74,16 @@
             letter-spacing: 0.025em;
         }
 
+        .visitor-counter {
+            position: absolute;
+            top: 1.2rem;
+            right: 0;
+            font-size: 0.75rem;
+            font-weight: 500;
+            opacity: 0.5;
+            letter-spacing: 0.025em;
+        }
+
         .lang-toggle {
             position: absolute;
             top: 2rem;
@@ -2295,6 +2305,7 @@
     <header class="hero">
         <div class="hero-content">
             <span class="version-badge">v1.3.0</span>
+            <span class="visitor-counter" id="visitorCounter"></span>
             <div class="lang-toggle">
                 <button class="lang-btn active" data-lang="en">EN</button>
                 <button class="lang-btn" data-lang="es">ES</button>
@@ -2850,6 +2861,8 @@
                 'noResults.loadFail': 'Failed to load cabin data. Please refresh the page.',
                 // Room assignment
                 'roomAssign.clickToMove': 'Click a group chip to move it here',
+                // Visitor counter
+                'visitor.count': '{count} visitors',
             },
             es: {
                 // Hero
@@ -3045,6 +3058,8 @@
                 'noResults.loadFail': 'Error al cargar datos de cabinas. Por favor recarga la p\u00E1gina.',
                 // Room assignment
                 'roomAssign.clickToMove': 'Haz clic en un grupo para moverlo aqu\u00ED',
+                // Visitor counter
+                'visitor.count': '{count} visitantes',
             }
         };
 
@@ -3096,6 +3111,34 @@
             App.updateGrandTotalFloat();
             App.updateFasPlusDisplay();
             App.renderTracker();
+            updateVisitorCounterText();
+        }
+
+        // ==================== VISITOR COUNTER ====================
+        let visitorCount = null;
+
+        function updateVisitorCounterText() {
+            const el = document.getElementById('visitorCounter');
+            if (el && visitorCount !== null) {
+                el.textContent = t('visitor.count', { count: visitorCount.toLocaleString() });
+            }
+        }
+
+        async function loadVisitorCounter() {
+            try {
+                const response = await fetch('https://visitor.6developer.com/visit', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ domain: window.location.hostname || 'satizabal-cruise-local' })
+                });
+                if (response.ok) {
+                    const data = await response.json();
+                    visitorCount = data.totalCount || 0;
+                    updateVisitorCounterText();
+                }
+            } catch (e) {
+                // Silently fail - counter is non-essential
+            }
         }
 
         // CSV Parser for new format
@@ -4421,6 +4464,9 @@
                 if (savedLang && savedLang !== 'en') {
                     switchLanguage(savedLang);
                 }
+
+                // Load visitor counter (non-blocking)
+                loadVisitorCounter();
             },
 
             renderFamilyButtons() {
