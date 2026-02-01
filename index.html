@@ -3526,8 +3526,11 @@
                     : discountedBase + Math.max(0, effectiveGuests - 2) * discountedExtra;
                 const originalPerPersonAvg = effectiveGuests > 0 ? originalTotalFare / effectiveGuests : 0;
 
-                // Deposit (based on discounted fare) - credit does not change the deposit amount
-                const deposit = isHighTier ? Math.round(totalFare * 0.10) : 100;
+                // Deposit amount: with $150 credit, you pay $150 unless 10% exceeds $300
+                const baseDeposit = isHighTier ? Math.round(totalFare * 0.10) : 100;
+                const deposit = AppState.depositOption === 'credit150'
+                    ? (isHighTier && baseDeposit > 300 ? baseDeposit : 150)
+                    : baseDeposit;
                 const balance = grandTotal - deposit;
 
                 // Per-person average
@@ -3673,7 +3676,10 @@
                     : discountedBase + Math.max(0, effectiveGuests - 2) * discountedExtra;
                 const originalPerPersonAvg = effectiveGuests > 0 ? originalTotalFare / effectiveGuests : 0;
 
-                const deposit = isHighTier ? Math.round(totalFare * 0.10) : 100;
+                const baseDeposit = isHighTier ? Math.round(totalFare * 0.10) : 100;
+                const deposit = AppState.depositOption === 'credit150'
+                    ? (isHighTier && baseDeposit > 300 ? baseDeposit : 150)
+                    : baseDeposit;
                 const balance = grandTotal - deposit;
                 const perPersonAvg = effectiveGuests > 0 ? grandTotal / effectiveGuests : 0;
                 const allSameCost = guestDetails.length > 1
