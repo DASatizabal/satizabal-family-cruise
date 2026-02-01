@@ -671,6 +671,160 @@
             color: var(--white);
         }
 
+        .btn-select-cabin {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            background: var(--teal);
+            color: var(--white);
+            border: none;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            cursor: pointer;
+            margin-top: 0.5rem;
+            transition: background 0.2s;
+        }
+
+        .btn-select-cabin:hover {
+            background: var(--teal-light);
+        }
+
+        .btn-select-cabin:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+
+        .selection-modal {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.5);
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s, visibility 0.3s;
+            z-index: 250;
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+        }
+
+        .selection-modal.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .selection-modal .modal-content {
+            background: var(--white);
+            border-radius: 24px 24px 0 0;
+            width: 100%;
+            max-width: 600px;
+            max-height: 85vh;
+            overflow-y: auto;
+            transform: translateY(100%);
+            transition: transform 0.3s;
+            padding: 1.5rem;
+            position: relative;
+        }
+
+        .selection-modal.visible .modal-content {
+            transform: translateY(0);
+        }
+
+        .selection-modal .modal-content h2 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--gray-900);
+            margin-bottom: 1rem;
+            padding-right: 2.5rem;
+        }
+
+        .selection-summary-section {
+            margin-bottom: 1rem;
+        }
+
+        .selection-summary-section h3 {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--teal);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 0.5rem;
+            padding-bottom: 0.25rem;
+            border-bottom: 2px solid var(--teal);
+        }
+
+        .selection-summary-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.35rem 0;
+            font-size: 0.875rem;
+            border-bottom: 1px solid var(--gray-100);
+        }
+
+        .selection-summary-row .label {
+            color: var(--gray-500);
+        }
+
+        .selection-summary-row .value {
+            font-weight: 600;
+            color: var(--gray-800);
+        }
+
+        .selection-summary-row.total {
+            border-top: 2px solid var(--gray-300);
+            border-bottom: none;
+            padding-top: 0.5rem;
+            margin-top: 0.25rem;
+            font-size: 1rem;
+        }
+
+        .selection-summary-row.total .value {
+            color: var(--teal);
+            font-size: 1.1rem;
+        }
+
+        .selection-actions {
+            display: flex;
+            gap: 0.75rem;
+            margin-top: 1.25rem;
+        }
+
+        .btn-cancel {
+            flex: 1;
+            padding: 0.75rem;
+            background: var(--gray-200);
+            color: var(--gray-700);
+            border: none;
+            border-radius: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .btn-cancel:hover {
+            background: var(--gray-300);
+        }
+
+        .btn-confirm {
+            flex: 2;
+            padding: 0.75rem;
+            background: #22c55e;
+            color: var(--white);
+            border: none;
+            border-radius: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .btn-confirm:hover {
+            background: #16a34a;
+        }
+
+        .btn-confirm:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+
         .ncl-link {
             display: block;
             text-align: center;
@@ -2330,7 +2484,7 @@
     <!-- Hero Header -->
     <header class="hero">
         <div class="hero-content">
-            <span class="version-badge">v1.7.5</span>
+            <span class="version-badge">v1.8.0</span>
             <span class="visitor-counter" id="visitorCounter"></span>
             <div class="lang-toggle">
                 <button class="lang-btn active" data-lang="en">EN</button>
@@ -2586,6 +2740,19 @@
             </div>
             <div class="modal-body">
                 <div class="comparison-grid" id="comparisonGrid"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Selection Confirmation Modal -->
+    <div class="selection-modal" id="selectionModal">
+        <div class="modal-content">
+            <button class="modal-close" id="selectionModalClose">&times;</button>
+            <h2 id="selectionModalTitle"></h2>
+            <div id="selectionModalBody"></div>
+            <div class="selection-actions">
+                <button class="btn btn-cancel" id="selectionCancel"></button>
+                <button class="btn btn-confirm" id="selectionConfirm"></button>
             </div>
         </div>
     </div>
@@ -2894,6 +3061,34 @@
                 'visitor.count': '{count} visitors',
                 // Toast
                 'toast.selectGroup': 'Please select your travel group first',
+                // Selection
+                'cabin.selectThis': 'Select This Cabin',
+                'selection.title': 'Confirm Your Selection',
+                'selection.group': 'Travel Group',
+                'selection.members': 'Members',
+                'selection.cabinType': 'Cabin Type',
+                'selection.room1': 'Room 1',
+                'selection.room2': 'Room 2',
+                'selection.drinkPkg': 'Drink Package',
+                'selection.dinnerPkg': 'Dinner Package',
+                'selection.fasPlus': 'Free at Sea Plus',
+                'selection.tips': 'When to Pay Tips',
+                'selection.tipsBefore': 'Before Cruise',
+                'selection.tipsOnboard': 'Onboard',
+                'selection.depositType': 'Deposit Type',
+                'selection.depositRegular': 'Regular',
+                'selection.depositCredit': '$150 Credit',
+                'selection.total': 'Total Price',
+                'selection.deposit': 'Deposit (pay today)',
+                'selection.balance': 'Balance Due',
+                'selection.perPerson': 'Per Person Avg',
+                'selection.confirm': 'Confirm Selection',
+                'selection.cancel': 'Cancel',
+                'selection.submitting': 'Submitting...',
+                'selection.toast': "Thank you for your selection! David will call you to confirm the final price \u2014 or just call him, you know, whatever.",
+                'selection.errorToast': 'Something went wrong. Please try again.',
+                'selection.yes': 'Yes',
+                'selection.no': 'No',
             },
             es: {
                 // Hero
@@ -3094,6 +3289,34 @@
                 'visitor.count': '{count} visitantes',
                 // Toast
                 'toast.selectGroup': 'Por favor selecciona tu grupo de viaje primero',
+                // Selection
+                'cabin.selectThis': 'Seleccionar Esta Cabina',
+                'selection.title': 'Confirma Tu Selecci\u00F3n',
+                'selection.group': 'Grupo de Viaje',
+                'selection.members': 'Miembros',
+                'selection.cabinType': 'Tipo de Cabina',
+                'selection.room1': 'Cabina 1',
+                'selection.room2': 'Cabina 2',
+                'selection.drinkPkg': 'Paquete de Bebidas',
+                'selection.dinnerPkg': 'Paquete de Cenas',
+                'selection.fasPlus': 'Free at Sea Plus',
+                'selection.tips': 'Cu\u00E1ndo Pagar Propinas',
+                'selection.tipsBefore': 'Antes del Crucero',
+                'selection.tipsOnboard': 'A Bordo',
+                'selection.depositType': 'Tipo de Dep\u00F3sito',
+                'selection.depositRegular': 'Regular',
+                'selection.depositCredit': 'Cr\u00E9dito de $150',
+                'selection.total': 'Precio Total',
+                'selection.deposit': 'Dep\u00F3sito (pagar hoy)',
+                'selection.balance': 'Saldo Pendiente',
+                'selection.perPerson': 'Promedio por Persona',
+                'selection.confirm': 'Confirmar Selecci\u00F3n',
+                'selection.cancel': 'Cancelar',
+                'selection.submitting': 'Enviando...',
+                'selection.toast': "\u00A1Gracias por tu selecci\u00F3n! David te llamar\u00E1 para confirmar el precio final \u2014 o ll\u00E1malo t\u00FA, como quieras.",
+                'selection.errorToast': 'Algo sali\u00F3 mal. Por favor intenta de nuevo.',
+                'selection.yes': 'S\u00ED',
+                'selection.no': 'No',
             }
         };
 
@@ -3183,6 +3406,184 @@
             } catch (e) {
                 // Silently fail - counter is non-essential
             }
+        }
+
+        // ==================== CABIN SELECTION SUBMISSION ====================
+        const APPS_SCRIPT_URL = ''; // Paste your deployed Google Apps Script URL here
+
+        let selectionPayload = null;
+
+        function showSelectionModal(id, mode) {
+            const groupLabels = AppState.getSelectedGroupLabels();
+            const groupLabel = groupLabels.join(' + ');
+            const memberNames = AppState.guestNames.join(', ');
+
+            const drinkYN = AppState.includeDrinks ? t('selection.yes') : t('selection.no');
+            const dinnerYN = AppState.includeDinner ? t('selection.yes') : t('selection.no');
+            const fasYN = AppState.freeAtSeaPlus ? t('selection.yes') : t('selection.no');
+            const tipsLabel = AppState.tipsBeforeCruise ? t('selection.tipsBefore') : t('selection.tipsOnboard');
+            const depositLabel = AppState.depositOption === 'credit150' ? t('selection.depositCredit') : t('selection.depositRegular');
+
+            let bodyHtml = '';
+
+            if (mode === 'single') {
+                const cabin = CABIN_DATA.find(c => c.id === id);
+                if (!cabin) return;
+                const pricing = PriceCalculator.calculate(cabin, AppState.includeDrinks, AppState.includeDinner, AppState.tipsBeforeCruise);
+
+                bodyHtml = buildSingleCabinSummary(cabin, pricing, groupLabel, memberNames, drinkYN, dinnerYN, fasYN, tipsLabel, depositLabel);
+
+                selectionPayload = {
+                    group: groupLabel,
+                    members: memberNames,
+                    cabinType: cabin.name,
+                    roomTypes: cabin.roomType,
+                    drinkPkg: drinkYN,
+                    dinnerPkg: dinnerYN,
+                    fasPlus: fasYN,
+                    tips: tipsLabel,
+                    depositType: depositLabel,
+                    total: PriceCalculator.formatCurrency(pricing.grandTotal),
+                    deposit: PriceCalculator.formatCurrency(pricing.deposit),
+                    balance: PriceCalculator.formatCurrency(pricing.balance),
+                    perPerson: PriceCalculator.formatCurrency(pricing.perPersonAvg)
+                };
+            } else {
+                const pair = CONNECTING_PAIRS.find(p => p.id === id);
+                if (!pair) return;
+                const room1Members = AppState.getMembersForGroups(AppState.connectingRoom1Groups);
+                const room2Members = AppState.getMembersForGroups(AppState.connectingRoom2Groups);
+                const combinedPricing = PriceCalculator.calculateConnectingPair(
+                    pair, room1Members, room2Members,
+                    AppState.includeDrinks, AppState.includeDinner, AppState.tipsBeforeCruise
+                );
+
+                const room1Names = room1Members.map(m => m.name).join(', ');
+                const room2Names = room2Members.map(m => m.name).join(', ');
+                const allMembers = room1Names + (room1Names && room2Names ? ', ' : '') + room2Names;
+                const combinedPerPerson = (room1Members.length + room2Members.length) > 0
+                    ? combinedPricing.combinedGrandTotal / (room1Members.length + room2Members.length)
+                    : 0;
+
+                bodyHtml = buildConnectingPairSummary(pair, combinedPricing, groupLabel, allMembers, room1Names, room2Names, drinkYN, dinnerYN, fasYN, tipsLabel, depositLabel, combinedPerPerson);
+
+                selectionPayload = {
+                    group: groupLabel,
+                    members: allMembers,
+                    cabinType: pair.label,
+                    roomTypes: pair.room1Cabin.roomType + ' + ' + pair.room2Cabin.roomType,
+                    drinkPkg: drinkYN,
+                    dinnerPkg: dinnerYN,
+                    fasPlus: fasYN,
+                    tips: tipsLabel,
+                    depositType: depositLabel,
+                    total: PriceCalculator.formatCurrency(combinedPricing.combinedGrandTotal),
+                    deposit: PriceCalculator.formatCurrency(combinedPricing.combinedDeposit),
+                    balance: PriceCalculator.formatCurrency(combinedPricing.combinedBalance),
+                    perPerson: PriceCalculator.formatCurrency(combinedPerPerson)
+                };
+            }
+
+            document.getElementById('selectionModalTitle').textContent = t('selection.title');
+            document.getElementById('selectionModalBody').innerHTML = bodyHtml;
+            document.getElementById('selectionCancel').textContent = t('selection.cancel');
+            const confirmBtn = document.getElementById('selectionConfirm');
+            confirmBtn.textContent = t('selection.confirm');
+            confirmBtn.disabled = false;
+            document.getElementById('selectionModal').classList.add('visible');
+        }
+
+        function buildSingleCabinSummary(cabin, pricing, groupLabel, memberNames, drinkYN, dinnerYN, fasYN, tipsLabel, depositLabel) {
+            return `
+                <div class="selection-summary-section">
+                    <h3>${t('selection.group')}</h3>
+                    <div class="selection-summary-row"><span class="label">${t('selection.group')}</span><span class="value">${groupLabel}</span></div>
+                    <div class="selection-summary-row"><span class="label">${t('selection.members')}</span><span class="value">${memberNames}</span></div>
+                </div>
+                <div class="selection-summary-section">
+                    <h3>${t('selection.cabinType')}</h3>
+                    <div class="selection-summary-row"><span class="label">${cabin.roomType}</span><span class="value">${cabin.name}</span></div>
+                </div>
+                <div class="selection-summary-section">
+                    <h3>Packages</h3>
+                    <div class="selection-summary-row"><span class="label">${t('selection.drinkPkg')}</span><span class="value">${drinkYN}</span></div>
+                    <div class="selection-summary-row"><span class="label">${t('selection.dinnerPkg')}</span><span class="value">${dinnerYN}</span></div>
+                    <div class="selection-summary-row"><span class="label">${t('selection.fasPlus')}</span><span class="value">${fasYN}</span></div>
+                    <div class="selection-summary-row"><span class="label">${t('selection.tips')}</span><span class="value">${tipsLabel}</span></div>
+                    <div class="selection-summary-row"><span class="label">${t('selection.depositType')}</span><span class="value">${depositLabel}</span></div>
+                </div>
+                <div class="selection-summary-section">
+                    <h3>${t('selection.total')}</h3>
+                    <div class="selection-summary-row total"><span class="label">${t('selection.total')}</span><span class="value">${PriceCalculator.formatCurrency(pricing.grandTotal)}</span></div>
+                    <div class="selection-summary-row"><span class="label">${t('selection.deposit')}</span><span class="value">${PriceCalculator.formatCurrency(pricing.deposit)}</span></div>
+                    <div class="selection-summary-row"><span class="label">${t('selection.balance')}</span><span class="value">${PriceCalculator.formatCurrency(pricing.balance)}</span></div>
+                    <div class="selection-summary-row"><span class="label">${t('selection.perPerson')}</span><span class="value">${PriceCalculator.formatCurrency(pricing.perPersonAvg)}</span></div>
+                </div>
+            `;
+        }
+
+        function buildConnectingPairSummary(pair, combinedPricing, groupLabel, allMembers, room1Names, room2Names, drinkYN, dinnerYN, fasYN, tipsLabel, depositLabel, combinedPerPerson) {
+            const { room1, room2 } = combinedPricing;
+            return `
+                <div class="selection-summary-section">
+                    <h3>${t('selection.group')}</h3>
+                    <div class="selection-summary-row"><span class="label">${t('selection.group')}</span><span class="value">${groupLabel}</span></div>
+                    <div class="selection-summary-row"><span class="label">${t('selection.members')}</span><span class="value">${allMembers}</span></div>
+                </div>
+                <div class="selection-summary-section">
+                    <h3>${t('selection.room1')}: ${pair.room1Cabin.roomType}</h3>
+                    <div class="selection-summary-row"><span class="label">${pair.room1Cabin.name}</span><span class="value">${PriceCalculator.formatCurrency(room1.grandTotal)}</span></div>
+                    <div class="selection-summary-row"><span class="label">${t('selection.members')}</span><span class="value">${room1Names}</span></div>
+                </div>
+                <div class="selection-summary-section">
+                    <h3>${t('selection.room2')}: ${pair.room2Cabin.roomType}</h3>
+                    <div class="selection-summary-row"><span class="label">${pair.room2Cabin.name}</span><span class="value">${PriceCalculator.formatCurrency(room2.grandTotal)}</span></div>
+                    <div class="selection-summary-row"><span class="label">${t('selection.members')}</span><span class="value">${room2Names}</span></div>
+                </div>
+                <div class="selection-summary-section">
+                    <h3>Packages</h3>
+                    <div class="selection-summary-row"><span class="label">${t('selection.drinkPkg')}</span><span class="value">${drinkYN}</span></div>
+                    <div class="selection-summary-row"><span class="label">${t('selection.dinnerPkg')}</span><span class="value">${dinnerYN}</span></div>
+                    <div class="selection-summary-row"><span class="label">${t('selection.fasPlus')}</span><span class="value">${fasYN}</span></div>
+                    <div class="selection-summary-row"><span class="label">${t('selection.tips')}</span><span class="value">${tipsLabel}</span></div>
+                    <div class="selection-summary-row"><span class="label">${t('selection.depositType')}</span><span class="value">${depositLabel}</span></div>
+                </div>
+                <div class="selection-summary-section">
+                    <h3>${t('selection.total')}</h3>
+                    <div class="selection-summary-row total"><span class="label">${t('selection.total')}</span><span class="value">${PriceCalculator.formatCurrency(combinedPricing.combinedGrandTotal)}</span></div>
+                    <div class="selection-summary-row"><span class="label">${t('selection.deposit')}</span><span class="value">${PriceCalculator.formatCurrency(combinedPricing.combinedDeposit)}</span></div>
+                    <div class="selection-summary-row"><span class="label">${t('selection.balance')}</span><span class="value">${PriceCalculator.formatCurrency(combinedPricing.combinedBalance)}</span></div>
+                    <div class="selection-summary-row"><span class="label">${t('selection.perPerson')}</span><span class="value">${PriceCalculator.formatCurrency(combinedPerPerson)}</span></div>
+                </div>
+            `;
+        }
+
+        async function submitSelection() {
+            if (!selectionPayload) return;
+
+            const confirmBtn = document.getElementById('selectionConfirm');
+            confirmBtn.textContent = t('selection.submitting');
+            confirmBtn.disabled = true;
+
+            try {
+                if (!APPS_SCRIPT_URL) {
+                    throw new Error('APPS_SCRIPT_URL not configured');
+                }
+                await fetch(APPS_SCRIPT_URL, {
+                    method: 'POST',
+                    mode: 'no-cors',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(selectionPayload)
+                });
+                document.getElementById('selectionModal').classList.remove('visible');
+                showToast(t('selection.toast'));
+            } catch (err) {
+                showToast(t('selection.errorToast'));
+                confirmBtn.textContent = t('selection.confirm');
+                confirmBtn.disabled = false;
+            }
+
+            selectionPayload = null;
         }
 
         // CSV Parser for new format
@@ -3931,6 +4332,12 @@
                                 </button>
                             </div>
 
+                            ${AppState.selectedGroups.size > 0 && !isDimmed ? `
+                                <button class="btn btn-select-cabin" data-id="${cabin.id}" data-mode="single">
+                                    ${t('cabin.selectThis')}
+                                </button>
+                            ` : ''}
+
                             <div class="breakdown ${isBreakdownOpen ? 'open' : ''}" data-breakdown-id="${cabin.id}">
                                 <div class="breakdown-content">
                                     ${this.renderBreakdown(cabin, pricing)}
@@ -4441,6 +4848,12 @@
                                     ${isOpen ? t('cabin.hideBreakdown') : t('cabin.viewBreakdown')}
                                 </button>
                             </div>
+
+                            ${!isDimmed && !room1Empty && !room2Empty ? `
+                                <button class="btn btn-select-cabin" data-pair-id="${pair.id}" data-mode="connecting">
+                                    ${t('cabin.selectThis')}
+                                </button>
+                            ` : ''}
 
                             ${breakdownHtml}
                         </div>
@@ -5132,6 +5545,11 @@
                         }
                         Renderer.renderConnectingPairsGrid();
                     }
+
+                    if (e.target.classList.contains('btn-select-cabin') && e.target.dataset.mode === 'connecting') {
+                        const pairId = parseInt(e.target.dataset.pairId);
+                        showSelectionModal(pairId, 'connecting');
+                    }
                 });
 
                 // Easter egg
@@ -5272,6 +5690,11 @@
                         Renderer.renderGrid();
                         Renderer.updateComparisonTray();
                     }
+
+                    if (e.target.classList.contains('btn-select-cabin') && e.target.dataset.mode === 'single') {
+                        const id = parseInt(e.target.dataset.id);
+                        showSelectionModal(id, 'single');
+                    }
                 });
 
                 // Comparison tray
@@ -5299,11 +5722,30 @@
                     }
                 });
 
+                // Selection modal
+                document.getElementById('selectionConfirm').addEventListener('click', () => submitSelection());
+                document.getElementById('selectionCancel').addEventListener('click', () => {
+                    document.getElementById('selectionModal').classList.remove('visible');
+                    selectionPayload = null;
+                });
+                document.getElementById('selectionModalClose').addEventListener('click', () => {
+                    document.getElementById('selectionModal').classList.remove('visible');
+                    selectionPayload = null;
+                });
+                document.getElementById('selectionModal').addEventListener('click', (e) => {
+                    if (e.target.classList.contains('selection-modal')) {
+                        document.getElementById('selectionModal').classList.remove('visible');
+                        selectionPayload = null;
+                    }
+                });
+
                 // Keyboard
                 document.addEventListener('keydown', (e) => {
                     if (e.key === 'Escape') {
                         document.getElementById('comparisonModal').classList.remove('visible');
                         document.getElementById('fasPlusModal').classList.remove('visible');
+                        document.getElementById('selectionModal').classList.remove('visible');
+                        selectionPayload = null;
                     }
                 });
 
