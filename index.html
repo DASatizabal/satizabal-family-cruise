@@ -1382,59 +1382,7 @@
             margin-left: 0.25rem;
             vertical-align: middle;
         }
-        /* Dark mode variables */
-        body.dark-mode {
-            --white: #1a1a2e;
-            --gray-50: #16213e;
-            --gray-100: #1a1a2e;
-            --gray-200: #2a2a4a;
-            --gray-300: #3a3a5a;
-            --gray-400: #6a6a8a;
-            --gray-500: #9a9ab0;
-            --gray-600: #b0b0c8;
-            --gray-700: #d0d0e0;
-            --gray-800: #e8e8f0;
-            --gray-900: #f0f0f8;
-        }
 
-        body.dark-mode .hero {
-            background: linear-gradient(135deg, #050a18 0%, #0a1628 100%);
-        }
-
-        body.dark-mode .controls-panel,
-        body.dark-mode .cabin-card,
-        body.dark-mode .modal,
-        body.dark-mode .fas-modal {
-            background: #1a1a2e;
-        }
-
-        body.dark-mode .comparison-tray {
-            background: #050a18;
-        }
-
-        /* Dark mode toggle */
-        .dark-mode-toggle {
-            position: absolute;
-            top: 0.5rem;
-            right: 4rem;
-            background: rgba(255,255,255,0.15);
-            border: none;
-            color: var(--white);
-            width: 36px;
-            height: 36px;
-            border-radius: 50%;
-            cursor: pointer;
-            font-size: 1.2rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: background 0.2s;
-            z-index: 5;
-        }
-
-        .dark-mode-toggle:hover {
-            background: rgba(255,255,255,0.25);
-        }
 
         /* Tab Navigation */
         .tab-nav {
@@ -1713,10 +1661,6 @@
             border-radius: 10px;
             min-width: 60px;
             transition: color 0.5s;
-        }
-
-        body.dark-mode .countdown-number {
-            color: var(--gray-900);
         }
 
         .countdown-number.green { color: #16a34a; }
@@ -2300,34 +2244,6 @@
             margin: 0.5rem 0 0.25rem;
         }
 
-        /* Dark mode overrides for connecting rooms */
-        .dark-mode .connecting-rooms-toggle {
-            background: linear-gradient(135deg, rgba(13,148,136,0.15), rgba(30,58,95,0.15));
-            border-color: rgba(13,148,136,0.3);
-        }
-
-        .dark-mode .room-column {
-            background: var(--gray-800);
-            border-color: var(--gray-600);
-        }
-
-        .dark-mode .connecting-card {
-            background: var(--gray-800);
-            border-color: var(--gray-700);
-        }
-
-        .dark-mode .connecting-room-info {
-            background: var(--gray-700);
-        }
-
-        .dark-mode .connecting-combined-total {
-            color: var(--teal-light);
-        }
-
-        .dark-mode .connecting-pairs-header {
-            color: var(--gray-200);
-        }
-
         @media (max-width: 600px) {
             .room-assignment {
                 grid-template-columns: 1fr;
@@ -2345,8 +2261,7 @@
     <!-- Hero Header -->
     <header class="hero">
         <div class="hero-content">
-            <span class="version-badge">v1.1.0</span>
-            <button class="dark-mode-toggle" id="darkModeToggle" title="Toggle dark mode">&#9790;</button>
+            <span class="version-badge">v1.2.0</span>
             <h1 class="ship-name">
                 <a href="https://www.ncl.com/cruise-ships/norwegian-joy" target="_blank" rel="noopener" id="shipNameLink">Norwegian Joy</a>
             </h1>
@@ -4006,7 +3921,6 @@
                 this.renderTracker();
                 this.updateTabBadges();
                 this.startCountdowns();
-                this.initDarkMode();
                 this.initEasterEgg();
                 this.bindEvents();
                 Renderer.updateToggleLabels();
@@ -4448,19 +4362,6 @@
                 </div>`).join('');
             },
 
-            // ==================== DARK MODE ====================
-            initDarkMode() {
-                if (localStorage.getItem('darkMode') === 'true') {
-                    document.body.classList.add('dark-mode');
-                    document.getElementById('darkModeToggle').textContent = '\u2600';
-                }
-            },
-            toggleDarkMode() {
-                const isDark = document.body.classList.toggle('dark-mode');
-                document.getElementById('darkModeToggle').textContent = isDark ? '\u2600' : '\u263E';
-                localStorage.setItem('darkMode', isDark);
-            },
-
             // ==================== CONFETTI ====================
             triggerConfetti() {
                 const canvas = document.getElementById('confettiCanvas');
@@ -4624,9 +4525,6 @@
                         Renderer.renderConnectingPairsGrid();
                     }
                 });
-
-                // Dark mode
-                document.getElementById('darkModeToggle').addEventListener('click', () => this.toggleDarkMode());
 
                 // Easter egg
                 document.getElementById('shipNameLink').addEventListener('click', (e) => {
